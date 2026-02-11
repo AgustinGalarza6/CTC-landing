@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Sagace';
+  src: url('/fonts/Sagace-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sagace';
+  src: url('/fonts/Sagace-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --font-sagace: "Sagace", system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Offset for fixed navbar */
+  }
+
+  * {
+    @apply border-gray-200;
+  }
+
+  body {
+    @apply bg-white text-gray-900;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-bold;
+  }
+}
+
+@layer components {
+  /* Button Styles - Clean Solid Colors */
+  .btn {
+    @apply inline-flex items-center justify-center px-8 py-3 text-base font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed rounded-full;
+  }
+
+  .btn-primary {
+    @apply bg-black text-white hover:bg-gray-800 rounded-full;
+  }
+
+  .btn-secondary {
+    @apply bg-primary-500 text-white hover:bg-primary-600 rounded-full;
+  }
+
+  .btn-outline {
+    @apply border-2 border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white rounded-full;
+  }
+
+  .btn-ghost {
+    @apply text-gray-600 hover:text-primary-600 hover:bg-gray-100 px-4;
+  }
+
+  /* Card Styles - Light with subtle borders */
+  .card {
+    @apply bg-white border border-gray-200 overflow-hidden transition-all duration-300 rounded-lg shadow-sm;
+  }
+
+  .card-hover {
+    @apply hover:border-primary-300 hover:shadow-md;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section Padding */
+  .section-padding {
+    @apply py-16 md:py-20;
+  }
+
+  /* Text Utilities */
+  .text-brand {
+    @apply text-ctc-navy;
+  }
+
+  .text-brand-blue {
+    @apply text-primary-500;
+  }
+}
+
+@layer utilities {
+  /* Custom animations */
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out;
+  }
+
+  .animate-slide-in {
+    animation: slide-in 0.5s ease-out;
+  }
+
+  /* Text shadow for hero sections */
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Backdrop blur utilities */
+  .backdrop-blur-custom {
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-400 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-500;
+}
+
+/* Selection color */
+::selection {
+  @apply bg-primary-200 text-primary-900;
+}
