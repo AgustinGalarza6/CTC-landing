@@ -1,6 +1,8 @@
-# CTC Sistemas - Corporate Website & E-commerce
+# 🚀 CTCSistemas | Landing & E-commerce
 
-Production-grade Next.js website for CTCSistemas with integrated e-commerce and Payload CMS.
+> Sitio web corporativo y plataforma de e-commerce para CTCSistemas - Soluciones tecnológicas empresariales.
+
+Plataforma Next.js de nivel producción con catálogo de productos, gestión de contenido CMS y sistema de cotizaciones para empresa de tecnología B2B.
 
 ## Stack
 
