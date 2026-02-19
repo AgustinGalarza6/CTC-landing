@@ -4,205 +4,192 @@ import Link from "next/link";
 const services = [
   {
     id: 1,
-    slug: "soporte-tecnico",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-      </svg>
-    ),
-    title: "Soporte Técnico Especializado",
+    slug: "infraestructura-it",
+    title: "Infraestructura IT",
     description:
-      "Aseguramos la continuidad operativa de su infraestructura tecnológica mediante esquemas de asistencia técnica profesional, preventiva y correctiva.",
+      "Diseñamos e implementamos infraestructuras robustas, seguras y escalables para entornos corporativos.",
     bullets: [
-      "Mesa de ayuda técnica",
-      "Soporte remoto y on-site",
-      "Diagnóstico y resolución de incidencias",
-      "Mantenimiento preventivo",
-      "Gestión de fallas críticas",
-      "Optimización de rendimiento",
+      "Redes corporativas",
+      "Servidores y virtualización",
+      "Seguridad y performance",
     ],
+    image: "/images/services/infraestructura.jpg", // Placeholder
   },
   {
     id: 2,
-    slug: "infraestructura-it",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-      </svg>
-    ),
-    title: "Implementación de Infraestructura IT",
+    slug: "sistemas-informaticos",
+    title: "Sistemas Informáticos",
     description:
-      "Arquitecturas tecnológicas robustas, escalables y seguras para soportar el crecimiento empresarial con las mejores prácticas del mercado.",
+      "Implementación y optimización de sistemas tecnológicos empresariales para mejorar continuidad y eficiencia operativa.",
     bullets: [
-      "Diseño de redes corporativas",
-      "Implementación de servidores",
-      "Virtualización",
-      "Seguridad perimetral",
-      "Optimización de performance",
-      "Escalabilidad",
+      "Integraciones entre plataformas",
+      "Optimización operativa",
+      "Migración y estandarización",
     ],
+    image: "/images/services/sistemas.jpg",
   },
   {
     id: 3,
     slug: "erp",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-      </svg>
-    ),
-    title: "Sistemas ERP & Gestión Empresarial",
+    title: "ERP / Software de Gestión",
     description:
-      "Soluciones ERP para optimizar la administración de recursos, integrar procesos críticos y centralizar la información empresarial en tiempo real.",
+      "Soluciones de gestión orientadas a optimizar procesos críticos y centralizar información estratégica del negocio.",
     bullets: [
-      "Venta de licencias ERP",
       "Implementación y parametrización",
-      "Integraciones entre sistemas",
-      "Migraciones",
+      "Integraciones y automatización",
       "Soporte y mantenimiento",
-      "Automatización de procesos",
     ],
+    image: "/images/services/erp.jpg",
   },
   {
     id: 4,
-    slug: "ciberseguridad",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    ),
-    title: "Ciberseguridad Corporativa",
+    slug: "licencias",
+    title: "Licencias Empresariales",
     description:
-      "Protegemos la infraestructura tecnológica de tu empresa contra amenazas internas y externas, asegurando la integridad de tus datos críticos.",
+      "Licenciamiento oficial y asesoramiento especializado para cumplimiento, seguridad y productividad empresarial.",
     bullets: [
-      "Auditorías de seguridad",
-      "Firewalls y hardening",
-      "Protección de endpoints",
-      "Monitoreo",
-      "Respuesta ante incidentes",
-      "Buenas prácticas",
+      "Windows y Microsoft 365",
+      "Gestión de renovaciones",
+      "Asesoramiento técnico",
     ],
+    image: "/images/services/licencias.jpg",
   },
   {
     id: 5,
-    slug: "desarrollo-software",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-      </svg>
-    ),
-    title: "Desarrollo de Soluciones a Medida",
+    slug: "soporte-tecnico",
+    title: "Soporte Técnico",
     description:
-      "Plataformas y sistemas empresariales personalizados, aplicaciones web y automatizaciones diseñadas específicamente para tus procesos de negocio.",
+      "Asistencia técnica profesional para garantizar continuidad operativa y respuesta eficiente ante incidentes.",
     bullets: [
-      "Software empresarial",
-      "Aplicaciones web",
-      "Integraciones ERP / APIs",
-      "Automatizaciones",
-      "Dashboards",
-      "Sistemas internos",
+      "Soporte remoto y on-site",
+      "Mesa de ayuda técnica",
+      "Mantenimiento preventivo",
     ],
+    image: "/images/services/soporte.jpg",
   },
   {
     id: 6,
-    slug: "consultoria-it",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-      </svg>
-    ),
-    title: "Consultoría IT y Transformación Digital",
+    slug: "servicios-tecnologicos",
+    title: "Servicios Tecnológicos para Empresas",
     description:
-      "Asesoramiento estratégico en tecnología. Análisis de necesidades, roadmap tecnológico y gestión del cambio organizacional hacia la digitalización.",
+      "Servicios integrales para acompañar decisiones tecnológicas y proyectos orientados a eficiencia y escalabilidad.",
     bullets: [
-      "Análisis de infraestructura",
-      "Roadmap tecnológico",
-      "Optimización de procesos",
-      "Estrategia digital",
-      "Arquitectura de soluciones",
-      "Escalamiento tecnológico",
+      "Consultoría IT",
+      "Proyectos a medida",
+      "Optimización de infraestructura",
     ],
+    image: "/images/services/consultoria.jpg",
   },
 ];
 
 export default function ServicesSection() {
   return (
-    <section id="servicios" className="py-20 bg-gray-50">
-      <div className="container-custom">
+    <section id="servicios" className="py-16 bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal mb-4" style={{ color: '#003d7a' }}>
+        <div className="text-center mb-12 max-w-3xl mx-auto">
+          <h2
+            className="text-3xl md:text-4xl lg:text-5xl font-normal mb-3"
+            style={{ color: "#003d7a" }}
+          >
             Soluciones Tecnológicas Empresariales
           </h2>
-          <p className="text-lg font-normal" style={{ color: '#003d7a' }}>
-            Servicios especializados, arquitectura tecnológica e implementación estratégica
-            para entornos corporativos modernos.
+          <p className="text-base md:text-lg text-gray-600">
+            Infraestructura IT, sistemas de gestión, licencias y servicios
+            tecnológicos diseñados para entornos empresariales exigentes.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* Services Cards - Horizontal Layout */}
+        <div className="space-y-6">
           {services.map((service) => (
             <div
               key={service.id}
-              className="group bg-white rounded-2xl border border-gray-200 p-8 transition-all duration-300 hover:shadow-xl hover:border-ctc-blue/30 hover:-translate-y-1 flex flex-col"
+              className="group bg-white rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden"
             >
-              {/* Icon */}
-              <div className="inline-flex items-center justify-center w-14 h-14 bg-ctc-navy text-white rounded-xl mb-6 group-hover:bg-ctc-blue transition-colors duration-300">
-                {service.icon}
-              </div>
+              <div className="grid md:grid-cols-[280px_1fr_auto] gap-6 p-6 md:p-7 items-center">
+                {/* LEFT: Image with Premium Gradient */}
+                <div className="relative w-full h-44 md:h-full min-h-[160px] rounded-2xl overflow-hidden">
+                  {/* Premium Tech Gradient Background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-800"></div>
+                  
+                  {/* Glow Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 via-transparent to-purple-500/20 opacity-60"></div>
+                  
+                  {/* Grid Pattern Overlay */}
+                  <div className="absolute inset-0 opacity-10" style={{
+                    backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
+                    backgroundSize: '24px 24px'
+                  }}></div>
+                  
+                  {/* Number */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-7xl md:text-8xl font-bold text-white/10 select-none">
+                      {service.id}
+                    </span>
+                  </div>
+                  
+                  {/* Subtle Corner Glow */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-400/20 rounded-full blur-3xl"></div>
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-400/20 rounded-full blur-3xl"></div>
+                </div>
 
-              {/* Title */}
-              <h3 className="text-xl font-bold text-ctc-navy mb-3 leading-tight">
-                {service.title}
-              </h3>
+                {/* CENTER: Content */}
+                <div className="flex flex-col justify-center min-w-0">
+                  <h3 className="text-xl md:text-2xl font-bold mb-2 bg-gradient-to-r from-ctc-navy to-blue-800 bg-clip-text text-transparent">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-700 mb-4 leading-relaxed text-sm md:text-base">
+                    {service.description}
+                  </p>
 
-              {/* Description */}
-              <p className="text-gray-600 mb-5 leading-relaxed text-sm">
-                {service.description}
-              </p>
+                  {/* Features List */}
+                  <ul className="space-y-2">
+                    {service.bullets.map((bullet, index) => (
+                      <li
+                        key={index}
+                        className="flex items-start gap-2 text-sm text-gray-600"
+                      >
+                        <svg 
+                          className="w-5 h-5 text-ctc-blue flex-shrink-0 mt-0.5" 
+                          fill="currentColor" 
+                          viewBox="0 0 20 20"
+                        >
+                          <path 
+                            fillRule="evenodd" 
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" 
+                            clipRule="evenodd" 
+                          />
+                        </svg>
+                        <span className="font-medium">{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-              {/* Bullets */}
-              <ul className="space-y-2.5 mb-6 flex-grow">
-                {service.bullets.map((bullet, index) => (
-                  <li key={index} className="flex items-start gap-2.5 text-sm text-gray-700">
+                {/* RIGHT: CTA Button */}
+                <div className="flex items-end justify-center md:justify-end pt-4 md:pt-0">
+                  <Link
+                    href={`/servicios/${service.slug}`}
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm text-white bg-gradient-to-r from-ctc-navy to-blue-800 rounded-xl transition-all duration-300 whitespace-nowrap shadow-lg shadow-blue-900/30 hover:shadow-xl hover:-translate-y-0.5"
+                  >
+                    <span>Explorar solución</span>
                     <svg
-                      className="w-4 h-4 text-ctc-blue mt-0.5 flex-shrink-0"
+                      className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
+                      strokeWidth={2.5}
                     >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={2.5}
-                        d="M5 13l4 4L19 7"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
                       />
                     </svg>
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* CTA Button */}
-              <Link
-                href={`/servicios/${service.slug}`}
-                className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-ctc-blue hover:text-white bg-white hover:bg-ctc-blue border-2 border-ctc-blue rounded-lg transition-all duration-300 group-hover:shadow-md"
-              >
-                Más información
-                <svg
-                  className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </Link>
+                  </Link>
+                </div>
+              </div>
             </div>
           ))}
         </div>

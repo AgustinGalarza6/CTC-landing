@@ -12,10 +12,7 @@ export default function HeroCTA() {
     <div className="flex flex-col sm:flex-row gap-4">
       <button
         onClick={() => handleClick('#contacto')}
-        className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white transition-all duration-300 rounded-full"
-        style={{ backgroundColor: '#003d7a' }}
-        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#002a5c'}
-        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#003d7a'}
+        className="inline-flex items-center justify-center px-8 py-4 text-base text-white bg-gradient-to-r from-ctc-navy to-blue-800 rounded-full transition-all duration-300 shadow-lg shadow-blue-900/30 hover:shadow-xl hover:-translate-y-0.5"
       >
         Solicitar Cotización
         <svg
@@ -34,10 +31,7 @@ export default function HeroCTA() {
       </button>
       <button
         onClick={() => handleClick('#productos')}
-        className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white transition-all duration-300 rounded-full"
-        style={{ backgroundColor: '#003d7a' }}
-        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#002a5c'}
-        onMouseLeave=(e) => e.currentTarget.style.backgroundColor = '#003d7a'}
+        className="inline-flex items-center justify-center px-8 py-4 text-base text-white bg-gradient-to-r from-ctc-navy to-blue-800 rounded-full transition-all duration-300 shadow-lg shadow-blue-900/30 hover:shadow-xl hover:-translate-y-0.5"
       >
         Ver Productos
       </button>

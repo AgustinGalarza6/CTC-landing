@@ -270,8 +270,7 @@ export default function ContactSection() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full px-8 py-4 text-white font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed rounded-full shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
-                    style={{ backgroundColor: '#003d7a' }}
+                    className="w-full px-8 py-4 text-white bg-gradient-to-r from-ctc-navy to-blue-800 rounded-full transition-all duration-300 shadow-lg shadow-blue-900/30 hover:shadow-xl hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? "Enviando..." : "Solicitar contacto"}
                   </button>

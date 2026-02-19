@@ -71,8 +71,7 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <Link
               href="/#contacto"
-              className="inline-flex items-center justify-center px-6 py-2.5 xl:px-8 xl:py-3 text-sm xl:text-base font-normal text-white rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
-              style={{ backgroundColor: '#003d7a' }}
+              className="inline-flex items-center justify-center px-6 py-2.5 xl:px-8 xl:py-3 text-sm xl:text-base text-white bg-gradient-to-r from-ctc-navy to-blue-800 rounded-full transition-all duration-300 shadow-lg shadow-blue-900/30 hover:shadow-xl hover:-translate-y-0.5"
             >
               Hablar con un asesor
             </Link>
@@ -136,7 +135,7 @@ export default function Navbar() {
               <Link
                 href="/#contacto"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-center py-3 px-6 mt-4 text-white font-normal rounded-full transition-all shadow-md"
+                className="block text-center py-3 px-6 mt-4 text-white rounded-full transition-all shadow-md"
                 style={{ backgroundColor: '#003d7a' }}
               >
                 Cotización
