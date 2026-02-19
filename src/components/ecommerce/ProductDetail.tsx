@@ -68,9 +68,8 @@ export default function ProductDetail({ product }: Props) {
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}
-                    className={`relative aspect-square bg-gray-100 rounded-lg overflow-hidden ${
-                      selectedImage === index ? "ring-2 ring-primary-600" : ""
-                    }`}
+                    className={`relative aspect-square bg-gray-100 rounded-lg overflow-hidden`}
+                    style={selectedImage === index ? { boxShadow: '0 0 0 2px #003d7a' } : {}}
                   >
                     <Image
                       src={getMediaUrl(img.image)}
@@ -109,7 +108,7 @@ export default function ProductDetail({ product }: Props) {
             {/* Price */}
             <div className="mb-6">
               <div className="flex items-baseline gap-4">
-                <span className="text-4xl font-bold text-primary-600">
+                <span className="text-4xl font-bold" style={{ color: '#003d7a' }}>
                   {formatPrice(product.price)}
                 </span>
                 {showDiscount && (
@@ -167,35 +166,32 @@ export default function ProductDetail({ product }: Props) {
             <nav className="flex gap-8">
               <button
                 onClick={() => setActiveTab("descripcion")}
-                className={`pb-4 px-1 border-b-2 font-medium text-sm transition-colors ${
-                  activeTab === "descripcion"
-                    ? "border-primary-600 text-primary-600"
-                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-                }`}
+                className={`pb-4 px-1 border-b-2 font-medium text-sm transition-colors`}
+                style={activeTab === "descripcion" ? { borderColor: '#003d7a', color: '#003d7a' } : { borderColor: 'transparent', color: '#6b7280' }}
+                onMouseEnter={(e) => { if (activeTab !== "descripcion") { e.currentTarget.style.color = '#374151'; e.currentTarget.style.borderColor = '#d1d5db'; } }}
+                onMouseLeave={(e) => { if (activeTab !== "descripcion") { e.currentTarget.style.color = '#6b7280'; e.currentTarget.style.borderColor = 'transparent'; } }}
               >
                 Descripción
               </button>
               <button
                 onClick={() => setActiveTab("especificaciones")}
-                className={`pb-4 px-1 border-b-2 font-medium text-sm transition-colors ${
-                  activeTab === "especificaciones"
-                    ? "border-primary-600 text-primary-600"
-                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-                }`}
+                className={`pb-4 px-1 border-b-2 font-medium text-sm transition-colors`}
+                style={activeTab === "especificaciones" ? { borderColor: '#003d7a', color: '#003d7a' } : { borderColor: 'transparent', color: '#6b7280' }}
+                onMouseEnter={(e) => { if (activeTab !== "especificaciones") { e.currentTarget.style.color = '#374151'; e.currentTarget.style.borderColor = '#d1d5db'; } }}
+                onMouseLeave={(e) => { if (activeTab !== "especificaciones") { e.currentTarget.style.color = '#6b7280'; e.currentTarget.style.borderColor = 'transparent'; } }}
               >
                 Especificaciones
               </button>
               <button
                 onClick={() => setActiveTab("descargas")}
-                className={`pb-4 px-1 border-b-2 font-medium text-sm transition-colors relative ${
-                  activeTab === "descargas"
-                    ? "border-primary-600 text-primary-600"
-                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-                }`}
+                className={`pb-4 px-1 border-b-2 font-medium text-sm transition-colors relative`}
+                style={activeTab === "descargas" ? { borderColor: '#003d7a', color: '#003d7a' } : { borderColor: 'transparent', color: '#6b7280' }}
+                onMouseEnter={(e) => { if (activeTab !== "descargas") { e.currentTarget.style.color = '#374151'; e.currentTarget.style.borderColor = '#d1d5db'; } }}
+                onMouseLeave={(e) => { if (activeTab !== "descargas") { e.currentTarget.style.color = '#6b7280'; e.currentTarget.style.borderColor = 'transparent'; } }}
               >
                 Descargas
                 {product.downloads && product.downloads.length > 0 && (
-                  <span className="ml-2 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-primary-600 rounded-full">
+                  <span className="ml-2 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white rounded-full" style={{ backgroundColor: '#003d7a' }}>
                     {product.downloads.length}
                   </span>
                 )}
@@ -243,7 +239,7 @@ export default function ProductDetail({ product }: Props) {
                       <div key={i} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                            <svg className="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="w-6 h-6" style={{ color: '#003d7a' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                             </svg>
                           </div>
@@ -257,7 +253,10 @@ export default function ProductDetail({ product }: Props) {
                         <a
                           href={typeof download.file === 'string' ? download.file : getMediaUrl(download.file)}
                           download
-                          className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium"
+                          className="px-4 py-2 text-white rounded-lg transition-colors text-sm font-medium"
+                          style={{ backgroundColor: '#003d7a' }}
+                          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#002a5c'}
+                          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#003d7a'}
                         >
                           Descargar
                         </a>

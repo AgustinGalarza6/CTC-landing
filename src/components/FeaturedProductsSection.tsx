@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import type { PayloadProduct, PayloadCategory } from "@/lib/payload";
 import ProductCard from "@/components/ecommerce/ProductCard";
@@ -17,11 +19,11 @@ export default function FeaturedProductsSection({ products, categories }: Props)
       <div className="container-custom">
         {/* Section Header - Clean and minimal */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-            Productos Destacados
+          <h2 className="text-3xl md:text-4xl font-normal mb-3" style={{ color: '#003d7a' }}>
+            Potencie su infraestructura tecnológica
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Soluciones de hardware profesional para empresas
+          <p className="text-lg max-w-2xl mx-auto font-normal text-gray-600">
+            Equipamiento confiable, rendimiento empresarial y tecnologías diseñadas para entornos profesionales.
           </p>
         </div>
 
@@ -36,7 +38,10 @@ export default function FeaturedProductsSection({ products, categories }: Props)
         <div className="text-center">
           <Link
             href="/productos"
-            className="inline-flex items-center px-8 py-3 bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-all duration-300 rounded-full"
+            className="inline-flex items-center px-8 py-3 text-white font-semibold transition-all duration-300 rounded-full"
+            style={{ backgroundColor: '#003d7a' }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#002a5c'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#003d7a'}
           >
             Ver Todo el Catálogo
             <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

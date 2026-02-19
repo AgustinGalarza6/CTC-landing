@@ -42,7 +42,7 @@ export default function ProductCard({ product }: Props) {
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-2">
           {product.isNew && (
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-primary-600 text-white">
+            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold text-white" style={{ backgroundColor: '#003d7a' }}>
               Nuevo
             </span>
           )}
@@ -68,13 +68,13 @@ export default function ProductCard({ product }: Props) {
       <div className="p-4">
         {/* Category */}
         {typeof product.category === 'object' && product.category?.name && (
-          <span className="inline-block text-xs font-semibold uppercase tracking-wide text-primary-600 mb-1">
+          <span className="inline-block text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#003d7a' }}>
             {product.category.name}
           </span>
         )}
 
         {/* Title */}
-        <h3 className="font-semibold text-base text-gray-900 mb-2 line-clamp-2 group-hover:text-primary-700 transition-colors">
+        <h3 className="font-semibold text-base text-gray-900 mb-2 line-clamp-2 transition-colors" onMouseEnter={(e) => e.currentTarget.style.color = '#003d7a'} onMouseLeave={(e) => e.currentTarget.style.color = '#111827'}>
           {product.name}
         </h3>
 
@@ -106,7 +106,7 @@ export default function ProductCard({ product }: Props) {
         </div>
 
         {/* Ver ficha tecnica link */}
-        <div className="text-primary-600 hover:text-primary-700 text-sm font-medium">
+        <div className="text-sm font-medium" style={{ color: '#003d7a' }} onMouseEnter={(e) => e.currentTarget.style.color = '#002a5c'} onMouseLeave={(e) => e.currentTarget.style.color = '#003d7a'}>
           Ver ficha tecnica
         </div>
       </div>

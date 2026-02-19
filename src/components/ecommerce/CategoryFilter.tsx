@@ -50,9 +50,10 @@ export default function CategoryFilter({ categories }: Props) {
               href="/productos"
               className={`block px-3 py-2 rounded-lg text-sm transition-colors ${
                 isAllSelected
-                  ? "bg-primary-600 text-white font-medium"
+                  ? "text-white font-medium"
                   : "text-gray-700 hover:bg-gray-50"
               }`}
+              style={isAllSelected ? { backgroundColor: '#003d7a' } : {}}
             >
               Todos
             </Link>
@@ -69,9 +70,10 @@ export default function CategoryFilter({ categories }: Props) {
                     href={`/productos?categoria=${category.slug}`}
                     className={`block px-3 py-2 rounded-lg text-sm transition-colors ${
                       isSelected
-                        ? "bg-primary-600 text-white font-medium"
+                        ? "text-white font-medium"
                         : "text-gray-700 hover:bg-gray-50"
                     }`}
+                    style={isSelected ? { backgroundColor: '#003d7a' } : {}}
                   >
                     {category.name}
                   </Link>
@@ -85,7 +87,10 @@ export default function CategoryFilter({ categories }: Props) {
           <div className="mt-6 pt-4 border-t border-gray-200">
             <Link
               href="/productos"
-              className="block w-full text-center px-4 py-2 text-sm text-primary-600 hover:text-primary-700 font-medium"
+              className="block w-full text-center px-4 py-2 text-sm font-medium"
+              style={{ color: '#003d7a' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#002a5c'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#003d7a'}
             >
               Limpiar filtros
             </Link>

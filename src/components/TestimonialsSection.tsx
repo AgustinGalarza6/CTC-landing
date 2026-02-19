@@ -1,4 +1,5 @@
 import { getCachedTestimonials } from "@/lib/payload";
+import TestimonialsCTA from "./TestimonialsCTA";
 
 export default async function TestimonialsSection() {
   const data = await getCachedTestimonials()();
@@ -8,7 +9,7 @@ export default async function TestimonialsSection() {
   }
 
   return (
-    <section className="py-20 bg-white relative overflow-hidden">
+    <section id="testimonios" className="py-20 bg-white relative overflow-hidden">
       {/* Background subtle effects */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-gray-100 rounded-full blur-3xl"></div>
@@ -17,9 +18,12 @@ export default async function TestimonialsSection() {
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900">
-            {(data as any)?.title || "Lo que dicen nuestros clientes"}
+          <h2 className="text-3xl md:text-4xl font-normal mb-4" style={{ color: '#003d7a' }}>
+            {(data as any)?.title || "Empresas que confían en CTCSistemas"}
           </h2>
+          <p className="text-lg max-w-3xl mx-auto font-normal text-gray-600">
+            {(data as any)?.subtitle || "Acompañamos a empresas de distintos sectores en la implementación, optimización y soporte de sus soluciones tecnológicas."}
+          </p>
         </div>
 
         {/* Testimonials Grid */}
@@ -53,6 +57,8 @@ export default async function TestimonialsSection() {
             </div>
           ))}
         </div>
+
+        <TestimonialsCTA />
       </div>
     </section>
   );

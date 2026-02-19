@@ -113,7 +113,9 @@ export default function CartView() {
             <div className="flex-1">
               <Link
                 href={`/productos/${item.slug}`}
-                className="font-bold text-lg hover:text-primary-600 transition-colors"
+                className="font-bold text-lg transition-colors"
+                onMouseEnter={(e) => e.currentTarget.style.color = '#003d7a'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#111827'}
               >
                 {item.name}
               </Link>
@@ -147,7 +149,7 @@ export default function CartView() {
 
             {/* Subtotal */}
             <div className="text-right">
-              <p className="text-xl font-bold text-primary-600">
+              <p className="text-xl font-bold" style={{ color: '#003d7a' }}>
                 {formatPrice(item.price * item.quantity)}
               </p>
             </div>
@@ -217,7 +219,7 @@ export default function CartView() {
             <div className="border-t pt-4 mt-4">
               <div className="flex justify-between text-2xl font-bold mb-6">
                 <span>Total:</span>
-                <span className="text-primary-600">{formatPrice(total)}</span>
+                <span style={{ color: '#003d7a' }}>{formatPrice(total)}</span>
               </div>
 
               <button type="submit" className="btn btn-primary w-full">

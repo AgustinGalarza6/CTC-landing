@@ -7,11 +7,11 @@ import Image from "next/image";
 
 const navLinks = [
   { href: "/#servicios", label: "Servicios" },
-  { href: "/productos", label: "Productos" },
+  { href: "/#productos", label: "Productos" },
   { href: "/#nosotros", label: "Nosotros" },
   { href: "/#testimonios", label: "Testimonios" },
-  { href: "/#faq", label: "FAQ" },
-  { href: "/contacto", label: "Contacto" },
+  { href: "/#faqs", label: "FAQ" },
+  { href: "/#contacto", label: "Contacto" },
 ];
 
 export default function Navbar() {
@@ -58,10 +58,11 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-ctc-navy/80 hover:text-ctc-blue font-medium text-sm xl:text-base transition-colors duration-200 relative group"
+                className="font-normal text-sm xl:text-base transition-colors duration-200 relative group"
+                style={{ color: '#003d7a' }}
               >
                 {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-ctc-blue transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full" style={{ backgroundColor: '#003d7a' }}></span>
               </Link>
             ))}
           </div>
@@ -70,16 +71,18 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <Link
               href="/#contacto"
-              className="inline-flex items-center justify-center px-6 py-2 text-xs xl:text-sm font-semibold text-white bg-ctc-blue hover:bg-ctc-navy rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center px-6 py-2.5 xl:px-8 xl:py-3 text-sm xl:text-base font-normal text-white rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              style={{ backgroundColor: '#003d7a' }}
             >
-              Pedir cotización
+              Hablar con un asesor
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-ctc-navy hover:text-ctc-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-ctc-blue rounded-lg transition-colors"
+            className="lg:hidden p-2 focus:outline-none focus-visible:ring-2 rounded-lg transition-colors"
+            style={{ color: '#003d7a' }}
             aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
           >
             <svg
@@ -124,7 +127,8 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block py-3 px-4 text-ctc-navy/80 hover:text-ctc-blue hover:bg-ctc-lightGray font-medium transition-all rounded-lg"
+                  className="block py-3 px-4 hover:bg-gray-100 font-normal transition-all rounded-lg"
+                  style={{ color: '#003d7a' }}
                 >
                   {link.label}
                 </Link>
@@ -132,9 +136,10 @@ export default function Navbar() {
               <Link
                 href="/#contacto"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-center py-3 px-6 mt-4 text-white bg-ctc-blue hover:bg-ctc-navy font-semibold rounded-full transition-all shadow-md"
+                className="block text-center py-3 px-6 mt-4 text-white font-normal rounded-full transition-all shadow-md"
+                style={{ backgroundColor: '#003d7a' }}
               >
-                Pedir cotización
+                Cotización
               </Link>
             </div>
           </motion.div>

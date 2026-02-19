@@ -123,7 +123,8 @@ async function seed() {
     await payload.updateGlobal({
       slug: 'testimonials',
       data: {
-        title: 'Lo que dicen nuestros clientes',
+        title: 'Empresas que confían en CTCSistemas',
+        subtitle: 'Acompañamos a empresas de distintos sectores en la implementación, optimización y soporte de sus soluciones tecnológicas.',
         testimonials: [
           {
             name: 'Carlos Mendoza',
@@ -188,36 +189,32 @@ async function seed() {
         subtitle: 'Respuestas a las consultas más comunes',
         faqs: [
           {
-            question: '¿Cuál es el tiempo de entrega de los equipos?',
-            answer: 'Los equipos en stock se entregan en 24-48 horas hábiles en CABA y GBA. Para equipos a pedido, el plazo es de 7-15 días hábiles dependiendo del fabricante y modelo.',
+            question: '¿Trabajan únicamente con empresas?',
+            answer: 'Sí, nuestro enfoque es 100% B2B. Trabajamos con organizaciones de todos los tamaños, desde PyMEs hasta grandes corporaciones, brindando soluciones y atención especializada para el entorno empresarial.',
           },
           {
-            question: '¿Ofrecen garantía en los productos?',
-            answer: 'Todos nuestros equipos incluyen garantía oficial del fabricante (generalmente 1 a 3 años). Adicionalmente, ofrecemos planes de garantía extendida y servicio on-site.',
+            question: '¿Realizan implementación e instalación de soluciones?',
+            answer: 'Absolutamente. Contamos con técnicos certificados que se encargan de la instalación, configuración, integración y puesta en marcha de todas las soluciones que proveemos. Incluye migración de datos y capacitación del personal.',
           },
           {
-            question: '¿Qué formas de pago aceptan?',
-            answer: 'Aceptamos transferencia bancaria, cheques, tarjetas de crédito corporativas y financiación a través de leasing. Para empresas, ofrecemos cuenta corriente con condiciones especiales.',
+            question: '¿Pueden asesorarnos antes de tomar una decisión?',
+            answer: 'Por supuesto. Nuestro equipo técnico-comercial realiza un análisis detallado de sus requerimientos sin compromiso. Evaluamos su infraestructura actual y proponemos la solución más adecuada para su operación y presupuesto.',
           },
           {
-            question: '¿Realizan instalación e implementación?',
-            answer: 'Sí, contamos con técnicos certificados que realizan instalación, configuración y puesta en marcha de equipos. También ofrecemos servicios de migración de datos y capacitación.',
+            question: '¿Qué tipo de soporte ofrecen?',
+            answer: 'Ofrecemos múltiples niveles de soporte: asistencia remota, servicio on-site, cobertura 24/7 y diferentes acuerdos de nivel de servicio (SLA) según las necesidades críticas de su operación. Incluye acceso a técnicos especializados.',
           },
           {
-            question: '¿Tienen servicio de soporte técnico?',
-            answer: 'Ofrecemos soporte técnico 24/7 con diferentes niveles de SLA. Incluye asistencia remota, on-site y acceso a técnicos especializados según el contrato de servicio.',
+            question: '¿Trabajan con soluciones a medida?',
+            answer: 'Sí, diseñamos e implementamos proyectos personalizados que se adaptan a la realidad de cada empresa. Desde infraestructuras de red hasta ambientes de servidores completos, cada solución es analizada y planificada en detalle.',
           },
           {
-            question: '¿Puedo probar los equipos antes de comprar?',
-            answer: 'Sí, para proyectos grandes ofrecemos equipos de demostración y pruebas de concepto (PoC) para que puedas evaluar el rendimiento antes de la compra definitiva.',
+            question: '¿Qué tipo de soluciones tecnológicas ofrecen?',
+            answer: 'Proveemos soluciones integrales de IT: infraestructura de servidores, redes corporativas, equipamiento de escritorio, almacenamiento y backup, ciberseguridad, sistemas ERP, desarrollo web, marketing digital y consultoría tecnológica.',
           },
           {
-            question: '¿Hacen proyectos a medida?',
-            answer: 'Absolutamente. Diseñamos e implementamos soluciones personalizadas: desde redes corporativas hasta datacenters completos. Cada proyecto incluye análisis, diseño, implementación y soporte.',
-          },
-          {
-            question: '¿Qué marcas comercializan?',
-            answer: 'Somos partners certificados de Dell, HP, Lenovo, Cisco, Ubiquiti, Synology, Microsoft y otras marcas líderes. Trabajamos con equipamiento empresarial de primera línea.',
+            question: '¿Pueden cotizar soluciones completas?',
+            answer: 'Sí, realizamos cotizaciones integrales que incluyen hardware, software, licencias, instalación, configuración y servicios de soporte. Presentamos propuestas detalladas con diferentes opciones según su presupuesto y objetivos.',
           },
         ],
       },

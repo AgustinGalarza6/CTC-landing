@@ -13,9 +13,8 @@ export default async function ServicesDetail() {
               className={`grid lg:grid-cols-2 gap-12 items-center ${
                 index % 2 === 1 ? "lg:flex-row-reverse" : ""
               }`}
-            >
-              <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 text-primary-600 rounded-full mb-6">
+            >              <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-6" style={{ color: '#003d7a' }}>
                   {/* Icon would go here */}
                 </div>
                 <h2 className="text-3xl font-bold mb-4">{service.title}</h2>

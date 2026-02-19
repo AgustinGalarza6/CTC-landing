@@ -37,40 +37,46 @@ export default function ClientsSlider() {
   }, []);
 
   // Duplicamos el array para crear el efecto de loop infinito
-  const duplicatedClients = [...clients, ...clients];
+  const duplicatedClients = [...clients, ...clients, ...clients];
 
   return (
-    <section className="py-12 bg-white border-y border-gray-200">
-      <div className="container-custom">
-        <div className="text-center mb-8">
-          <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
-            Confían en nosotros
-          </p>
-        </div>
+    <section className="py-6 bg-[#003d7a]">
+      <div className="max-w-[1400px] mx-auto px-6">
+        <div className="flex items-center gap-12">
+          {/* Texto a la izquierda */}
+          <div className="flex-shrink-0 w-[280px]">
+            <h3 className="text-3xl font-normal text-white leading-tight">
+              Confían en<br />nosotros:
+            </h3>
+          </div>
 
-        {/* Slider Container */}
-        <div className="relative overflow-hidden">
-          <div
-            ref={scrollRef}
-            className="flex gap-12 overflow-x-hidden"
-            style={{ scrollBehavior: "auto" }}
-          >
-            {duplicatedClients.map((client, index) => (
-              <div
-                key={`${client.name}-${index}`}
-                className="flex-shrink-0 flex items-center justify-center w-40 h-20 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
-              >
-                <div className="relative w-32 h-16">
-                  <Image
-                    src={client.logo}
-                    alt={client.name}
-                    fill
-                    className="object-contain"
-                    sizes="128px"
-                  />
+          {/* Slider de logos a la derecha */}
+          <div className="flex-1 relative overflow-hidden">
+            {/* Gradiente fade a la derecha */}
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#003d7a] to-transparent z-10 pointer-events-none"></div>
+            
+            <div
+              ref={scrollRef}
+              className="flex gap-16 overflow-x-hidden"
+              style={{ scrollBehavior: "auto" }}
+            >
+              {duplicatedClients.map((client, index) => (
+                <div
+                  key={`${client.name}-${index}`}
+                  className="flex-shrink-0 flex items-center justify-center w-40 h-20"
+                >
+                  <div className="relative w-36 h-16">
+                    <Image
+                      src={client.logo}
+                      alt={client.name}
+                      fill
+                      className="object-contain brightness-0 invert"
+                      sizes="144px"
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -130,10 +130,10 @@ export default function ServicesSection() {
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-ctc-navy">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal mb-4" style={{ color: '#003d7a' }}>
             Soluciones Tecnológicas Empresariales
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg font-normal" style={{ color: '#003d7a' }}>
             Servicios especializados, arquitectura tecnológica e implementación estratégica
             para entornos corporativos modernos.
           </p>
