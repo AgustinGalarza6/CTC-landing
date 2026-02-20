@@ -47,7 +47,7 @@ export default async function TestimonialsSection() {
               </div>
 
               {/* Content */}
-              <p className="text-gray-600 mb-6 leading-relaxed">"{testimonial.content}"</p>
+              <p className="text-gray-600 mb-6 leading-relaxed">{testimonial.content}</p>
 
               {/* Author */}
               <div className="border-t border-gray-200 pt-4">
