@@ -6,7 +6,7 @@ interface WhatWeDoProps {
 }
 
 // Icon mapping
-const iconMap: Record<string, JSX.Element> = {
+const iconMap: Record<string, React.JSX.Element> = {
   headset: (
     <path
       strokeLinecap="round"

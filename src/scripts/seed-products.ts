@@ -182,14 +182,21 @@ async function seed() {
     const payload = await getPayload({ config });
 
     // Crear categoría si no existe
-    const categories = ['Computadoras', 'Laptops', 'Redes', 'Monitores', 'Impresoras', 'Almacenamiento'];
+    const categories: { name: string; icon: 'laptop' | 'monitor' | 'cpu' | 'server' | 'keyboard' | 'mouse' | 'printer' | 'hard-drive' | 'package' | 'wifi' }[] = [
+      { name: 'Computadoras', icon: 'cpu' },
+      { name: 'Laptops', icon: 'laptop' },
+      { name: 'Redes', icon: 'wifi' },
+      { name: 'Monitores', icon: 'monitor' },
+      { name: 'Impresoras', icon: 'printer' },
+      { name: 'Almacenamiento', icon: 'hard-drive' },
+    ];
     
-    for (const catName of categories) {
+    for (const cat of categories) {
       const existing = await payload.find({
         collection: 'categories',
         where: {
           name: {
-            equals: catName,
+            equals: cat.name,
           },
         },
       });
@@ -197,13 +204,15 @@ async function seed() {
       if (existing.docs.length === 0) {
         await payload.create({
           collection: 'categories',
+          draft: false,
           data: {
-            name: catName,
-            slug: catName.toLowerCase().replace(/\s+/g, '-'),
-            description: `Productos de ${catName}`,
+            name: cat.name,
+            slug: cat.name.toLowerCase().replace(/\s+/g, '-'),
+            icon: cat.icon,
+            description: `Productos de ${cat.name}`,
           },
         });
-        console.log(`✓ Categoría creada: ${catName}`);
+        console.log(`✓ Categoría creada: ${cat.name}`);
       }
     }
 
@@ -213,7 +222,7 @@ async function seed() {
       limit: 100,
     });
 
-    const categoryMap: { [key: string]: string } = {};
+    const categoryMap: { [key: string]: number } = {};
     allCategories.docs.forEach((cat: any) => {
       categoryMap[cat.name] = cat.id;
     });
@@ -235,9 +244,10 @@ async function seed() {
 
         await payload.create({
           collection: 'products',
+          draft: false,
           data: {
             ...productData,
-            categories: categoryId ? [categoryId] : [],
+            category: categoryId || 0,
           },
         });
         console.log(`✓ Producto creado: ${product.name}`);

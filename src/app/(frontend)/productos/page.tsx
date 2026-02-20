@@ -5,6 +5,7 @@ import ProductsGrid from "@/components/ecommerce/ProductsGrid";
 import CategoryFilter from "@/components/ecommerce/CategoryFilter";
 import { getProducts, getCategories } from "@/lib/payload";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Catálogo de Productos | CTCSistemas",
@@ -46,19 +47,21 @@ export default async function ProductosPage() {
         {/* Products Section */}
         <section className="section-padding">
           <div className="container-custom">
-            <div className="flex flex-col lg:flex-row gap-8">
-              {/* Sidebar - Category Filter */}
-              <aside className="lg:w-72 flex-shrink-0">
-                <div className="sticky top-24">
-                  <CategoryFilter categories={categories} />
-                </div>
-              </aside>
+            <Suspense fallback={<div className="text-center py-12">Cargando productos...</div>}>
+              <div className="flex flex-col lg:flex-row gap-8">
+                {/* Sidebar - Category Filter */}
+                <aside className="lg:w-72 flex-shrink-0">
+                  <div className="sticky top-24">
+                    <CategoryFilter categories={categories} />
+                  </div>
+                </aside>
 
-              {/* Products Grid */}
-              <div className="flex-1 min-w-0">
-                <ProductsGrid products={products} />
+                {/* Products Grid */}
+                <div className="flex-1 min-w-0">
+                  <ProductsGrid products={products} />
+                </div>
               </div>
-            </div>
+            </Suspense>
           </div>
         </section>
       </main>

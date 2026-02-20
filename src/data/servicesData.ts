@@ -24,6 +24,7 @@ export interface ServicePageData {
   };
   benefits: {
     title: string;
+    subtitle?: string;
     items: {
       icon: string;
       title: string;

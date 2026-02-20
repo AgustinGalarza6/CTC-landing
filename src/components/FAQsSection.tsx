@@ -23,11 +23,6 @@ export default async function FAQsSection() {
           <h2 className="text-3xl font-normal sm:text-4xl mb-4" style={{ color: '#003d7a' }}>
             {data.title || "Preguntas Frecuentes"}
           </h2>
-          {data.subtitle && (
-            <p className="text-lg max-w-3xl mx-auto font-normal" style={{ color: '#003d7a' }}>
-              {data.subtitle}
-            </p>
-          )}
         </div>
 
         <FAQAccordion faqs={data.faqs} />

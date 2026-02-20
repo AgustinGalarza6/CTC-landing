@@ -5,7 +5,7 @@ interface BenefitsProps {
   data: ServicePageData["benefits"];
 }
 
-const iconMap: Record<string, JSX.Element> = {
+const iconMap: Record<string, React.JSX.Element> = {
   clock: (
     <path
       strokeLinecap="round"
