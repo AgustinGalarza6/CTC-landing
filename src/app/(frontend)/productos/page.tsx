@@ -7,6 +7,9 @@ import { getProducts, getCategories } from "@/lib/payload";
 import Link from "next/link";
 import { Suspense } from "react";
 
+// Forzar renderizado dinámico hasta que se carguen productos en la DB
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: "Catálogo de Productos | CTCSistemas",
   description: "Hardware profesional y equipamiento tecnológico de última generación para empresas.",

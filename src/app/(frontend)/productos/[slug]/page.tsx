@@ -7,16 +7,20 @@ import RelatedProducts from "@/components/ecommerce/RelatedProducts";
 import { getProductBySlug, getRelatedProducts, getProducts } from "@/lib/payload";
 import type { Metadata } from "next";
 
+// Forzar renderizado dinámico hasta que se carguen productos en la DB
+export const dynamic = 'force-dynamic';
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
-export async function generateStaticParams() {
-  const products = await getProducts();
-  return products.map((product) => ({
-    slug: product.slug,
-  }));
-}
+// Deshabilitado temporalmente hasta cargar productos en Payload CMS
+// export async function generateStaticParams() {
+//   const products = await getProducts();
+//   return products.map((product) => ({
+//     slug: product.slug,
+//   }));
+// }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;

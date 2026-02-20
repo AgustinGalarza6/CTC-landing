@@ -1,4 +1,4 @@
-import dynamic from "next/dynamic";
+import dynamicImport from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ClientsSlider from "@/components/ClientsSlider";
@@ -9,11 +9,14 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { getFeaturedProducts, getCategories } from "@/lib/payload";
 
+// Forzar renderizado dinámico hasta que se carguen productos en la DB
+export const dynamic = 'force-dynamic';
+
 // Lazy load below-the-fold components
-const WhyChooseUsSection = dynamic(() => import("@/components/WhyChooseUsSection"));
-const TestimonialsSection = dynamic(() => import("@/components/TestimonialsSection"));
-const FAQsSection = dynamic(() => import("@/components/FAQsSection"));
-const CTASection = dynamic(() => import("@/components/CTASection"));
+const WhyChooseUsSection = dynamicImport(() => import("@/components/WhyChooseUsSection"));
+const TestimonialsSection = dynamicImport(() => import("@/components/TestimonialsSection"));
+const FAQsSection = dynamicImport(() => import("@/components/FAQsSection"));
+const CTASection = dynamicImport(() => import("@/components/CTASection"));
 
 export default async function Home() {
   // Fetch data from Payload
