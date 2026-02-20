@@ -74,8 +74,8 @@ export default function ContactSection() {
                     </div>
                     <div>
                       <div className="font-semibold text-gray-900 mb-1">Email</div>
-                      <a href="mailto:info@ctcsistemas.com" className="text-gray-600 hover:underline" onMouseEnter={(e) => e.currentTarget.style.color = '#003d7a'} onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}>
-                        info@ctcsistemas.com
+                      <a href="mailto:info@teknogroup.com.ar" className="text-gray-600 hover:underline" onMouseEnter={(e) => e.currentTarget.style.color = '#003d7a'} onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}>
+                        info@teknogroup.com.ar
                       </a>
                     </div>
                   </div>
@@ -91,8 +91,8 @@ export default function ContactSection() {
                     </div>
                     <div>
                       <div className="font-semibold text-gray-900 mb-1">Teléfono</div>
-                      <a href="tel:+549123456789" className="text-gray-600" onMouseEnter={(e) => e.currentTarget.style.color = '#003d7a'} onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}>
-                        +54 9 11 2345-6789
+                      <a href="tel:+5491138923268" className="text-gray-600" onMouseEnter={(e) => e.currentTarget.style.color = '#003d7a'} onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}>
+                        +54 9 1138923268
                       </a>
                     </div>
                   </div>
@@ -109,8 +109,7 @@ export default function ContactSection() {
                     <div>
                       <div className="font-semibold text-gray-900 mb-1">Horario de atención</div>
                       <p className="text-gray-600 text-sm leading-relaxed">
-                        Lunes a Viernes: 9:00 - 18:00<br />
-                        Sábados: 9:00 - 13:00
+                        Lunes a viernes de 9 a 18 hs.
                       </p>
                     </div>
                   </div>
@@ -128,7 +127,7 @@ export default function ContactSection() {
                     <div>
                       <div className="font-semibold text-gray-900 mb-1">Ubicación</div>
                       <p className="text-gray-600 text-sm">
-                        Buenos Aires, Argentina
+                        Avenida Av Regimientos de Patricios 176
                       </p>
                     </div>
                   </div>
@@ -152,7 +151,7 @@ export default function ContactSection() {
                       value={formData.name}
                       onChange={handleChange}
                       className="w-full px-4 py-3 bg-white border-2 border-gray-300 text-gray-900 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all placeholder-gray-400 rounded-lg"
-                      placeholder="Juan Pérez"
+                      placeholder="Martín González"
                     />
                   </div>
 
@@ -168,7 +167,7 @@ export default function ContactSection() {
                       value={formData.email}
                       onChange={handleChange}
                       className="w-full px-4 py-3 bg-white border-2 border-gray-300 text-gray-900 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all placeholder-gray-400 rounded-lg"
-                      placeholder="juan.perez@empresa.com"
+                      placeholder="martin.gon@empresa.com"
                     />
                   </div>
 
@@ -224,11 +223,12 @@ export default function ContactSection() {
                       }}
                     >
                       <option value="">Seleccione una opción</option>
-                      <option value="soporte-it">Soporte IT / Infraestructura</option>
-                      <option value="erp">ERP / Software de gestión</option>
-                      <option value="desarrollo-web">Desarrollo web</option>
-                      <option value="marketing-digital">Marketing digital</option>
-                      <option value="hardware">Hardware / Equipamiento</option>
+                      <option value="infraestructura-it">Infraestructura IT</option>
+                      <option value="sistemas-informaticos">Sistemas Informáticos</option>
+                      <option value="erp">ERP / Software de Gestión</option>
+                      <option value="licencias">Licencias Empresariales</option>
+                      <option value="soporte-tecnico">Soporte Técnico</option>
+                      <option value="servicios-tecnologicos">Servicios Tecnológicos</option>
                       <option value="otro">Otro</option>
                     </select>
                   </div>

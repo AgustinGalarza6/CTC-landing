@@ -226,11 +226,11 @@ async function seed() {
     await payload.updateGlobal({
       slug: 'contact-info',
       data: {
-        email: 'ventas@ctcsistemas.com.ar',
-        phone: '+54 11 4567-8900',
-        whatsapp: '+54 9 11 2345-6789',
-        address: 'Av. Corrientes 1234, Piso 5, CABA',
-        workingHours: 'Lunes a Viernes: 9:00 - 18:00\nSábados: 9:00 - 13:00',
+        email: 'info@teknogroup.com.ar',
+        phone: '+54 9 1138923268',
+        whatsapp: '+54 9 1138923268',
+        address: 'Avenida Av Regimientos de Patricios 176',
+        workingHours: 'Lunes a viernes de 9 a 18 hs.',
         socialMedia: [
           { platform: 'facebook', url: 'https://facebook.com/ctcsistemas' },
           { platform: 'instagram', url: 'https://instagram.com/ctcsistemas' },

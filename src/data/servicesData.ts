@@ -59,140 +59,160 @@ export const servicesData: Record<string, ServicePageData> = {
     hero: {
       title: "Soporte Técnico que Elimina las Interrupciones de su Negocio",
       benefitStatement:
-        "Mantenga su infraestructura IT operando al 100% con nuestro servicio de soporte técnico preventivo y correctivo. Reducimos hasta un 85% los tiempos de inactividad.",
+        "Mantenga su infraestructura IT operando al 100% con nuestro servicio de soporte técnico preventivo y correctivo. Reduciendo los tiempos de inactividad.",
       primaryCTA: "Solicitar cotización",
       secondaryCTA: "Consultar por WhatsApp",
     },
     problemStatement: {
-      title: "¿Problemas Técnicos que Frenan su Productividad?",
+      title: "¿Interrupciones Técnicas que Impactan su Operación?",
       problems: [
-        "¿Sus equipos sufren fallas recurrentes que afectan la operación diaria?",
-        "¿Carece de un equipo técnico disponible para resolver incidencias críticas?",
-        "¿Los tiempos de inactividad le generan pérdidas económicas significativas?",
-        "¿No cuenta con mantenimiento preventivo para evitar fallas futuras?",
-        "¿Necesita un partner tecnológico confiable y con capacidad de respuesta inmediata?",
+        "¿Sus sistemas presentan fallas recurrentes que afectan la continuidad operativa?",
+        "¿Los incidentes técnicos generan demoras, pérdidas de productividad o costos inesperados?",
+        "¿Carece de soporte técnico especializado para resolver eventos críticos rápidamente?",
+        "¿Los tiempos de respuesta actuales no acompañan las necesidades de su negocio?",
+        "¿Necesita un esquema de mantenimiento preventivo para evitar caídas y riesgos operativos?",
       ],
       closingText:
-        "Nuestro servicio de soporte técnico especializado está diseñado para empresas que no pueden permitirse interrupciones operativas.",
+        "Un servicio de soporte técnico profesional garantiza estabilidad, minimiza interrupciones y protege la continuidad de su operación.",
     },
     whatWeDo: {
       title: "Soporte Integral para su Infraestructura IT",
       description:
-        "Proveemos asistencia técnica profesional con esquemas adaptados a las necesidades críticas de su organización.",
+        "Servicios de soporte técnico diseñados para garantizar continuidad operativa, estabilidad y respuesta eficiente ante incidentes críticos.",
       capabilities: [
         {
           icon: "headset",
           title: "Mesa de Ayuda Técnica",
           description:
-            "Soporte multicanal: telefónico, email, ticketing. Atención en español con personal capacitado en entornos empresariales.",
+            "Soporte multicanal estructurado: telefónico, email y sistema de tickets. Atención profesional en español con trazabilidad completa de incidentes.",
         },
         {
           icon: "monitor",
           title: "Soporte Remoto y On-Site",
           description:
-            "Resolución remota inmediata o visitas programadas según criticidad. Cobertura en toda la región con técnicos certificados.",
+            "Resolución remota inmediata y asistencia on-site programada según criticidad. Cobertura técnica con tiempos de respuesta definidos.",
         },
         {
           icon: "wrench",
           title: "Diagnóstico y Resolución",
           description:
-            "Análisis técnico profundo de incidencias. Resolución efectiva con documentación detallada de cada caso.",
+            "Análisis técnico profundo de incidentes. Identificación de causa raíz y resolución documentada bajo estándares operativos.",
         },
         {
           icon: "calendar",
           title: "Mantenimiento Preventivo",
           description:
-            "Rutinas programadas de mantenimiento. Actualizaciones, optimización y detección temprana de fallas potenciales.",
+            "Rutinas programadas de verificación, actualización y optimización. Detección temprana de riesgos técnicos antes de impactar la operación.",
         },
         {
           icon: "alert",
           title: "Gestión de Fallas Críticas",
           description:
-            "Protocolo de escalamiento para incidencias críticas. Respuesta SLA garantizada según nivel de servicio contratado.",
+            "Protocolos de escalamiento para incidentes de alta criticidad. Esquemas SLA y prioridades de atención según nivel de servicio.",
         },
         {
           icon: "chart",
           title: "Optimización de Rendimiento",
           description:
-            "Análisis de performance y bottlenecks. Recomendaciones técnicas para maximizar el ROI de su infraestructura.",
+            "Evaluación continua de performance, cuellos de botella y oportunidades de mejora. Ajustes técnicos orientados a eficiencia operativa.",
         },
       ],
     },
     benefits: {
-      title: "Beneficios Estratégicos para su Empresa",
+      title: "Impacto Operativo Medible",
+      subtitle:
+        "Nuestro modelo de soporte técnico no solo resuelve incidentes, sino que impacta directamente en la estabilidad, continuidad y eficiencia operativa.",
       items: [
         {
-          icon: "clock",
-          title: "Máxima Disponibilidad Operativa",
+          icon: "stability",
+          title: "Estabilidad Operativa",
           description:
-            "Reduzca tiempos de inactividad hasta un 85%. Mantenga sus operaciones críticas funcionando sin interrupciones.",
+            "Reducción de incidentes recurrentes mediante mantenimiento preventivo, monitoreo y gestión proactiva del entorno IT.",
         },
         {
-          icon: "shield",
-          title: "Tranquilidad y Confianza",
+          icon: "continuity",
+          title: "Continuidad del Negocio",
           description:
-            "Cuente con un equipo técnico disponible cuando lo necesite. Enfóquese en su negocio, no en problemas técnicos.",
+            "Minimización de tiempos de inactividad. Respuesta estructurada ante incidentes críticos que afectan la operación.",
         },
         {
-          icon: "dollar",
-          title: "Reducción de Costos IT",
+          icon: "guarantee",
+          title: "Respuesta Garantizada",
           description:
-            "Evite contrataciones de personal técnico permanente. Modelo de servicio flexible y predecible en costos.",
+            "Esquemas SLA definidos según criticidad del negocio. Prioridades de atención y tiempos de resolución establecidos.",
         },
         {
-          icon: "trending",
-          title: "Mejora Continua",
+          icon: "productivity",
+          title: "Productividad del Equipo",
           description:
-            "Reportes mensuales de gestión. Identificación de patrones y mejoras proactivas en su infraestructura.",
+            "Eliminación de interrupciones técnicas que impactan en usuarios y procesos. Mayor foco en tareas estratégicas.",
+        },
+        {
+          icon: "optimization",
+          title: "Optimización Tecnológica",
+          description:
+            "Identificación continua de cuellos de botella, oportunidades de mejora y ajustes técnicos del entorno IT.",
+        },
+        {
+          icon: "control",
+          title: "Control y Visibilidad",
+          description:
+            "Seguimiento documentado de incidentes, métricas de servicio y reportes periódicos de gestión técnica.",
         },
       ],
     },
     howWeWork: {
-      title: "Nuestra Metodología de Soporte",
+      title: "Metodología de Soporte Técnico",
       description:
-        "Un proceso estructurado que garantiza respuesta rápida y resolución efectiva de cualquier incidencia técnica.",
+        "Un modelo de servicio estructurado orientado a garantizar continuidad operativa, resolución eficiente y mejora continua del entorno IT.",
       steps: [
         {
           number: "01",
-          title: "Registro y Clasificación",
+          title: "Relevamiento Inicial",
           description:
-            "Recepción del incidente por cualquier canal. Clasificación según criticidad y asignación de prioridad SLA.",
+            "Evaluación integral del entorno tecnológico, criticidad operativa, riesgos potenciales y necesidades del negocio.",
         },
         {
           number: "02",
-          title: "Diagnóstico Técnico",
+          title: "Definición del Esquema de Servicio",
           description:
-            "Análisis de causa raíz por especialistas certificados. Evaluación de impacto y definición de estrategia de resolución.",
+            "Diseño del modelo de atención, SLA, niveles de criticidad, canales de soporte y protocolos de escalamiento.",
         },
         {
           number: "03",
-          title: "Resolución y Testing",
+          title: "Soporte y Resolución de Incidentes",
           description:
-            "Implementación de solución validada. Pruebas funcionales para confirmar el restablecimiento del servicio.",
+            "Gestión estructurada de incidentes bajo procedimientos definidos, diagnóstico técnico y resolución documentada.",
         },
         {
           number: "04",
-          title: "Documentación y Cierre",
+          title: "Mantenimiento Preventivo",
           description:
-            "Registro detallado de la resolución. Feedback del usuario y cierre formal con recomendaciones preventivas.",
+            "Rutinas programadas de verificación, actualización, monitoreo y detección temprana de desvíos operativos.",
+        },
+        {
+          number: "05",
+          title: "Optimización Continua",
+          description:
+            "Evaluación continua del servicio, tendencias operativas y oportunidades de optimización tecnológica.",
         },
       ],
     },
     trust: {
-      title: "Respaldo Profesional que su Empresa Necesita",
+      title: "Soporte Técnico con Garantías Corporativas",
       statements: [
-        "Más de 15 años de experiencia en soporte técnico empresarial",
-        "Técnicos certificados en las principales tecnologías del mercado",
-        "SLA garantizado con penalizaciones contractuales por incumplimiento",
-        "Documentación completa y trazabilidad de cada caso atendido",
-        "Esquemas de soporte 24/7 disponibles para infraestructura crítica",
+        "Trayectoria comprobada en soporte técnico para entornos empresariales",
+        "Equipo técnico especializado con experiencia en tecnologías corporativas",
+        "Acuerdos de nivel de servicio (SLA) con métricas, tiempos de respuesta y compromisos definidos",
+        "Gestión documentada de incidentes con trazabilidad y control operativo",
+        "Esquemas de soporte extendido adaptados a entornos de alta criticidad operativa",
       ],
     },
     finalCTA: {
-      title: "¿Listo para Eliminar los Problemas Técnicos de su Empresa?",
+      title: "Garantice la Continuidad Operativa de su Entorno Tecnológico",
       description:
-        "Solicite una evaluación gratuita de su infraestructura IT. Le presentaremos un esquema de soporte adaptado a sus necesidades operativas.",
-      primaryButton: "Solicitar evaluación gratuita",
+        "Definimos un modelo de soporte técnico adaptado a sus necesidades operativas, SLA requeridos y nivel de criticidad.",
+      primaryButton: "Solicitar Propuesta de Soporte",
       secondaryButton: "Consultar por WhatsApp",
     },
   },
@@ -202,64 +222,64 @@ export const servicesData: Record<string, ServicePageData> = {
     title: "Implementación de Infraestructura IT",
     subtitle: "Arquitecturas tecnológicas robustas y escalables para su empresa",
     hero: {
-      title: "Infraestructura IT que Escala con su Negocio",
+      title: "Diseñamos Infraestructuras IT Pensadas para Rendimiento, Seguridad y Escalabilidad",
       benefitStatement:
-        "Diseñamos e implementamos arquitecturas tecnológicas de nivel empresarial que garantizan rendimiento, seguridad y escalabilidad a largo plazo.",
-      primaryCTA: "Solicitar cotización",
+        "Diseñamos e implementamos arquitecturas tecnológicas de nivel empresarial, optimizadas para garantizar estabilidad operativa, seguridad y escalabilidad a largo plazo.",
+      primaryCTA: "Solicitar asesoramiento",
       secondaryCTA: "Consultar por WhatsApp",
     },
     problemStatement: {
-      title: "¿Su Infraestructura Actual Limita el Crecimiento?",
+      title: "¿Su entorno IT está preparado para escalar su operación?",
       problems: [
-        "¿Su red corporativa presenta problemas de rendimiento o conectividad?",
-        "¿Necesita modernizar servidores obsoletos que comprometen la seguridad?",
-        "¿Requiere virtualización para optimizar recursos y reducir costos?",
-        "¿Su infraestructura no está preparada para soportar el crecimiento empresarial?",
-        "¿Busca implementar mejores prácticas de seguridad perimetral y disponibilidad?",
+        "¿Su red corporativa presenta cuellos de botella o inestabilidad operativa?",
+        "¿Su infraestructura depende de servidores obsoletos o poco eficientes?",
+        "¿Su entorno IT está optimizado para eficiencia y escalabilidad?",
+        "¿Su infraestructura puede escalar sin generar fricción operativa?",
+        "¿Su arquitectura IT cumple con estándares modernos de seguridad y disponibilidad?",
       ],
       closingText:
-        "Implementamos infraestructuras IT de clase empresarial con las mejores prácticas de la industria.",
+        "Diseñamos e implementamos arquitecturas IT orientadas a estabilidad, seguridad y crecimiento sostenido.",
     },
     whatWeDo: {
-      title: "Arquitectura IT Integral",
+      title: "Diseñamos Ecosistemas Tecnológicos de Alto Rendimiento",
       description:
-        "Desde el diseño inicial hasta la implementación completa, construimos la base tecnológica que su empresa necesita.",
+        "Desde la arquitectura inicial hasta la implementación completa, diseñamos infraestructuras tecnológicas orientadas a estabilidad, seguridad y escalabilidad.",
       capabilities: [
         {
           icon: "network",
-          title: "Diseño de Redes Corporativas",
+          title: "Redes Corporativas",
           description:
-            "Arquitecturas LAN/WAN de alto rendimiento. VLAN, QoS, routing avanzado y redundancia para garantizar disponibilidad.",
+            "Diseño de arquitecturas LAN/WAN orientadas a rendimiento, segmentación eficiente y alta disponibilidad operativa.",
         },
         {
           icon: "server",
-          title: "Implementación de Servidores",
+          title: "Servidores",
           description:
-            "Servidores físicos y virtuales. Windows Server, Linux, Active Directory, file servers, y servicios empresariales.",
+            "Implementación de entornos de servidores físicos y virtuales optimizados para estabilidad, seguridad y gestión centralizada.",
         },
         {
           icon: "cloud",
           title: "Virtualización",
           description:
-            "VMware, Hyper-V, Proxmox. Optimización de recursos, alta disponibilidad, disaster recovery y gestión centralizada.",
+            "Plataformas de virtualización diseñadas para maximizar eficiencia, resiliencia y escalabilidad de recursos.",
         },
         {
           icon: "lock",
           title: "Seguridad Perimetral",
           description:
-            "Firewalls empresariales, VPN, segmentación de red, IDS/IPS. Protección multicapa de su infraestructura.",
+            "Arquitecturas de seguridad perimetral enfocadas en protección multicapa, segmentación inteligente y continuidad operativa.",
         },
         {
           icon: "speed",
           title: "Optimización de Performance",
           description:
-            "Análisis de carga, balanceo, caching. Tuning de sistemas para maximizar el rendimiento operativo.",
+            "Análisis y optimización de rendimiento orientados a eliminar cuellos de botella y maximizar eficiencia operativa.",
         },
         {
           icon: "growth",
           title: "Escalabilidad",
           description:
-            "Diseño modular preparado para crecimiento. Capacidad de expansión sin necesidad de rediseño completo.",
+            "Diseño de infraestructuras modulares preparadas para expansión y crecimiento sostenido sin rediseños críticos.",
         },
       ],
     },
@@ -276,68 +296,80 @@ export const servicesData: Record<string, ServicePageData> = {
           icon: "shield-check",
           title: "Seguridad de Nivel Corporativo",
           description:
-            "Protección multicapa contra amenazas externas e internas. Cumplimiento de normativas y mejores prácticas.",
+            "Arquitecturas tecnológicas orientadas a protección multicapa, reducción de riesgos y cumplimiento de estándares modernos de seguridad.",
         },
         {
           icon: "savings",
-          title: "Optimización de Costos",
+          title: "Eficiencia & Optimización de Recursos",
           description:
-            "ROI comprobado mediante virtualización y consolidación. Menor TCO a largo plazo con equipamiento de calidad.",
+            "Entornos IT optimizados para maximizar rendimiento, mejorar utilización de recursos y reducir costos operativos innecesarios.",
         },
         {
           icon: "expand",
-          title: "Preparado para Crecer",
+          title: "Infraestructura Preparada para Escalar",
           description:
-            "Arquitectura escalable que acompaña el crecimiento de su empresa sin necesidad de rehacer inversiones.",
+            "Diseños tecnológicos modulares que acompañan el crecimiento empresarial sin generar fricciones ni requerir rediseños críticos.",
+        },
+        {
+          icon: "continuity",
+          title: "Continuidad Operativa",
+          description:
+            "Infraestructuras diseñadas para garantizar disponibilidad, resiliencia y funcionamiento estable incluso en entornos de alta demanda.",
+        },
+        {
+          icon: "risk",
+          title: "Reducción de Riesgos Tecnológicos",
+          description:
+            "Arquitecturas IT orientadas a minimizar vulnerabilidades, prevenir fallos críticos y proteger la estabilidad de la operación empresarial.",
         },
       ],
     },
     howWeWork: {
-      title: "Metodología de Implementación",
+      title: "Proceso de Implementación Estructurado",
       description:
-        "Un proceso estructurado que garantiza entregas exitosas y sin sorpresas en presupuesto ni tiempos.",
+        "Aplicamos un enfoque metodológico diseñado para asegurar previsibilidad, control y estabilidad en cada etapa del proyecto.",
       steps: [
         {
           number: "01",
-          title: "Análisis y Diseño",
+          title: "Análisis & Arquitectura",
           description:
-            "Relevamiento de necesidades actuales y futuras. Diseño de arquitectura técnica y documentación completa del proyecto.",
+            "Evaluación del entorno actual, relevamiento de requerimientos y diseño de arquitectura tecnológica orientada a estabilidad y escalabilidad.",
         },
         {
           number: "02",
-          title: "Planificación",
+          title: "Planificación Estratégica",
           description:
-            "Cronograma detallado con hitos validados. Definición de recursos, equipamiento y coordinación logística.",
+            "Definición de alcance, cronograma, recursos y estrategia de implementación para asegurar control y previsibilidad operativa.",
         },
         {
           number: "03",
-          title: "Implementación",
+          title: "Implementación Controlada",
           description:
-            "Despliegue técnico según mejores prácticas. Testing funcional y de performance en cada etapa crítica.",
+            "Despliegue técnico bajo mejores prácticas, validaciones funcionales y optimización de rendimiento en cada etapa crítica.",
         },
         {
           number: "04",
-          title: "Entrega y Transferencia",
+          title: "Entrega & Transferencia Operativa",
           description:
-            "Documentación técnica completa (as-built). Capacitación al equipo IT y soporte post-implementación garantizado.",
+            "Documentación técnica completa, validación final, capacitación operativa y soporte post-implementación.",
         },
       ],
     },
     trust: {
-      title: "Expertise Técnico Comprobado",
+      title: "Capacidad Técnica con Trayectoria Comprobada",
       statements: [
-        "Arquitecturas implementadas en empresas de diversos rubros industriales",
-        "Certificaciones de fabricantes líderes: Cisco, HPE, Dell, VMware",
-        "Proyectos entregados on-time y on-budget con garantía extendida",
-        "Documentación técnica de nivel enterprise en cada implementación",
-        "Soporte post-implementación con SLA garantizado",
+        "Arquitecturas tecnológicas implementadas en entornos empresariales de múltiples sectores.",
+        "Experiencia técnica alineada con tecnologías de fabricantes líderes como Cisco, HPE, Dell y VMware.",
+        "Proyectos ejecutados bajo estándares de previsibilidad, control y cumplimiento de plazos.",
+        "Documentación técnica estructurada y alineada con prácticas de entornos enterprise.",
+        "Soporte post-implementación con acuerdos de servicio (SLA) orientados a continuidad operativa.",
       ],
     },
     finalCTA: {
-      title: "¿Listo para Construir una Infraestructura de Clase Empresarial?",
+      title: "Construyamos una Infraestructura IT Pensada para Operaciones Críticas",
       description:
-        "Solicite un análisis gratuito de su infraestructura actual. Le presentaremos un roadmap técnico y una propuesta de valor a medida.",
-      primaryButton: "Solicitar análisis gratuito",
+        "Solicite una evaluación técnica de su entorno IT. Nuestro equipo analizará su infraestructura actual y propondrá una arquitectura optimizada para estabilidad, seguridad y crecimiento sostenido.",
+      primaryButton: "Solicitar evaluación técnica",
       secondaryButton: "Consultar por WhatsApp",
     },
   },
@@ -347,64 +379,64 @@ export const servicesData: Record<string, ServicePageData> = {
     title: "Sistemas ERP & Gestión Empresarial",
     subtitle: "Soluciones ERP para centralizar, automatizar y optimizar su negocio",
     hero: {
-      title: "ERP que Transforma la Gestión de su Empresa",
+      title: "Software de Gestión que Ordena, Automatiza y Potencia su Operación",
       benefitStatement:
-        "Centralice toda la información de su empresa en un único sistema integrado. Automatice procesos, elimine errores y tome decisiones basadas en datos en tiempo real.",
-      primaryCTA: "Solicitar demo personalizada",
+        "Implementamos soluciones de gestión empresarial diseñadas para centralizar información crítica, optimizar procesos y mejorar la eficiencia operativa. Transforme datos en control, previsibilidad y decisiones estratégicas.",
+      primaryCTA: "Solicitar asesoramiento",
       secondaryCTA: "Consultar por WhatsApp",
     },
     problemStatement: {
-      title: "¿Su Empresa Sufre por la Falta de Integración?",
+      title: "¿Procesos Desordenados que Limitan la Eficiencia de su Empresa?",
       problems: [
-        "¿Maneja la información en múltiples planillas Excel dispersas y desactualizadas?",
-        "¿Pierde oportunidades de venta por falta de visibilidad del stock en tiempo real?",
-        "¿Sus áreas trabajan en silos sin compartir información crítica del negocio?",
-        "¿Dedica horas a generar reportes manualmente con datos inconsistentes?",
-        "¿Necesita un sistema robusto que le permita escalar sin cambiar de plataforma?",
+        "¿La información crítica se encuentra dispersa en múltiples planillas o sistemas desconectados?",
+        "¿La falta de visibilidad en tiempo real afecta decisiones operativas y comerciales?",
+        "¿Procesos manuales generan errores, demoras y retrabajos innecesarios?",
+        "¿Sus áreas operan sin integración, provocando inconsistencias de datos?",
+        "¿Necesita un sistema robusto que acompañe el crecimiento sin fricciones operativas?",
       ],
       closingText:
-        "Un Sistema ERP profesional centraliza, automatiza y potencia la gestión integral de su empresa.",
+        "Implementamos soluciones de gestión empresarial orientadas a centralizar información, estructurar procesos y mejorar la previsibilidad operativa.",
     },
     whatWeDo: {
-      title: "Soluciones ERP Completas",
+      title: "Impacto Empresarial del ERP",
       description:
-        "Desde la venta de licencias hasta la implementación, capacitación y soporte continuo de su sistema de gestión empresarial.",
+        "Resultados concretos derivados de la centralización, automatización e integración de la gestión empresarial.",
       capabilities: [
         {
-          icon: "package",
-          title: "Venta de Licencias ERP",
+          icon: "efficiency",
+          title: "Eficiencia Operativa",
           description:
-            "Partners oficiales de las principales plataformas ERP del mercado. Licenciamiento flexible según el tamaño y necesidades de su empresa.",
+            "Reducción significativa de tareas manuales y tiempos administrativos. Procesos optimizados y mayor productividad organizacional.",
         },
         {
-          icon: "settings",
-          title: "Implementación y Parametrización",
+          icon: "visibility",
+          title: "Información en Tiempo Real",
           description:
-            "Configuración completa del ERP adaptado a sus procesos de negocio. Migración de datos históricos con validación de integridad.",
+            "Acceso inmediato a indicadores clave del negocio. Decisiones estratégicas basadas en datos confiables y actualizados.",
         },
         {
-          icon: "link",
-          title: "Integraciones entre Sistemas",
+          icon: "integration",
+          title: "Integración Total",
           description:
-            "Conectamos su ERP con e-commerce, CRM, BI, facturación electrónica, bancos y aplicaciones de terceros.",
+            "Un único sistema que conecta áreas críticas. Eliminación de silos operativos y duplicación de información.",
         },
         {
-          icon: "database",
-          title: "Migraciones",
+          icon: "control",
+          title: "Control & Trazabilidad",
           description:
-            "Migración desde sistemas legacy o planillas Excel. Proceso controlado con validación de datos y plan de rollback.",
+            "Mayor visibilidad sobre operaciones, procesos y recursos. Gestión estructurada y controlada.",
         },
         {
-          icon: "support",
-          title: "Soporte y Mantenimiento",
+          icon: "growth",
+          title: "Escalabilidad Empresarial",
           description:
-            "Mesa de ayuda funcional y técnica. Actualizaciones, parches de seguridad y evolución continua del sistema.",
+            "Plataforma preparada para acompañar el crecimiento del negocio sin rediseños ni fricciones operativas.",
         },
         {
-          icon: "automation",
-          title: "Automatización de Procesos",
+          icon: "accuracy",
+          title: "Reducción de Errores",
           description:
-            "Workflows automáticos, notificaciones, aprobaciones digitales. Eliminación de tareas manuales repetitivas.",
+            "Automatización y consistencia de datos que minimizan fallos humanos e inconsistencias operativas.",
         },
       ],
     },
@@ -415,80 +447,92 @@ export const servicesData: Record<string, ServicePageData> = {
           icon: "efficiency",
           title: "Eficiencia Operativa",
           description:
-            "Reduzca hasta un 40% el tiempo dedicado a tareas administrativas. Automatización de procesos repetitivos de bajo valor.",
+            "Reducción significativa de tiempos administrativos y tareas manuales. Automatización de procesos críticos del negocio.",
         },
         {
           icon: "visibility",
           title: "Visibilidad en Tiempo Real",
           description:
-            "Acceda a información actualizada desde cualquier dispositivo. Dashboards ejecutivos para toma de decisiones ágil.",
+            "Acceso inmediato a información estratégica. Dashboards ejecutivos y métricas clave siempre actualizadas.",
         },
         {
           icon: "integration",
           title: "Integración Total",
           description:
-            "Un único sistema que conecta ventas, compras, stock, finanzas, producción y RRHH. Fin de la duplicación de datos.",
+            "Un único sistema que conecta áreas, procesos y datos. Eliminación de silos operativos y duplicación de información.",
         },
         {
           icon: "growth",
           title: "Escalabilidad Garantizada",
           description:
-            "Plataforma que crece con su empresa. Nuevos módulos y funcionalidades sin cambiar de sistema.",
+            "Plataforma preparada para acompañar el crecimiento empresarial sin rediseños ni cambios de sistema.",
+        },
+        {
+          icon: "control",
+          title: "Control & Trazabilidad",
+          description:
+            "Mayor visibilidad sobre operaciones, flujos y procesos internos. Gestión estructurada y predecible.",
+        },
+        {
+          icon: "accuracy",
+          title: "Reducción de Errores Operativos",
+          description:
+            "Consistencia de datos y automatización que minimizan fallos humanos e inconsistencias en la gestión.",
         },
       ],
     },
     howWeWork: {
       title: "Metodología de Implementación ERP",
       description:
-        "Un proceso probado que garantiza adopción exitosa del sistema y retorno de inversión medible.",
+        "Un enfoque estructurado que garantiza previsibilidad, adopción efectiva y estabilidad operativa.",
       steps: [
         {
           number: "01",
           title: "Análisis de Procesos",
           description:
-            "Relevamiento detallado de procesos actuales. Identificación de pain points y oportunidades de mejora.",
+            "Relevamiento funcional y operativo detallado. Identificación de requerimientos, restricciones y oportunidades de mejora.",
         },
         {
           number: "02",
           title: "Diseño de Solución",
           description:
-            "Configuración funcional del ERP adaptada a su negocio. Definición de flujos, reportes y KPIs críticos.",
+            "Definición de arquitectura funcional del ERP. Parametrización, flujos de trabajo, reportes y KPIs estratégicos.",
         },
         {
           number: "03",
           title: "Implementación Controlada",
           description:
-            "Despliegue por fases con usuarios piloto. Validación funcional y ajustes según feedback operativo.",
+            "Despliegue por fases bajo mejores prácticas. Validaciones continuas para asegurar estabilidad e integridad de datos.",
         },
         {
           number: "04",
-          title: "Capacitación y Go-Live",
+          title: "Capacitación & Go-Live",
           description:
-            "Entrenamiento completo a usuarios finales. Acompañamiento intensivo en el arranque productivo.",
+            "Entrenamiento estructurado a usuarios clave. Acompañamiento intensivo durante la puesta en producción.",
         },
         {
           number: "05",
-          title: "Soporte Post Go-Live",
+          title: "Soporte & Optimización Continua",
           description:
-            "Mesa de ayuda dedicada en las primeras semanas. Optimización continua y evolución del sistema.",
+            "Monitoreo post-implementación. Ajustes evolutivos y mejora sostenida del ecosistema ERP.",
         },
       ],
     },
     trust: {
-      title: "Partners Certificados y Experiencia Comprobada",
+      title: "Partners Estratégicos y Experiencia Comprobada",
       statements: [
-        "Implementaciones ERP exitosas en PyMEs y empresas medianas de diversos rubros",
-        "Partners certificados de las principales plataformas ERP del mercado",
-        "Metodología de implementación probada con tasa de éxito del 95%",
-        "Equipo consultor con experiencia funcional y técnica en sistemas de gestión",
-        "Soporte continuo en español con personal capacitado en su industria",
+        "Implementaciones ERP exitosas en PyMEs y empresas medianas de múltiples sectores.",
+        "Especialistas en parametrización, integración y optimización de sistemas de gestión.",
+        "Metodología de implementación estructurada con alta tasa de adopción.",
+        "Equipo consultor con expertise funcional, técnico y operativo.",
+        "Soporte continuo en español orientado a estabilidad y evolución del sistema.",
       ],
     },
     finalCTA: {
-      title: "¿Listo para Centralizar la Gestión de su Empresa?",
+      title: "Transforme su Gestión Empresarial con un ERP Profesional",
       description:
-        "Solicite una demo personalizada sin compromiso. Analizaremos sus procesos y le mostraremos cómo un ERP puede transformar su negocio.",
-      primaryButton: "Solicitar demo gratuita",
+        "Solicite una demo personalizada. Analizaremos sus procesos y le presentaremos una solución ERP alineada con sus objetivos operativos y estratégicos.",
+      primaryButton: "Coordinar reunión",
       secondaryButton: "Consultar por WhatsApp",
     },
   },
@@ -800,136 +844,148 @@ export const servicesData: Record<string, ServicePageData> = {
     title: "Sistemas Informáticos",
     subtitle: "Implementación y optimización de sistemas tecnológicos empresariales",
     hero: {
-      title: "Sistemas Informáticos que Optimizan su Operación",
+      title: "Optimización y Modernización de Sistemas Empresariales",
       benefitStatement:
-        "Implementamos y optimizamos sistemas tecnológicos empresariales diseñados para mejorar continuidad operativa y eficiencia en procesos críticos de su negocio.",
-      primaryCTA: "Solicitar cotización",
+        "Diseñamos, implementamos y optimizamos entornos tecnológicos orientados a mejorar continuidad operativa, eficiencia de procesos y estabilidad del ecosistema IT.",
+      primaryCTA: "Solicitar evaluación técnica",
       secondaryCTA: "Consultar por WhatsApp",
     },
     problemStatement: {
-      title: "¿Sistemas Desintegrados que Afectan su Productividad?",
+      title: "¿Su Ecosistema de Sistemas Limita la Eficiencia Operativa?",
       problems: [
-        "¿Sus sistemas actuales no se comunican entre sí generando duplicación de datos?",
-        "¿Procesos manuales ralentizan operaciones críticas de su empresa?",
-        "¿Falta de integración entre plataformas genera errores operativos?",
-        "¿Necesita migrar sistemas legacy a tecnologías modernas?",
-        "¿Requiere estandarizar procesos mediante soluciones tecnológicas integradas?",
+        "¿Sus sistemas actuales generan duplicación de información o inconsistencias de datos?",
+        "¿Procesos manuales o integraciones ineficientes afectan la continuidad operativa?",
+        "¿La falta de interoperabilidad entre plataformas impacta en la productividad?",
+        "¿Su organización depende de sistemas legacy que limitan escalabilidad y eficiencia?",
+        "¿Requiere centralizar información y automatizar procesos críticos del negocio?",
       ],
       closingText:
-        "Implementamos sistemas informáticos que centralizan información y automatizan procesos críticos.",
+        "Diseñamos e integramos arquitecturas de sistemas orientadas a estabilidad operativa, eficiencia de procesos y crecimiento sostenido.",
     },
     whatWeDo: {
-      title: "Integración y Optimización de Sistemas",
+      title: "Arquitecturas de Sistemas Orientadas a Eficiencia Operativa",
       description:
-        "Conectamos, migramos y optimizamos sus sistemas para lograr una operación tecnológica fluida y eficiente.",
+        "Diseñamos, integramos y optimizamos entornos tecnológicos para garantizar continuidad operativa, estabilidad del ecosistema IT y mejora sostenida de procesos empresariales.",
       capabilities: [
         {
           icon: "integration",
           title: "Integraciones entre Plataformas",
           description:
-            "Conectamos sistemas ERP, CRM, e-commerce y herramientas empresariales. APIs, webhooks y middleware para flujo de datos automatizado.",
+            "Diseñamos e implementamos integraciones entre sistemas empresariales como ERP, CRM, e-commerce y aplicaciones críticas. Flujo de información confiable, automatizado y sin fricciones operativas.",
         },
         {
           icon: "optimization",
           title: "Optimización Operativa",
           description:
-            "Análisis de procesos actuales e identificación de mejoras tecnológicas. Automatización de tareas repetitivas de bajo valor.",
+            "Evaluamos procesos actuales, identificamos ineficiencias y aplicamos mejoras tecnológicas orientadas a maximizar productividad, reducir tareas manuales y optimizar recursos operativos.",
         },
         {
           icon: "migration",
-          title: "Migración y Modernización",
+          title: "Migración & Modernización",
           description:
-            "Migración de sistemas legacy a plataformas modernas. Actualización tecnológica sin perder datos ni interrumpir operaciones.",
+            "Migramos sistemas legacy hacia arquitecturas modernas, asegurando continuidad operativa, integridad de la información y adaptación a entornos tecnológicos escalables.",
         },
         {
           icon: "standardization",
           title: "Estandarización de Procesos",
           description:
-            "Implementación de workflows estandarizados. Adopción de mejores prácticas mediante tecnología.",
+            "Implementamos entornos estructurados y workflows alineados con mejores prácticas, promoviendo previsibilidad operativa, control y eficiencia en procesos críticos.",
         },
       ],
     },
     benefits: {
-      title: "Impacto en su Operación",
+      title: "Impacto Estratégico en la Operación Empresarial",
       items: [
         {
           icon: "efficiency",
           title: "Eficiencia Operativa",
           description:
-            "Reduzca tiempos de ejecución de procesos hasta un 50%. Eliminación de duplicación de tareas.",
+            "Optimización de procesos mediante automatización e integración tecnológica. Reducción de tareas manuales, tiempos operativos y fricciones en la ejecución diaria.",
         },
         {
           icon: "data",
           title: "Datos Centralizados",
           description:
-            "Información consistente en todos sus sistemas. Fin de las discrepancias entre plataformas.",
+            "Información consistente y sincronizada entre plataformas críticas. Eliminación de duplicaciones, discrepancias y errores derivados de sistemas desintegrados.",
         },
         {
           icon: "scalability",
-          title: "Escalabilidad",
+          title: "Escalabilidad Tecnológica",
           description:
-            "Sistemas preparados para crecer con su empresa. Arquitectura flexible y adaptable.",
+            "Arquitecturas de sistemas preparadas para acompañar el crecimiento empresarial sin necesidad de rediseños estructurales ni interrupciones operativas.",
         },
         {
           icon: "continuity",
-          title: "Continuidad de Negocio",
+          title: "Continuidad del Negocio",
           description:
-            "Sistemas robustos con planes de respaldo. Mínima interrupción operativa.",
+            "Entornos tecnológicos diseñados para garantizar estabilidad, resiliencia operativa y funcionamiento confiable incluso en escenarios de alta exigencia.",
+        },
+        {
+          icon: "visibility",
+          title: "Control & Visibilidad Operativa",
+          description:
+            "Mayor trazabilidad de procesos, flujo de información estructurado y visibilidad integral del ecosistema tecnológico empresarial.",
+        },
+        {
+          icon: "risk",
+          title: "Reducción de Riesgos Operativos",
+          description:
+            "Minimización de errores, inconsistencias y dependencias críticas mediante entornos de sistemas robustos, integrados y alineados con mejores prácticas.",
         },
       ],
     },
     howWeWork: {
-      title: "Metodología de Implementación",
+      title: "Proceso de Implementación & Optimización de Sistemas",
       description:
-        "Un proceso estructurado que garantiza transición exitosa y adopción efectiva.",
+        "Aplicamos un enfoque metodológico estructurado para asegurar estabilidad operativa, previsibilidad técnica y adopción efectiva en cada etapa del proyecto.",
       steps: [
         {
           number: "01",
-          title: "Análisis de Sistemas Actuales",
+          title: "Evaluación del Ecosistema Actual",
           description:
-            "Relevamiento de tecnología existente e integraciones. Identificación de gaps y oportunidades de mejora.",
+            "Análisis de arquitectura existente, integraciones, flujos de información y dependencias críticas. Identificación de riesgos, ineficiencias y oportunidades de optimización.",
         },
         {
           number: "02",
-          title: "Diseño de Arquitectura",
+          title: "Diseño de Arquitectura Objetivo",
           description:
-            "Definición de arquitectura objetivo integrada. Selección de tecnologías y herramientas adecuadas.",
+            "Definición de la arquitectura tecnológica integrada, alineada con requerimientos operativos, escalabilidad y estabilidad del entorno empresarial.",
         },
         {
           number: "03",
           title: "Implementación Controlada",
           description:
-            "Despliegue por fases con validación continua. Mitigación de riesgos operativos durante la transición.",
+            "Despliegue por etapas bajo mejores prácticas, validaciones continuas y estrategias de mitigación de riesgos durante la transición tecnológica.",
         },
         {
           number: "04",
-          title: "Testing y Validación",
+          title: "Validación & Ajustes Operativos",
           description:
-            "Pruebas funcionales e integrales de los sistemas. Validación con usuarios clave antes de go-live.",
+            "Pruebas funcionales, verificación de integraciones y optimización de rendimiento para garantizar consistencia, confiabilidad y estabilidad operativa.",
         },
         {
           number: "05",
-          title: "Capacitación y Soporte",
+          title: "Adopción & Soporte Continuo",
           description:
-            "Entrenamiento a equipos operativos. Soporte post-implementación y optimización continua.",
+            "Capacitación operativa, documentación estructurada y soporte post-implementación orientado a mejora continua del ecosistema tecnológico.",
         },
       ],
     },
     trust: {
       title: "Experiencia en Sistemas Empresariales",
       statements: [
-        "Implementaciones exitosas en empresas de diversos sectores industriales",
-        "Especialistas en integración de sistemas ERP, CRM y plataformas corporativas",
-        "Metodología probada con mínima interrupción operativa",
-        "Capacidad técnica en múltiples stacks tecnológicos y plataformas",
-        "Documentación completa y transferencia de conocimiento incluida",
+        "Implementaciones de sistemas realizadas en entornos empresariales de múltiples sectores.",
+        "Especialistas en integración de plataformas ERP, CRM y aplicaciones corporativas.",
+        "Metodologías de trabajo orientadas a estabilidad, previsibilidad y continuidad operativa.",
+        "Capacidad técnica en diversas arquitecturas, tecnologías y ecosistemas de software.",
+        "Documentación técnica estructurada y transferencia de conocimiento incluida en cada proyecto.",
       ],
     },
     finalCTA: {
       title: "¿Listo para Optimizar sus Sistemas Informáticos?",
       description:
-        "Solicite un análisis sin costo de su infraestructura tecnológica. Le presentaremos oportunidades de integración y optimización.",
-      primaryButton: "Solicitar análisis gratuito",
+        "Solicite una evaluación técnica de su entorno actual. Analizaremos oportunidades de integración, modernización y optimización alineadas a sus objetivos operativos.",
+      primaryButton: "Solicitar evaluación técnica",
       secondaryButton: "Consultar por WhatsApp",
     },
   },
@@ -941,134 +997,149 @@ export const servicesData: Record<string, ServicePageData> = {
     hero: {
       title: "Licenciamiento Corporativo con Cumplimiento Garantizado",
       benefitStatement:
-        "Gestionamos licencias empresariales oficiales con asesoramiento técnico especializado para cumplimiento normativo, seguridad y productividad.",
+        "Gestionamos licencias empresariales oficiales con asesoramiento técnico especializado. Asegure cumplimiento normativo, seguridad operativa y optimización inteligente de costos de software.",
       primaryCTA: "Solicitar cotización",
       secondaryCTA: "Consultar por WhatsApp",
     },
     problemStatement: {
-      title: "¿Gestión de Licencias que Genera Riesgos Legales?",
+      title: "¿Gestión de Licencias que Puede Exponer su Empresa a Riesgos Legales?",
       problems: [
-        "¿No tiene certeza del estado de cumplimiento de licencias en su empresa?",
-        "¿Auditorías de software generan riesgos legales y multas potenciales?",
-        "¿Licencias vencidas o mal gestionadas comprometen la seguridad corporativa?",
-        "¿Desconoce qué licencias realmente necesita según su operación?",
-        "¿Gestión manual de renovaciones genera costos ocultos e ineficiencias?",
+        "¿Tiene visibilidad clara sobre el estado de cumplimiento de licencias en su organización?",
+        "¿Auditorías de software representan un riesgo potencial para su empresa?",
+        "¿Licencias vencidas o mal gestionadas comprometen la seguridad operativa?",
+        "¿Desconoce qué esquema de licenciamiento es realmente óptimo para su entorno?",
+        "¿La gestión manual de renovaciones genera costos innecesarios e ineficiencias?",
       ],
       closingText:
-        "El licenciamiento empresarial profesional elimina riesgos legales y optimiza costos de software.",
+        "El licenciamiento empresarial profesional elimina riesgos legales, garantiza cumplimiento normativo y optimiza estratégicamente la inversión en software.",
     },
     whatWeDo: {
-      title: "Gestión Integral de Licencias Corporativas",
+      title: "Gestión Estratégica de Licencias Empresariales",
       description:
-        "Asesoramiento, adquisición y gestión de licencias oficiales con foco en cumplimiento y optimización de costos.",
+        "Asesoramiento, adquisición y administración de licencias oficiales con foco en cumplimiento, optimización financiera y continuidad operativa.",
       capabilities: [
         {
           icon: "microsoft",
           title: "Windows y Microsoft 365",
           description:
-            "Licenciamiento Windows Server, Windows Pro, Microsoft 365, Office LTSC. Asesoramiento en planes E3/E5 y licencias por volumen.",
+            "Licenciamiento oficial de Windows Server, Windows Pro, Microsoft 365 y Office LTSC. Asesoramiento en planes corporativos y esquemas de licencias por volumen.",
         },
         {
           icon: "renewal",
           title: "Gestión de Renovaciones",
           description:
-            "Control de vencimientos y renovaciones automáticas. Evite interrupciones operativas por licencias vencidas.",
+            "Control proactivo de vencimientos y ciclos de renovación. Prevención de interrupciones operativas y riesgos asociados a licencias expiradas.",
         },
         {
           icon: "consulting",
           title: "Asesoramiento Técnico",
           description:
-            "Análisis de necesidades reales según usuarios y operación. Optimización de costos evitando sobre-licenciamiento.",
+            "Análisis de necesidades reales según estructura, usuarios y cargas de trabajo. Optimización de costos evitando sobre-licenciamiento o sub-dimensionamiento.",
         },
         {
           icon: "compliance",
           title: "Auditorías de Cumplimiento",
           description:
-            "Auditorías internas para verificar estado de licencias. Preparación para auditorías oficiales de vendors.",
+            "Evaluaciones internas de cumplimiento de software. Preparación y acompañamiento ante auditorías oficiales de fabricantes.",
         },
       ],
     },
     benefits: {
       title: "Beneficios del Licenciamiento Profesional",
+      subtitle:
+        "Una gestión estratégica de licencias no solo garantiza cumplimiento, sino que protege la operación, reduce riesgos financieros y mejora la eficiencia tecnológica.",
       items: [
         {
           icon: "legal",
           title: "Cumplimiento Legal",
           description:
-            "Elimine riesgos de multas y sanciones. Documentación oficial y trazabilidad completa.",
+            "Elimine riesgos de sanciones y multas. Documentación oficial, trazabilidad completa y respaldo ante auditorías.",
         },
         {
           icon: "security",
           title: "Seguridad Corporativa",
           description:
-            "Software actualizado con parches de seguridad. Protección ante vulnerabilidades conocidas.",
+            "Software actualizado con parches críticos. Reducción de vulnerabilidades y mayor protección de la infraestructura IT.",
         },
         {
           icon: "costs",
           title: "Optimización de Costos",
           description:
-            "Licencie solo lo que realmente necesita. Ahorro mediante planes corporativos adecuados.",
+            "Adquiera únicamente las licencias necesarias. Ahorro mediante esquemas corporativos y licencias por volumen.",
         },
         {
           icon: "support",
           title: "Soporte Oficial",
           description:
-            "Acceso a soporte técnico del fabricante. Documentación y recursos oficiales incluidos.",
+            "Acceso a soporte técnico del fabricante. Actualizaciones, documentación y recursos oficiales garantizados.",
+        },
+        {
+          icon: "continuity",
+          title: "Continuidad Operativa",
+          description:
+            "Prevención de interrupciones por licencias vencidas o incorrectas. Operación estable y sin contingencias legales.",
+        },
+        {
+          icon: "control",
+          title: "Control y Visibilidad",
+          description:
+            "Gestión centralizada del inventario de software. Monitoreo de estados, renovaciones y cumplimiento en tiempo real.",
         },
       ],
     },
     howWeWork: {
-      title: "Proceso de Licenciamiento",
+      title: "Proceso de Licenciamiento Corporativo",
       description:
-        "Gestión profesional desde el análisis de necesidades hasta la renovación continua.",
+        "Un enfoque estructurado que garantiza cumplimiento normativo, optimización de costos y control total del ecosistema de licencias.",
       steps: [
         {
           number: "01",
           title: "Análisis de Necesidades",
           description:
-            "Relevamiento de usuarios, equipos y requerimientos. Identificación de licencias necesarias por perfil operativo.",
+            "Relevamiento de usuarios, equipos y escenarios operativos. Identificación precisa de requerimientos de licenciamiento según perfil y uso real.",
         },
         {
           number: "02",
           title: "Auditoría de Estado Actual",
           description:
-            "Verificación de licencias instaladas vs. licencias disponibles. Detección de gaps de cumplimiento.",
+            "Evaluación de licencias instaladas y disponibles. Detección de inconsistencias, riesgos de incumplimiento y oportunidades de optimización.",
         },
         {
           number: "03",
           title: "Propuesta Optimizada",
           description:
-            "Plan de licenciamiento con mejor relación costo-beneficio. Comparación de modalidades: perpetuas, suscripción, volumen.",
+            "Diseño del esquema de licenciamiento más eficiente. Comparación técnica y financiera entre modalidades perpetuas, suscripción y volumen.",
         },
         {
           number: "04",
           title: "Adquisición y Activación",
           description:
-            "Gestión de compra con canales oficiales. Activación e implementación en su infraestructura.",
+            "Gestión de compra mediante canales oficiales. Implementación, activación y validación operativa dentro de su infraestructura tecnológica.",
         },
         {
           number: "05",
           title: "Gestión Continua",
           description:
-            "Monitoreo de vencimientos y renovaciones. Reportes periódicos de estado de cumplimiento.",
+            "Monitoreo proactivo de vencimientos, renovaciones y cumplimiento. Reportes periódicos y acompañamiento estratégico permanente.",
         },
       ],
     },
     trust: {
       title: "Partner Oficial con Experiencia Corporativa",
       statements: [
-        "Partner autorizado de Microsoft y principales fabricantes de software",
-        "Gestión de licenciamiento corporativo en empresas de todos los tamaños",
-        "Asesoramiento técnico especializado en planes empresariales",
-        "Documentación oficial y facturación con validez legal",
-        "Soporte continuo en gestión de renovaciones y compliance",
+        "Partner autorizado de Microsoft y fabricantes líderes de software empresarial",
+        "Gestión integral de licenciamiento corporativo para PyMEs y grandes empresas",
+        "Asesoramiento técnico especializado en planes empresariales y licencias por volumen",
+        "Documentación oficial y facturación con plena validez legal",
+        "Soporte continuo en cumplimiento normativo, renovaciones y optimización de costos",
+        "Metodología probada para minimizar riesgos legales y operativos",
       ],
     },
     finalCTA: {
       title: "¿Listo para Regularizar su Licenciamiento?",
       description:
-        "Solicite una auditoría gratuita de licencias. Identificaremos riesgos actuales y le presentaremos un plan de cumplimiento optimizado.",
-      primaryButton: "Solicitar auditoría gratuita",
+        "Solicite una auditoría técnica sin costo. Analizaremos su entorno de licencias, detectaremos riesgos de incumplimiento y le presentaremos un plan de regularización optimizado.",
+      primaryButton: "Solicitar cotización",
       secondaryButton: "Consultar por WhatsApp",
     },
   },
@@ -1078,135 +1149,149 @@ export const servicesData: Record<string, ServicePageData> = {
     title: "Servicios Tecnológicos para Empresas",
     subtitle: "Servicios integrales para decisiones tecnológicas y proyectos empresariales",
     hero: {
-      title: "Servicios Tecnológicos Orientados a su Negocio",
+      title: "Servicios Tecnológicos Diseñados para la Evolución de su Empresa",
       benefitStatement:
-        "Acompañamos decisiones tecnológicas estratégicas y ejecutamos proyectos IT diseñados para eficiencia operativa y escalabilidad empresarial.",
-      primaryCTA: "Solicitar cotización",
+        "Acompañamos decisiones tecnológicas estratégicas y ejecutamos proyectos IT con foco en eficiencia, integración y crecimiento operativo.",
+      primaryCTA: "Solicitar asesoramiento",
       secondaryCTA: "Consultar por WhatsApp",
     },
     problemStatement: {
-      title: "¿Necesita un Partner Tecnológico Integral?",
+      title: "¿Busca un Partner Tecnológico Estratégico?",
       problems: [
-        "¿Requiere consultoría tecnológica pero no sabe por dónde empezar?",
-        "¿Necesita ejecutar proyectos IT pero carece de equipo técnico interno?",
-        "¿Busca optimizar infraestructura existente sin hacer grandes inversiones?",
-        "¿Requiere asesoramiento objetivo sin compromiso con marcas específicas?",
-        "¿Necesita un proveedor que entienda tanto de tecnología como de negocio?",
+        "¿Requiere consultoría tecnológica y necesita definir por dónde comenzar?",
+        "¿Necesita ejecutar proyectos IT y no cuenta con un equipo técnico interno especializado?",
+        "¿Busca optimizar su infraestructura tecnológica sin realizar grandes inversiones iniciales?",
+        "¿Requiere asesoramiento técnico objetivo e independiente de marcas?",
+        "¿Necesita un proveedor que comprenda tanto la tecnología como la operación de su negocio?",
       ],
       closingText:
-        "Servicios tecnológicos integrales adaptados a objetivos estratégicos de su empresa.",
+        "Tecnología diseñada como una ventaja estratégica, no como un gasto operativo.",
     },
     whatWeDo: {
-      title: "Portfolio de Servicios IT",
+      title: "Portfolio de Servicios Tecnológicos",
       description:
-        "Desde consultoría estratégica hasta ejecución de proyectos, cubrimos todas sus necesidades tecnológicas.",
+        "Soluciones tecnológicas diseñadas para eficiencia, estabilidad y escalabilidad empresarial.",
       capabilities: [
         {
           icon: "consulting",
-          title: "Consultoría IT",
+          title: "Consultoría Tecnológica Estratégica",
           description:
-            "Asesoramiento estratégico en tecnología. Análisis de infraestructura, roadmaps y decisiones de inversión tecnológica.",
+            "Asesoramiento estratégico en decisiones tecnológicas. Análisis de infraestructura, arquitectura, riesgos y planificación de evolución tecnológica.",
         },
         {
           icon: "projects",
-          title: "Proyectos a Medida",
+          title: "Diseño e Implementación de Proyectos Tecnológicos",
           description:
-            "Ejecución de proyectos tecnológicos específicos. Desarrollo, implementación e integración según requerimientos únicos.",
+            "Ejecución de iniciativas tecnológicas específicas. Diseño, implementación, integración y puesta en marcha de soluciones adaptadas a su operación.",
         },
         {
           icon: "optimization",
-          title: "Optimización de Infraestructura",
+          title: "Optimización y Evolución de Infraestructura",
           description:
-            "Mejora de rendimiento sin cambiar equipamiento. Reconfiguración, optimización y actualización de sistemas existentes.",
+            "Mejora de rendimiento, estabilidad y eficiencia operativa. Reconfiguración, actualización y ajuste de plataformas tecnológicas existentes.",
         },
         {
           icon: "support",
-          title: "Soporte Técnico Especializado",
+          title: "Soporte Técnico Corporativo",
           description:
-            "Asistencia técnica preventiva y correctiva. Resolución de incidentes con SLA corporativo garantizado.",
+            "Asistencia técnica preventiva y correctiva. Gestión profesional de incidentes con SLA definidos y continuidad operativa garantizada.",
         },
       ],
     },
     benefits: {
       title: "Ventajas de un Partner Tecnológico Integral",
+      subtitle:
+        "Una infraestructura tecnológica bien diseñada no solo optimiza sistemas, sino que impacta directamente en la estabilidad, eficiencia y proyección de la operación empresarial.",
       items: [
         {
           icon: "strategy",
           title: "Visión Estratégica",
           description:
-            "Tecnología alineada con objetivos de negocio. Decisiones basadas en análisis profesional.",
+            "Tecnología alineada con objetivos de negocio. Decisiones basadas en análisis técnico y operativo profesional.",
         },
         {
           icon: "flexibility",
           title: "Flexibilidad",
           description:
-            "Servicios adaptados a sus necesidades actuales. Escalabilidad sin compromisos de largo plazo.",
+            "Servicios adaptados a sus necesidades actuales. Escalabilidad y evolución tecnológica sin compromisos rígidos.",
         },
         {
           icon: "expertise",
           title: "Expertise Técnico",
           description:
-            "Equipo multidisciplinario con experiencia empresarial. Conocimiento en múltiples tecnologías y sectores.",
+            "Equipo multidisciplinario con experiencia en entornos empresariales. Conocimiento en múltiples tecnologías y escenarios operativos.",
         },
         {
           icon: "results",
           title: "Foco en Resultados",
           description:
-            "Proyectos con objetivos medibles y ROI claro. Gestión profesional de timelines y presupuestos.",
+            "Proyectos orientados a eficiencia, estabilidad y retorno de inversión. Gestión profesional de alcances, tiempos y recursos.",
+        },
+        {
+          icon: "continuity",
+          title: "Continuidad Operativa",
+          description:
+            "Infraestructura tecnológica diseñada para minimizar riesgos e interrupciones. Esquemas de soporte, prevención y respuesta adaptados a entornos críticos.",
+        },
+        {
+          icon: "costs",
+          title: "Optimización de Costos Tecnológicos",
+          description:
+            "Modelo de servicio flexible que evita sobreinversión en infraestructura y personal técnico. Mayor eficiencia financiera y previsibilidad operativa.",
         },
       ],
     },
     howWeWork: {
       title: "Metodología de Trabajo",
       description:
-        "Proceso colaborativo adaptado a la realidad operativa de su empresa.",
+        "Proceso estructurado orientado a resultados, alineado con la realidad operativa y estratégica de su empresa.",
       steps: [
         {
           number: "01",
           title: "Entendimiento de Necesidades",
           description:
-            "Reunión inicial para comprender objetivos y desafíos. Relevamiento técnico y operativo según alcance.",
+            "Reunión inicial para comprender objetivos, contexto operativo y desafíos tecnológicos. Relevamiento técnico y funcional según alcance del proyecto.",
         },
         {
           number: "02",
           title: "Propuesta Técnica",
           description:
-            "Diseño de solución con alcance, timeline y presupuesto. Alternativas tecnológicas y recomendaciones profesionales.",
+            "Diseño de solución con definición clara de alcance, arquitectura, tiempos y costos. Recomendaciones tecnológicas basadas en criterios técnicos y de negocio.",
         },
         {
           number: "03",
           title: "Ejecución Estructurada",
           description:
-            "Implementación con metodología ágil y comunicación continua. Entregas iterativas con validación del cliente.",
+            "Implementación bajo metodología profesional, con comunicación continua y control de avances. Entregas iterativas y validaciones parciales.",
         },
         {
           number: "04",
           title: "Validación y Cierre",
           description:
-            "Testing funcional y de aceptación. Documentación completa y capacitación si corresponde.",
+            "Testing funcional, validación operativa y aceptación del cliente. Documentación técnica y transferencia de conocimiento cuando corresponda.",
         },
         {
           number: "05",
           title: "Soporte Continuo",
           description:
-            "Acompañamiento post-proyecto incluido. Disponibilidad para consultas y ajustes posteriores.",
+            "Acompañamiento post-implementación. Disponibilidad para ajustes, mejoras evolutivas y nuevas necesidades operativas.",
         },
       ],
     },
     trust: {
       title: "Su Socio Tecnológico de Confianza",
       statements: [
-        "Portfolio de proyectos exitosos en empresas de diversos sectores",
-        "Equipo técnico senior con visión de negocio y experiencia empresarial",
-        "Transparencia total en costos, timelines y expectativas",
-        "Independencia tecnológica: recomendamos lo mejor para cada caso",
-        "Compromiso con resultados medibles y satisfacción del cliente",
+        "Implementaciones y proyectos tecnológicos en empresas de diversos sectores",
+        "Profesionales especializados con visión de negocio y experiencia en entornos corporativos",
+        "Definición clara de costos, alcances, tiempos y expectativas desde el inicio",
+        "Recomendaciones objetivas basadas en criterios técnicos y necesidades reales",
+        "Enfoque orientado a eficiencia, estabilidad y mejora medible del entorno IT",
       ],
     },
     finalCTA: {
-      title: "¿Listo para Potenciar su Tecnología Empresarial?",
+      title: "Potencie la Capacidad Tecnológica de su Empresa",
       description:
-        "Contáctenos para analizar sus necesidades tecnológicas. Le presentaremos una propuesta de servicios adaptada a su realidad operativa.",
+        "Analizamos su contexto operativo y diseñamos un esquema de servicios IT alineado con sus objetivos de negocio.",
       primaryButton: "Solicitar reunión",
       secondaryButton: "Consultar por WhatsApp",
     },

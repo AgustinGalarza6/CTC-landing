@@ -49,7 +49,7 @@ export const ContactInfo: GlobalConfig = {
       name: "workingHours",
       type: "textarea",
       label: "Horario de Atención",
-      defaultValue: "Lunes a Viernes: 9:00 - 18:00\nSábados: 9:00 - 13:00",
+      defaultValue: "Lunes a viernes de 9 a 18 hs.",
     },
     {
       name: "socialMedia",

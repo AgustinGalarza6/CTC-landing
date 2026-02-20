@@ -14,7 +14,7 @@ export default function WhatsAppButton() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5491112345678";
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5491138923268";
   const message = encodeURIComponent("Hola! Me gustaría obtener más información sobre sus servicios.");
 
   return (

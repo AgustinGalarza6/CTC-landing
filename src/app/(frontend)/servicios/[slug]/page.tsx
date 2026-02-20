@@ -73,7 +73,7 @@ export default async function ServicePage({ params }: Props) {
                 {service.hero.primaryCTA}
               </Link>
               <a
-                href="https://wa.me/5491234567890"
+                href="https://wa.me/5491138923268"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 text-gray-700 bg-white border-2 border-gray-300 rounded-full transition-all duration-300 hover:border-ctc-navy hover:text-ctc-navy"
@@ -97,23 +97,21 @@ export default async function ServicePage({ params }: Props) {
             {service.problemStatement.title}
           </h2>
 
-          <div className="space-y-4 mb-10">
+          <div className="space-y-3 mb-14">
             {service.problemStatement.problems.map((problem, index) => (
               <div
                 key={index}
-                className="flex items-start gap-4 p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-gray-300 transition-colors"
+                className="flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-200/60 hover:bg-gray-50/30 hover:border-gray-300/80 transition-all duration-200 ease-in-out"
               >
-                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-red-100 flex items-center justify-center mt-0.5">
-                  <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 018.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z" clipRule="evenodd" />
-                  </svg>
+                <div className="flex-shrink-0 w-5 h-5 rounded-full border-2 border-gray-400/50 flex items-center justify-center mt-0.5">
+                  <div className="w-2 h-2 rounded-full bg-gray-400/70"></div>
                 </div>
-                <p className="text-gray-700 leading-relaxed">{problem}</p>
+                <p className="text-gray-800 leading-relaxed">{problem}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-lg text-gray-600 text-center italic border-l-4 border-ctc-navy pl-6 py-2">
+          <p className="text-lg text-gray-600 text-center italic border-l-4 border-ctc-navy pl-6 py-2 mt-2">
             {service.problemStatement.closingText}
           </p>
         </div>
@@ -133,13 +131,13 @@ export default async function ServicePage({ params }: Props) {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {service.whatWeDo.capabilities.map((capability, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-lg hover:border-gray-300 transition-all duration-300"
+                className="group bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-0.5 transition-all duration-300 ease-in-out"
               >
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-ctc-navy to-blue-800 flex items-center justify-center mb-5">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-ctc-navy via-blue-700 to-blue-800 shadow-inner flex items-center justify-center mb-5">
                   <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
@@ -161,23 +159,33 @@ export default async function ServicePage({ params }: Props) {
       ======================================== */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-normal mb-12 text-center" style={{ color: '#003d7a' }}>
-            {service.benefits.title}
-          </h2>
+          <div className="text-center mb-16 max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-normal mb-5" style={{ color: '#003d7a' }}>
+              {service.benefits.title}
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed font-light">
+              {service.slug === 'sistemas-informaticos' 
+                ? 'Una arquitectura de sistemas bien diseñada no solo optimiza procesos, sino que mejora estabilidad operativa, confiabilidad de la información y capacidad de crecimiento sostenido.'
+                : service.slug === 'erp'
+                ? 'Resultados concretos derivados de la implementación de un ecosistema ERP integrado y optimizado.'
+                : 'Una infraestructura tecnológica bien diseñada no solo optimiza sistemas, sino que impacta directamente en la estabilidad, eficiencia y proyección de la operación empresarial.'
+              }
+            </p>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {service.benefits.items.map((benefit, index) => (
               <div
                 key={index}
-                className="text-center p-6 rounded-xl bg-gray-50 border border-gray-200 hover:bg-white hover:shadow-md transition-all duration-300"
+                className="group bg-white p-8 rounded-2xl border border-slate-100 hover:shadow-lg hover:shadow-slate-200/50 hover:border-slate-200 transition-all duration-300 ease-in-out"
               >
-                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
-                  <div className="w-2 h-2 rounded-full bg-ctc-navy"></div>
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100/50 border border-blue-100/50 flex items-center justify-center mb-5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-ctc-navy"></div>
                 </div>
-                <h3 className="text-lg font-medium mb-2 text-gray-900">
+                <h3 className="text-lg font-semibold mb-3 text-gray-900">
                   {benefit.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-gray-600 text-[15px] leading-relaxed">
                   {benefit.description}
                 </p>
               </div>
@@ -189,30 +197,30 @@ export default async function ServicePage({ params }: Props) {
       {/* ========================================
           5️⃣ DIFERENCIALES - Cómo Trabajamos
       ======================================== */}
-      <section className="py-20 bg-gradient-to-b from-blue-50/50 to-white">
+      <section className="py-20 bg-gradient-to-b from-slate-50/50 to-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-normal mb-4" style={{ color: '#003d7a' }}>
               {service.howWeWork.title}
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto font-light">
               {service.howWeWork.description}
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-5">
             {service.howWeWork.steps.map((step, index) => (
               <div
                 key={index}
-                className="flex gap-6 items-start bg-white rounded-2xl p-6 md:p-8 border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300"
+                className="group flex gap-6 items-start bg-white rounded-2xl p-6 md:p-8 border border-slate-100 hover:border-slate-200 hover:shadow-lg hover:shadow-slate-200/50 transition-all duration-300 ease-in-out"
               >
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-ctc-navy to-blue-800 flex items-center justify-center">
-                    <span className="text-2xl font-light text-white">{step.number}</span>
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-ctc-navy via-blue-700 to-blue-800 shadow-inner flex items-center justify-center">
+                    <span className="text-2xl font-light text-white tracking-tight">{step.number}</span>
                   </div>
                 </div>
                 <div className="flex-1 pt-1">
-                  <h3 className="text-xl font-medium mb-2 text-gray-900">
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900">
                     {step.title}
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
@@ -230,20 +238,18 @@ export default async function ServicePage({ params }: Props) {
       ======================================== */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-normal mb-12 text-center" style={{ color: '#003d7a' }}>
+          <h2 className="text-3xl md:text-4xl font-normal mb-14 text-center" style={{ color: '#003d7a' }}>
             {service.trust.title}
           </h2>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {service.trust.statements.map((statement, index) => (
               <div
                 key={index}
-                className="flex items-start gap-4 p-5 rounded-xl bg-gradient-to-r from-blue-50 to-transparent border-l-4 border-ctc-navy"
+                className="flex items-start gap-4 p-5 rounded-lg bg-white border border-slate-100 hover:bg-slate-50/30 hover:border-slate-200 transition-all duration-200 ease-in-out"
               >
-                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mt-0.5">
-                  <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
+                <div className="flex-shrink-0 w-5 h-5 rounded-full border-2 border-blue-500/30 flex items-center justify-center mt-0.5">
+                  <div className="w-2 h-2 rounded-full bg-blue-600/70"></div>
                 </div>
                 <p className="text-gray-700 leading-relaxed">{statement}</p>
               </div>
@@ -278,7 +284,7 @@ export default async function ServicePage({ params }: Props) {
               {service.finalCTA.primaryButton}
             </Link>
             <a
-              href="https://wa.me/5491234567890"
+              href="https://wa.me/5491138923268"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-white border-2 border-white rounded-full transition-all duration-300 hover:bg-white/10"

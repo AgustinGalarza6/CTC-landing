@@ -32,7 +32,7 @@ export default function CTASection() {
               </svg>
             </Link>
             <a
-              href="https://wa.me/5491234567890"
+              href="https://wa.me/5491138923268"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-white font-normal border-2 border-white hover:bg-white hover:text-blue-800 transition-all duration-300 rounded-full"
