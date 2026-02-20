@@ -4,6 +4,9 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ContactForm from "@/components/ContactForm";
 import ContactInfo from "@/components/ContactInfo";
 
+// Forzar renderizado dinámico hasta que se cargue la DB
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: "Contacto | CTCSistemas",
   description: "Contacta con nuestro equipo de expertos. Estamos para ayudarte.",
