@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const services = [
   {
@@ -13,7 +14,7 @@ const services = [
       "Servidores y virtualización",
       "Seguridad y performance",
     ],
-    image: "/images/services/infraestructura.jpg", // Placeholder
+    image: "/Images-Services/Infraestructura IT.png",
   },
   {
     id: 2,
@@ -26,7 +27,7 @@ const services = [
       "Optimización operativa",
       "Migración y estandarización",
     ],
-    image: "/images/services/sistemas.jpg",
+    image: "/Images-Services/Sistemas Informáticos.jpg",
   },
   {
     id: 3,
@@ -39,7 +40,7 @@ const services = [
       "Integraciones y automatización",
       "Soporte y mantenimiento",
     ],
-    image: "/images/services/erp.jpg",
+    image: "/Images-Services/ERP  Software de Gestión.jpg",
   },
   {
     id: 4,
@@ -52,7 +53,7 @@ const services = [
       "Gestión de renovaciones",
       "Asesoramiento técnico",
     ],
-    image: "/images/services/licencias.jpg",
+    image: "/Images-Services/Licencias Empresariales.jpg",
   },
   {
     id: 5,
@@ -65,7 +66,7 @@ const services = [
       "Mesa de ayuda técnica",
       "Mantenimiento preventivo",
     ],
-    image: "/images/services/soporte.jpg",
+    image: "/Images-Services/Soporte Técnico.jpg",
   },
   {
     id: 6,
@@ -78,7 +79,7 @@ const services = [
       "Proyectos a medida",
       "Optimización de infraestructura",
     ],
-    image: "/images/services/consultoria.jpg",
+    image: "/Images-Services/Servicios Tecnológicos para Empresas.jpg",
   },
 ];
 
@@ -108,30 +109,35 @@ export default function ServicesSection() {
               className="group bg-white rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden"
             >
               <div className="grid md:grid-cols-[280px_1fr_auto] gap-6 p-6 md:p-7 items-center">
-                {/* LEFT: Image with Premium Gradient */}
+                {/* LEFT: Image background (replaces previous gradients) */}
                 <div className="relative w-full h-44 md:h-full min-h-[160px] rounded-2xl overflow-hidden">
-                  {/* Premium Tech Gradient Background */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-800"></div>
-                  
-                  {/* Glow Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 via-transparent to-purple-500/20 opacity-60"></div>
-                  
-                  {/* Grid Pattern Overlay */}
-                  <div className="absolute inset-0 opacity-10" style={{
-                    backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-                    backgroundSize: '24px 24px'
-                  }}></div>
-                  
-                  {/* Number */}
+                  <Image
+                    src={encodeURI(service.image)}
+                    alt={service.title}
+                    fill
+                    className="object-cover bg-transparent"
+                    sizes="(max-width: 768px) 18rem, 280px"
+                  />
+
+                  {/* Grid Pattern Overlay (kept from original design) */}
+                  <div
+                    className="absolute inset-0 opacity-10"
+                    style={{
+                      backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 0)`,
+                      backgroundSize: "24px 24px",
+                    }}
+                  />
+
+                  {/* Number (kept above image) */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span className="text-7xl md:text-8xl font-bold text-white/10 select-none">
                       {service.id}
                     </span>
                   </div>
-                  
-                  {/* Subtle Corner Glow */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-400/20 rounded-full blur-3xl"></div>
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-400/20 rounded-full blur-3xl"></div>
+
+                  {/* Subtle Corner Glow (kept) */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-400/20 rounded-full blur-3xl" />
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-400/20 rounded-full blur-3xl" />
                 </div>
 
                 {/* CENTER: Content */}
