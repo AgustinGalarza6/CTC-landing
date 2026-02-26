@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { motion } from "framer-motion";
 
 const reasons = [
   {
@@ -59,35 +61,59 @@ const reasons = [
 
 export default function WhyChooseUsSection() {
   return (
-    <section id="nosotros" className="py-20 bg-gray-50 relative overflow-hidden">
+    <section id="nosotros" className="py-24 bg-white relative overflow-hidden">
+      {/* Elementos decorativos de fondo */}
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-50 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-blue-50 rounded-full blur-3xl opacity-50 translate-y-1/2 -translate-x-1/2" />
+
       <div className="container-custom relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-normal mb-4" style={{ color: '#003d7a' }}>
-            Un partner tecnológico para su empresa
-          </h2>
-          <p className="text-base max-w-3xl mx-auto font-normal text-gray-600">
-            Acompañamos a empresas en la implementación, optimización y soporte de sus entornos tecnológicos.
-          </p>
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-5xl font-normal mb-6 text-[#003d7a]"
+          >
+            Un partner tecnológico <br className="hidden md:block" /> 
+            <span className="font-bold">para su empresa</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-lg text-gray-600 leading-relaxed"
+          >
+            Acompañamos a organizaciones exigentes en la implementación, optimización y soporte estratégico de sus entornos digitales.
+          </motion.p>
         </div>
 
         {/* Points Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {reasons.map((reason, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-white border border-gray-200 p-6 rounded-lg transition-all duration-300 hover:shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="group bg-white border border-gray-100 p-8 rounded-[2rem] transition-all duration-500 hover:shadow-2xl hover:border-blue-100"
             >
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-black text-white flex items-center justify-center rounded-lg">
+              <div className="flex flex-col items-start gap-5">
+                <div className="w-14 h-14 bg-gradient-to-br from-[#003d7a] to-blue-600 text-white flex items-center justify-center rounded-2xl shadow-lg shadow-blue-900/20 group-hover:scale-110 transition-transform duration-300">
                   {reason.icon}
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{reason.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{reason.description}</p>
+                  <h3 className="text-xl font-bold text-[#003d7a] mb-3 group-hover:text-blue-700 transition-colors">
+                    {reason.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {reason.description}
+                  </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

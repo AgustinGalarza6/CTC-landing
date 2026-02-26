@@ -67,11 +67,11 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* CTA Button Desktop - CORREGIDO CON btn-primary */}
           <div className="hidden lg:block">
             <Link
               href="/#contacto"
-              className="inline-flex items-center justify-center px-6 py-2.5 xl:px-8 xl:py-3 text-sm xl:text-base text-white bg-gradient-to-r from-ctc-navy to-blue-800 rounded-full transition-all duration-300 shadow-lg shadow-blue-900/30 hover:shadow-xl hover:-translate-y-0.5"
+              className="btn-primary !py-2.5 !px-6 xl:!px-8 xl:!py-3 text-sm xl:text-base"
             >
               Hablar con un asesor
             </Link>
@@ -80,30 +80,14 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 focus:outline-none focus-visible:ring-2 rounded-lg transition-colors"
+            className="lg:hidden p-2 focus:outline-none rounded-lg"
             style={{ color: '#003d7a' }}
-            aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
           >
-            <svg
-              className="w-7 h-7"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
@@ -117,29 +101,30 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden bg-white border-t border-gray-200 shadow-lg"
+            className="lg:hidden bg-white border-t border-gray-200 shadow-lg overflow-hidden"
           >
-            <div className="container-custom py-4 space-y-1">
+            <div className="container-custom py-6 space-y-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block py-3 px-4 hover:bg-gray-100 font-normal transition-all rounded-lg"
+                  className="block py-3 px-4 hover:bg-gray-50 font-medium transition-all rounded-lg"
                   style={{ color: '#003d7a' }}
                 >
                   {link.label}
                 </Link>
               ))}
-              <Link
-                href="/#contacto"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-center py-3 px-6 mt-4 text-white rounded-full transition-all shadow-md"
-                style={{ backgroundColor: '#003d7a' }}
-              >
-                Cotización
-              </Link>
+              <div className="px-4 pt-4">
+                {/* CTA Button Mobile - CORREGIDO CON btn-primary */}
+                <Link
+                  href="/#contacto"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="btn-primary w-full !py-3.5"
+                >
+                  Hablar con un asesor
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}

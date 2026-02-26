@@ -1,202 +1,131 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const services = [
   {
     id: 1,
     slug: "infraestructura-it",
     title: "Infraestructura IT",
-    description:
-      "Diseñamos e implementamos infraestructuras robustas, seguras y escalables para entornos corporativos.",
-    bullets: [
-      "Redes corporativas",
-      "Servidores y virtualización",
-      "Seguridad y performance",
-    ],
+    description: "Diseñamos e implementamos infraestructuras robustas, seguras y escalables para entornos corporativos de alta demanda.",
+    bullets: ["Redes corporativas", "Servidores y virtualización", "Seguridad y performance"],
     image: "/Images-Services/Infraestructura IT.png",
   },
   {
     id: 2,
     slug: "sistemas-informaticos",
     title: "Sistemas Informáticos",
-    description:
-      "Implementación y optimización de sistemas tecnológicos empresariales para mejorar continuidad y eficiencia operativa.",
-    bullets: [
-      "Integraciones entre plataformas",
-      "Optimización operativa",
-      "Migración y estandarización",
-    ],
+    description: "Implementación y optimización de sistemas tecnológicos para mejorar la continuidad y eficiencia operativa de su negocio.",
+    bullets: ["Integraciones entre plataformas", "Optimización operativa", "Migración y estandarización"],
     image: "/Images-Services/Sistemas Informáticos.jpg",
   },
   {
     id: 3,
     slug: "erp",
     title: "ERP / Software de Gestión",
-    description:
-      "Soluciones de gestión orientadas a optimizar procesos críticos y centralizar información estratégica del negocio.",
-    bullets: [
-      "Implementación y parametrización",
-      "Integraciones y automatización",
-      "Soporte y mantenimiento",
-    ],
+    description: "Soluciones de gestión orientadas a optimizar procesos críticos y centralizar información estratégica de manera eficiente.",
+    bullets: ["Implementación y parametrización", "Integraciones y automatización", "Soporte y mantenimiento"],
     image: "/Images-Services/ERP  Software de Gestión.jpg",
   },
   {
     id: 4,
     slug: "licencias",
     title: "Licencias Empresariales",
-    description:
-      "Licenciamiento oficial y asesoramiento especializado para cumplimiento, seguridad y productividad empresarial.",
-    bullets: [
-      "Windows y Microsoft 365",
-      "Gestión de renovaciones",
-      "Asesoramiento técnico",
-    ],
+    description: "Licenciamiento oficial y asesoramiento especializado para garantizar cumplimiento, seguridad y productividad en su organización.",
+    bullets: ["Windows y Microsoft 365", "Gestión de renovaciones", "Asesoramiento técnico"],
     image: "/Images-Services/Licencias Empresariales.jpg",
   },
   {
     id: 5,
     slug: "soporte-tecnico",
     title: "Soporte Técnico",
-    description:
-      "Asistencia técnica profesional para garantizar continuidad operativa y respuesta eficiente ante incidentes.",
-    bullets: [
-      "Soporte remoto y on-site",
-      "Mesa de ayuda técnica",
-      "Mantenimiento preventivo",
-    ],
+    description: "Asistencia técnica profesional constante para garantizar la continuidad operativa total y una respuesta eficiente ante cualquier incidente.",
+    bullets: ["Soporte remoto y on-site", "Mesa de ayuda técnica", "Mantenimiento preventivo"],
     image: "/Images-Services/Soporte Técnico.jpg",
   },
   {
     id: 6,
     slug: "servicios-tecnologicos",
-    title: "Servicios Tecnológicos para Empresas",
-    description:
-      "Servicios integrales para acompañar decisiones tecnológicas y proyectos orientados a eficiencia y escalabilidad.",
-    bullets: [
-      "Consultoría IT",
-      "Proyectos a medida",
-      "Optimización de infraestructura",
-    ],
+    title: "Servicios Tecnológicos",
+    description: "Servicios integrales diseñados para acompañar decisiones tecnológicas estratégicas y proyectos de alta escalabilidad futura.",
+    bullets: ["Consultoría IT", "Proyectos a medida", "Optimización de infraestructura"],
     image: "/Images-Services/Servicios Tecnológicos para Empresas.jpg",
   },
 ];
 
 export default function ServicesSection() {
   return (
-    <section id="servicios" className="py-16 bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-12 max-w-3xl mx-auto">
-          <h2
-            className="text-3xl md:text-4xl lg:text-5xl font-normal mb-3"
-            style={{ color: "#003d7a" }}
-          >
-            Soluciones Tecnológicas Empresariales
+    <section id="servicios" className="py-20 bg-gray-50/50">
+      <div className="container-custom">
+        <div className="text-center mb-16 max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-normal leading-tight mb-6" style={{ color: '#003d7a' }}>
+            Soluciones Tecnológicas <br />
+            <span className="font-bold">Empresariales</span>
           </h2>
-          <p className="text-base md:text-lg text-gray-600">
+          <p className="text-base md:text-lg text-gray-600 font-normal leading-relaxed">
             Infraestructura IT, sistemas de gestión, licencias y servicios
             tecnológicos diseñados para entornos empresariales exigentes.
           </p>
         </div>
 
-        {/* Services Cards - Horizontal Layout */}
-        <div className="space-y-6">
-          {services.map((service) => (
-            <div
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <motion.div
               key={service.id}
-              className="group bg-white rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="group bg-white rounded-[2rem] p-3 shadow-sm border border-gray-100 hover:shadow-2xl transition-all duration-500"
             >
-              <div className="grid md:grid-cols-[280px_1fr_auto] gap-6 p-6 md:p-7 items-center">
-                {/* LEFT: Image background (replaces previous gradients) */}
-                <div className="relative w-full h-44 md:h-full min-h-[160px] rounded-2xl overflow-hidden">
-                  <Image
-                    src={encodeURI(service.image)}
-                    alt={service.title}
-                    fill
-                    className="object-cover bg-transparent"
-                    sizes="(max-width: 768px) 18rem, 280px"
-                  />
-
-                  {/* Grid Pattern Overlay (kept from original design) */}
-                  <div
-                    className="absolute inset-0 opacity-10"
-                    style={{
-                      backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 0)`,
-                      backgroundSize: "24px 24px",
-                    }}
-                  />
-
-                  {/* Number (kept above image) */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-7xl md:text-8xl font-bold text-white/10 select-none">
-                      {service.id}
-                    </span>
-                  </div>
-
-                  {/* Subtle Corner Glow (kept) */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-400/20 rounded-full blur-3xl" />
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-400/20 rounded-full blur-3xl" />
-                </div>
-
-                {/* CENTER: Content */}
-                <div className="flex flex-col justify-center min-w-0">
-                  <h3 className="text-xl md:text-2xl font-bold mb-2 bg-gradient-to-r from-ctc-navy to-blue-800 bg-clip-text text-transparent">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-700 mb-4 leading-relaxed text-sm md:text-base">
-                    {service.description}
-                  </p>
-
-                  {/* Features List */}
-                  <ul className="space-y-2">
-                    {service.bullets.map((bullet, index) => (
-                      <li
-                        key={index}
-                        className="flex items-start gap-2 text-sm text-gray-600"
-                      >
-                        <svg 
-                          className="w-5 h-5 text-ctc-blue flex-shrink-0 mt-0.5" 
-                          fill="currentColor" 
-                          viewBox="0 0 20 20"
-                        >
-                          <path 
-                            fillRule="evenodd" 
-                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" 
-                            clipRule="evenodd" 
-                          />
-                        </svg>
-                        <span className="font-medium">{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* RIGHT: CTA Button */}
-                <div className="flex items-end justify-center md:justify-end pt-4 md:pt-0">
-                  <Link
-                    href={`/servicios/${service.slug}`}
-                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm text-white bg-gradient-to-r from-ctc-navy to-blue-800 rounded-xl transition-all duration-300 whitespace-nowrap shadow-lg shadow-blue-900/30 hover:shadow-xl hover:-translate-y-0.5"
-                  >
-                    <span>Explorar solución</span>
-                    <svg
-                      className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2.5}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </Link>
-                </div>
+              <div className="relative h-56 w-full rounded-[1.5rem] overflow-hidden mb-6">
+                <Image 
+                  src={service.image} 
+                  alt={service.title} 
+                  fill 
+                  className="object-cover group-hover:scale-105 transition-transform duration-700" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               </div>
-            </div>
+              
+              <div className="px-5 pb-6">
+                <h3 className="text-xl md:text-2xl font-bold mb-3 bg-gradient-to-r from-[#003d7a] to-blue-700 bg-clip-text text-transparent">
+                  {service.title}
+                </h3>
+                <p className="text-gray-700 text-sm mb-6 leading-relaxed">
+                  {service.description}
+                </p>
+                <ul className="space-y-3 mb-8">
+                  {service.bullets.map((bullet, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-gray-700 font-medium">
+                      <svg className="w-5 h-5 text-blue-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* BOTÓN CORREGIDO CON LA CLASE btn-primary */}
+                <Link
+                  href={`/servicios/${service.slug}`}
+                  className="btn-primary w-full group"
+                >
+                  <span>Explorar solución</span>
+                  <svg 
+                    className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor" 
+                    strokeWidth={2.5}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

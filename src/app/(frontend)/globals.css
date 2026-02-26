@@ -21,136 +21,60 @@
 @layer base {
   :root {
     --font-sagace: "Sagace", system-ui, sans-serif;
+    --ctc-navy: #003d7a;
+    /* Gradiente azul profundo original de tus capturas */
+    --ctc-blue-gradient: linear-gradient(to right, #002a54, #1e40af);
   }
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Offset for fixed navbar */
-  }
-
-  * {
-    @apply border-gray-200;
+    scroll-padding-top: 90px;
   }
 
   body {
-    @apply bg-white text-gray-900;
+    @apply bg-white text-gray-900 antialiased;
+    font-family: var(--font-sagace);
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-heading font-bold;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+    color: var(--ctc-navy);
   }
 }
 
 @layer components {
-  /* Button Styles - Clean Solid Colors */
-  .btn {
-    @apply inline-flex items-center justify-center px-8 py-3 text-base transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed rounded-full;
-  }
-
+  /* BOTÓN ORIGINAL: Estilo Píldora y Gradiente Azul Profundo */
   .btn-primary {
-    @apply text-white rounded-full shadow-lg;
-    background: linear-gradient(to right, #1a2332, #1e3a8a);
-    box-shadow: 0 10px 15px -3px rgb(30 58 138 / 0.3);
+    @apply text-white font-bold transition-all duration-300 shadow-lg inline-flex items-center justify-center;
+    background: var(--ctc-blue-gradient); 
+    border-radius: 9999px; 
+    padding: 1rem 2.5rem;
   }
 
   .btn-primary:hover {
-    box-shadow: 0 20px 25px -5px rgb(30 58 138 / 0.4);
-    transform: translateY(-2px);
+    @apply shadow-xl shadow-blue-900/40;
+    transform: translateY(-1.5px);
+    background: linear-gradient(to right, #003d7a, #2563eb);
   }
 
-  .btn-secondary {
-    @apply bg-primary-500 text-white hover:bg-primary-600 rounded-full;
-  }
-
-  .btn-outline {
-    @apply border-2 border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white rounded-full;
-  }
-
-  .btn-ghost {
-    @apply text-gray-600 hover:text-primary-600 hover:bg-gray-100 px-4;
-  }
-
-  /* Card Styles - Light with subtle borders */
-  .card {
-    @apply bg-white border border-gray-200 overflow-hidden transition-all duration-300 rounded-lg shadow-sm;
-  }
-
-  .card-hover {
-    @apply hover:border-primary-300 hover:shadow-md;
-  }
-
-  /* Container */
   .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
   }
 
-  /* Section Padding */
-  .section-padding {
-    @apply py-16 md:py-20;
+  /* FORMULARIO */
+  .form-label {
+    @apply block text-xs font-bold uppercase tracking-wider text-[var(--ctc-navy)] mb-1 ml-1;
   }
 
-  /* Text Utilities */
-  .text-brand {
-    @apply text-ctc-navy;
+  .form-input {
+    @apply w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[var(--ctc-navy)] focus:bg-white outline-none transition-all text-gray-700;
   }
 
-  .text-brand-blue {
-    @apply text-primary-500;
-  }
-}
-
-@layer utilities {
-  /* Custom animations */
-  .animate-fade-in {
-    animation: fade-in 0.6s ease-out;
+  .form-textarea {
+    @apply min-h-[110px] resize-none;
   }
 
-  .animate-slide-up {
-    animation: slide-up 0.6s ease-out;
+  .dot {
+    @apply w-1.5 h-1.5 rounded-full bg-[var(--ctc-navy)];
   }
-
-  .animate-slide-in {
-    animation: slide-in 0.5s ease-out;
-  }
-
-  /* Text shadow for hero sections */
-  .text-shadow {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .text-shadow-lg {
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  /* Backdrop blur utilities */
-  .backdrop-blur-custom {
-    backdrop-filter: blur(12px);
-  }
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-gray-100;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-primary-400 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary-500;
-}
-
-/* Selection color */
-::selection {
-  @apply bg-primary-200 text-primary-900;
 }

@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-// Por ahora con logos de ejemplo - puedes reemplazarlos con tus propios clientes
 const clients = [
   { name: "Cliente 1", logo: "/clients/client-1.png" },
   { name: "Cliente 2", logo: "/clients/client-2.png" },
@@ -21,7 +20,7 @@ export default function ClientsSlider() {
     if (!scrollContainer) return;
 
     let scrollAmount = 0;
-    const scrollSpeed = 0.5; // Velocidad del scroll automático
+    const scrollSpeed = 0.6;
 
     const scroll = () => {
       scrollAmount += scrollSpeed;
@@ -32,45 +31,44 @@ export default function ClientsSlider() {
     };
 
     const intervalId = setInterval(scroll, 20);
-
     return () => clearInterval(intervalId);
   }, []);
 
-  // Duplicamos el array para crear el efecto de loop infinito
   const duplicatedClients = [...clients, ...clients, ...clients];
 
   return (
-    <section className="py-6 bg-[#003d7a]">
+    <section className="py-10 md:py-14 bg-[#003d7a]">
       <div className="max-w-[1400px] mx-auto px-6">
-        <div className="flex items-center gap-12">
-          {/* Texto a la izquierda */}
-          <div className="flex-shrink-0 w-[280px]">
-            <h3 className="text-3xl font-normal text-white leading-tight">
-              Confían en<br />nosotros:
+        {/* Usamos items-center para centrar el contenido verticalmente en el flex-col (móvil) */}
+        <div className="flex flex-col md:flex-row items-center md:items-center gap-8 md:gap-12">
+          
+          {/* w-full y text-center centran el texto en móvil; md:w-auto y md:text-left lo devuelven a su sitio en PC */}
+          <div className="flex-shrink-0 w-full md:w-auto text-center md:text-left">
+            <h3 className="text-2xl md:text-3xl font-normal text-white leading-tight">
+              Confían en<br className="hidden md:block" /> nosotros:
             </h3>
           </div>
 
-          {/* Slider de logos a la derecha */}
-          <div className="flex-1 relative overflow-hidden">
-            {/* Gradiente fade a la derecha */}
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#003d7a] to-transparent z-10 pointer-events-none"></div>
+          <div className="w-full relative overflow-hidden">
+            {/* Gradiente fade lateral */}
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#003d7a] to-transparent z-10 pointer-events-none"></div>
             
             <div
               ref={scrollRef}
-              className="flex gap-16 overflow-x-hidden"
+              className="flex gap-10 md:gap-16 overflow-x-hidden"
               style={{ scrollBehavior: "auto" }}
             >
               {duplicatedClients.map((client, index) => (
                 <div
                   key={`${client.name}-${index}`}
-                  className="flex-shrink-0 flex items-center justify-center w-40 h-20"
+                  className="flex-shrink-0 flex items-center justify-center w-32 md:w-40 h-16 md:h-20"
                 >
-                  <div className="relative w-36 h-16">
+                  <div className="relative w-28 h-12 md:w-36 md:h-16">
                     <Image
                       src={client.logo}
                       alt={client.name}
                       fill
-                      className="object-contain brightness-0 invert"
+                      className="object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
                       sizes="144px"
                     />
                   </div>

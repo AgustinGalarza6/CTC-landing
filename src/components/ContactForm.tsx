@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -15,108 +16,95 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Here you would send the form data to your backend
-    console.log("Form submitted:", formData);
-
-    // Simulate API call
+    
+    // Simulación de envío
     setTimeout(() => {
-      alert("Mensaje enviado! Nos pondremos en contacto pronto.");
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        message: "",
-      });
+      alert("¡Mensaje recibido! Nos comunicaremos con su empresa a la brevedad.");
+      setFormData({ name: "", email: "", phone: "", company: "", message: "" });
       setIsSubmitting(false);
-    }, 1000);
+    }, 1500);
   };
 
-  return (
-    <div className="card p-8">
-      <h3 className="text-2xl font-bold mb-6">Envíanos un mensaje</h3>
+  const inputStyle = "w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#003d7a] focus:bg-white focus:border-transparent transition-all outline-none text-gray-700";
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid md:grid-cols-2 gap-6">
+  return (
+    <div className="bg-white p-8 md:p-10 rounded-[2.5rem] shadow-xl border border-gray-100">
+      <form onSubmit={handleSubmit} className="space-y-5">
+        <div className="grid md:grid-cols-2 gap-5">
           <div>
-            <label htmlFor="name" className="block text-sm font-semibold mb-2">
-              Nombre Completo *
-            </label>
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#003d7a] mb-2 ml-1">Nombre Completo *</label>
             <input
               type="text"
-              id="name"
               required
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              className={inputStyle}
+              placeholder="Ej: Juan Pérez"
             />
           </div>
-
           <div>
-            <label htmlFor="email" className="block text-sm font-semibold mb-2">
-              Email *
-            </label>
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#003d7a] mb-2 ml-1">Email Corporativo *</label>
             <input
               type="email"
-              id="email"
               required
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              className={inputStyle}
+              placeholder="juan@empresa.com"
             />
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-5">
           <div>
-            <label htmlFor="phone" className="block text-sm font-semibold mb-2">
-              Teléfono *
-            </label>
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#003d7a] mb-2 ml-1">Teléfono de contacto *</label>
             <input
               type="tel"
-              id="phone"
               required
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              className={inputStyle}
+              placeholder="+54 9..."
             />
           </div>
-
           <div>
-            <label htmlFor="company" className="block text-sm font-semibold mb-2">
-              Empresa
-            </label>
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#003d7a] mb-2 ml-1">Empresa / Organización</label>
             <input
               type="text"
-              id="company"
               value={formData.company}
               onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              className={inputStyle}
+              placeholder="Nombre de su empresa"
             />
           </div>
         </div>
 
         <div>
-          <label htmlFor="message" className="block text-sm font-semibold mb-2">
-            Mensaje *
-          </label>
+          <label className="block text-xs font-bold uppercase tracking-wider text-[#003d7a] mb-2 ml-1">¿En qué podemos ayudarlo? *</label>
           <textarea
-            id="message"
             required
-            rows={5}
+            rows={4}
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            className={`${inputStyle} resize-none`}
+            placeholder="Describa brevemente su requerimiento..."
           />
         </div>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="btn btn-primary w-full md:w-auto px-12"
+          className="w-full btn-gradient py-4 rounded-2xl font-bold text-lg shadow-lg shadow-blue-900/20"
         >
-          {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
+          {isSubmitting ? (
+            <span className="flex items-center justify-center gap-2">
+              <svg className="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+              Enviando...
+            </span>
+          ) : "Enviar Solicitud"}
         </button>
       </form>
     </div>
