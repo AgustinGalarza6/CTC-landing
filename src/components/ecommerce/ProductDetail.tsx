@@ -27,7 +27,7 @@ export default function ProductDetail({ product }: Props) {
   return (
     <section className="pt-8 pb-16 md:pt-12 md:pb-20">
       <div className="container-custom">
-        {/* Breadcrumb */}
+        {/* Breadcrumb Original */}
         <nav className="mb-6 text-sm">
           <Link href="/" className="text-gray-700 hover:text-gray-900">
             Inicio
@@ -41,9 +41,8 @@ export default function ProductDetail({ product }: Props) {
         </nav>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Images */}
+          {/* Imágenes Originales */}
           <div>
-            {/* Main Image */}
             <div className="relative aspect-square bg-gray-100 rounded-xl overflow-hidden mb-4">
               {product.images && product.images.length > 0 ? (
                 <Image
@@ -61,7 +60,6 @@ export default function ProductDetail({ product }: Props) {
               )}
             </div>
 
-            {/* Thumbnails */}
             {product.images && product.images.length > 1 && (
               <div className="grid grid-cols-4 gap-4">
                 {product.images.map((img, index) => (
@@ -83,12 +81,11 @@ export default function ProductDetail({ product }: Props) {
             )}
           </div>
 
-          {/* Product Info */}
+          {/* Info Producto */}
           <div>
-            {/* Badges */}
             <div className="flex gap-2 mb-4">
               {product.isNew && (
-                <span className="bg-accent-500 text-white text-sm font-bold px-4 py-1 rounded-full">
+                <span className="bg-[#003d7a] text-white text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full shadow-sm">
                   Nuevo
                 </span>
               )}
@@ -105,7 +102,6 @@ export default function ProductDetail({ product }: Props) {
               <p className="text-gray-600 mb-4">SKU: {product.sku}</p>
             )}
 
-            {/* Price */}
             <div className="mb-6">
               <div className="flex items-baseline gap-4">
                 <span className="text-4xl font-bold" style={{ color: '#003d7a' }}>
@@ -119,7 +115,6 @@ export default function ProductDetail({ product }: Props) {
               </div>
             </div>
 
-            {/* Stock Status */}
             <div className="mb-6">
               {isOutOfStock ? (
                 <span className="text-red-600 font-semibold">Sin stock</span>
@@ -132,79 +127,62 @@ export default function ProductDetail({ product }: Props) {
               )}
             </div>
 
-            {/* Description */}
             <div className="prose max-w-none mb-8">
               <p className="text-gray-700">{product.shortDescription}</p>
             </div>
 
-            {/* Features */}
             {product.features && product.features.length > 0 && (
               <div className="mb-8">
                 <h3 className="font-bold text-lg mb-4">Características destacadas</h3>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {product.features.map((f, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                      <span>{f.feature}</span>
+                    <li key={i} className="flex items-center gap-3">
+                      <div className="bg-blue-50 p-1 rounded-full flex-shrink-0">
+                        <svg className="w-3.5 h-3.5 text-[#003d7a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <span className="font-medium text-gray-700 text-sm">{f.feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             )}
 
-            {/* Add to Cart */}
             <AddToCartButton product={product} disabled={isOutOfStock} />
           </div>
         </div>
 
-        {/* Tabs Section */}
-        <div className="mt-12">
-          {/* Tab Navigation */}
-          <div className="border-b border-gray-200">
-            <nav className="flex gap-8">
-              <button
-                onClick={() => setActiveTab("descripcion")}
-                className={`pb-4 px-1 border-b-2 font-medium text-sm transition-colors`}
-                style={activeTab === "descripcion" ? { borderColor: '#003d7a', color: '#003d7a' } : { borderColor: 'transparent', color: '#6b7280' }}
-                onMouseEnter={(e) => { if (activeTab !== "descripcion") { e.currentTarget.style.color = '#374151'; e.currentTarget.style.borderColor = '#d1d5db'; } }}
-                onMouseLeave={(e) => { if (activeTab !== "descripcion") { e.currentTarget.style.color = '#6b7280'; e.currentTarget.style.borderColor = 'transparent'; } }}
-              >
-                Descripción
-              </button>
-              <button
-                onClick={() => setActiveTab("especificaciones")}
-                className={`pb-4 px-1 border-b-2 font-medium text-sm transition-colors`}
-                style={activeTab === "especificaciones" ? { borderColor: '#003d7a', color: '#003d7a' } : { borderColor: 'transparent', color: '#6b7280' }}
-                onMouseEnter={(e) => { if (activeTab !== "especificaciones") { e.currentTarget.style.color = '#374151'; e.currentTarget.style.borderColor = '#d1d5db'; } }}
-                onMouseLeave={(e) => { if (activeTab !== "especificaciones") { e.currentTarget.style.color = '#6b7280'; e.currentTarget.style.borderColor = 'transparent'; } }}
-              >
-                Especificaciones
-              </button>
-              <button
-                onClick={() => setActiveTab("descargas")}
-                className={`pb-4 px-1 border-b-2 font-medium text-sm transition-colors relative`}
-                style={activeTab === "descargas" ? { borderColor: '#003d7a', color: '#003d7a' } : { borderColor: 'transparent', color: '#6b7280' }}
-                onMouseEnter={(e) => { if (activeTab !== "descargas") { e.currentTarget.style.color = '#374151'; e.currentTarget.style.borderColor = '#d1d5db'; } }}
-                onMouseLeave={(e) => { if (activeTab !== "descargas") { e.currentTarget.style.color = '#6b7280'; e.currentTarget.style.borderColor = 'transparent'; } }}
-              >
-                Descargas
-                {product.downloads && product.downloads.length > 0 && (
-                  <span className="ml-2 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white rounded-full" style={{ backgroundColor: '#003d7a' }}>
-                    {product.downloads.length}
-                  </span>
-                )}
-              </button>
-            </nav>
+        {/* TABS SECCIÓN CENTRADA Y MODERNA */}
+        <div className="mt-24">
+          <div className="flex justify-center border-b border-gray-100 mb-12">
+            <div className="flex gap-12">
+              {(["descripcion", "especificaciones", "descargas"] as TabType[]).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`pb-6 text-sm font-bold uppercase tracking-[0.2em] transition-all relative ${
+                    activeTab === tab ? "text-[#003d7a]" : "text-gray-400 hover:text-gray-600"
+                  }`}
+                >
+                  {tab}
+                  {tab === "descargas" && product.downloads && product.downloads.length > 0 && (
+                    <span className="ml-2 bg-[#003d7a] text-white text-[10px] px-2 py-0.5 rounded-full">
+                      {product.downloads.length}
+                    </span>
+                  )}
+                  {activeTab === tab && (
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#003d7a] rounded-full" />
+                  )}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Tab Content */}
-          <div className="py-8">
-            {/* Descripción Tab */}
+          <div className="max-w-4xl mx-auto">
             {activeTab === "descripcion" && (
-              <div className="prose max-w-none">
-                <p className="text-gray-700 leading-relaxed">
+              <div className="prose prose-blue max-w-none text-center">
+                <p className="text-gray-700 leading-loose text-lg font-light">
                   {product.description && typeof product.description === 'string' 
                     ? product.description 
                     : product.shortDescription}
@@ -212,59 +190,54 @@ export default function ProductDetail({ product }: Props) {
               </div>
             )}
 
-            {/* Especificaciones Tab */}
             {activeTab === "especificaciones" && (
-              <div>
+              <div className="bg-white rounded-[2rem] border border-gray-100 overflow-hidden shadow-sm">
                 {product.specs && product.specs.length > 0 ? (
-                  <div className="border rounded-lg divide-y max-w-3xl">
+                  <div className="divide-y divide-gray-50">
                     {product.specs.map((spec, i) => (
-                      <div key={i} className="grid grid-cols-2 gap-4 p-4">
-                        <div className="font-semibold text-gray-700">{spec.label}</div>
-                        <div className="text-gray-600">{spec.value}</div>
+                      <div key={i} className="grid grid-cols-2 gap-4 p-6 hover:bg-gray-50/50 transition-colors">
+                        <div className="text-[11px] font-black text-[#003d7a] uppercase tracking-[0.2em] self-center">
+                          {spec.label}
+                        </div>
+                        <div className="text-gray-600 font-medium">
+                          {spec.value}
+                        </div>
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <p className="text-gray-500">No hay especificaciones técnicas disponibles.</p>
+                  <p className="p-12 text-center text-gray-400 italic">Especificaciones técnicas no disponibles.</p>
                 )}
               </div>
             )}
 
-            {/* Descargas Tab */}
             {activeTab === "descargas" && (
-              <div>
+              <div className="space-y-4">
                 {product.downloads && product.downloads.length > 0 ? (
-                  <div className="space-y-4 max-w-3xl">
-                    {product.downloads.map((download, i) => (
-                      <div key={i} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                        <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                            <svg className="w-6 h-6" style={{ color: '#003d7a' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                            </svg>
-                          </div>
-                          <div>
-                            <h4 className="font-semibold text-gray-900">{download.name}</h4>
-                            <p className="text-sm text-gray-500">
-                              {download.type} {download.size && `• ${download.size}`}
-                            </p>
-                          </div>
+                  product.downloads.map((download, i) => (
+                    <div key={i} className="flex items-center justify-between p-6 bg-white border border-gray-100 rounded-[2rem] hover:shadow-lg transition-all">
+                      <div className="flex items-center gap-6">
+                        <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-[#003d7a]">
+                          <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
                         </div>
-                        <a
-                          href={typeof download.file === 'string' ? download.file : getMediaUrl(download.file)}
-                          download
-                          className="px-4 py-2 text-white rounded-lg transition-colors text-sm font-medium"
-                          style={{ backgroundColor: '#003d7a' }}
-                          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#002a5c'}
-                          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#003d7a'}
-                        >
-                          Descargar
-                        </a>
+                        <div>
+                          <h4 className="font-bold text-[#003d7a] text-lg leading-tight">{download.name}</h4>
+                          <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">{download.type} • {download.size}</p>
+                        </div>
                       </div>
-                    ))}
-                  </div>
+                      <a
+                        href={typeof download.file === 'string' ? download.file : getMediaUrl(download.file)}
+                        download
+                        className="bg-[#003d7a] hover:bg-[#1e40af] text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all shadow-md"
+                      >
+                        Descargar
+                      </a>
+                    </div>
+                  ))
                 ) : (
-                  <p className="text-gray-500">No hay archivos de descarga disponibles.</p>
+                  <p className="p-12 text-center text-gray-400 italic">No hay documentos para descarga.</p>
                 )}
               </div>
             )}
