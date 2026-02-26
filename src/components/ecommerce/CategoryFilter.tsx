@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import type { PayloadCategory } from "@/lib/payload";
 
 type Props = {
@@ -9,93 +9,93 @@ type Props = {
 };
 
 export default function CategoryFilter({ categories }: Props) {
-  const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentCategory = searchParams.get("categoria");
 
-  const isAllSelected = !currentCategory && pathname === "/productos";
-
-  const hasFilters = currentCategory;
-
   return (
-    <div className="bg-white rounded-lg border border-gray-200">
-      {/* Header */}
-      <div className="px-5 py-4 border-b border-gray-200">
-        <h3 className="font-bold text-lg text-gray-900">Filtros</h3>
-      </div>
+    <div className="flex flex-col gap-10 text-left">
+      {/* 1. Panel de Filtros */}
+      <div className="bg-white rounded-[2.5rem] border border-gray-100 p-10 shadow-sm">
+        <h3 className="text-2xl font-normal text-[#003d7a] mb-10">
+          Explorar <span className="font-bold">Catálogo</span>
+        </h3>
 
-      {/* Search */}
-      <div className="px-5 py-4 border-b border-gray-200">
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Buscar
-        </label>
-        <div>
-          <input
-            type="text"
-            placeholder="Nombre, descripción..."
-            className="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-          />
-        </div>
-      </div>
+        <nav className="flex flex-col gap-3">
+          {/* LINK: TODO EL CATÁLOGO */}
+          <Link
+            href="/productos"
+            scroll={false} // Evita el salto al inicio
+            className={`flex items-center justify-between px-6 py-4 rounded-2xl text-sm transition-all duration-300 ${
+              !currentCategory 
+                ? "bg-blue-50 text-[#003d7a] font-bold shadow-sm" 
+                : "text-gray-500 hover:bg-gray-50 hover:text-[#003d7a]"
+            }`}
+          >
+            <span>Todo el catálogo</span>
+            {!currentCategory && <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />}
+          </Link>
 
-      {/* Categories */}
-      <div className="px-5 py-4">
-        <label className="block text-sm font-medium text-gray-700 mb-3">
-          Categoría
-        </label>
-        <ul className="space-y-1">
-          {/* All Products */}
-          <li>
-            <Link
-              href="/productos"
-              className={`block px-3 py-2 rounded-lg text-sm transition-colors ${
-                isAllSelected
-                  ? "text-white font-medium"
-                  : "text-gray-700 hover:bg-gray-50"
-              }`}
-              style={isAllSelected ? { backgroundColor: '#003d7a' } : {}}
-            >
-              Todos
-            </Link>
-          </li>
-
-          {/* Individual Categories */}
+          {/* LINKS: CATEGORÍAS */}
           {categories
             .sort((a, b) => (a.order || 999) - (b.order || 999))
             .map((category) => {
               const isSelected = currentCategory === category.slug;
               return (
-                <li key={category.id}>
-                  <Link
-                    href={`/productos?categoria=${category.slug}`}
-                    className={`block px-3 py-2 rounded-lg text-sm transition-colors ${
-                      isSelected
-                        ? "text-white font-medium"
-                        : "text-gray-700 hover:bg-gray-50"
-                    }`}
-                    style={isSelected ? { backgroundColor: '#003d7a' } : {}}
-                  >
-                    {category.name}
-                  </Link>
-                </li>
+                <Link
+                  key={category.id}
+                  href={`/productos?categoria=${category.slug}`}
+                  scroll={false} // Evita el salto al inicio
+                  className={`flex items-center justify-between px-6 py-4 rounded-2xl text-sm transition-all duration-300 ${
+                    isSelected 
+                      ? "bg-blue-50 text-[#003d7a] font-bold shadow-sm" 
+                      : "text-gray-500 hover:bg-gray-50 hover:text-[#003d7a]"
+                  }`}
+                >
+                  <span>{category.name}</span>
+                  {isSelected && <div className="w-2 h-2 rounded-full bg-blue-600" />}
+                </Link>
               );
             })}
-        </ul>
+        </nav>
 
-        {/* Clear Filters Button */}
-        {hasFilters && (
-          <div className="mt-6 pt-4 border-t border-gray-200">
-            <Link
-              href="/productos"
-              className="block w-full text-center px-4 py-2 text-sm font-medium"
-              style={{ color: '#003d7a' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#002a5c'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#003d7a'}
+        {/* BOTÓN LIMPIAR SELECCIÓN */}
+        {currentCategory && (
+          <div className="mt-8 pt-6 border-t border-gray-100 flex justify-center">
+            <Link 
+              href="/productos" 
+              scroll={false} // Evita el salto al inicio
+              className="text-[11px] font-black text-[#003d7a] hover:text-blue-800 uppercase tracking-[0.2em] transition-all"
             >
-              Limpiar filtros
+              Limpiar selección
             </Link>
           </div>
         )}
+      </div>
+
+      {/* 2. Banner Mayorista (Igual que antes) */}
+      <div className="bg-gradient-to-br from-[#003d7a] to-[#005bb5] rounded-[2.5rem] p-12 text-white relative overflow-hidden shadow-xl">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 blur-2xl" />
+        <div className="relative z-10">
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-blue-200 mb-6">
+            Canal Exclusivo
+          </p>
+          <h4 className="text-2xl font-bold mb-5 leading-tight text-white">
+            Venta <br />
+            <span className="text-blue-100">Catálogo Mayorista</span>
+          </h4>
+          <p className="text-sm text-white/70 font-light mb-10 leading-relaxed">
+            Ofrecemos bonificaciones especiales y atención personalizada para compras de volumen empresarial.
+          </p>
+          <Link 
+            href="/#contacto" 
+            className="group inline-flex items-center gap-2 text-base font-bold transition-all text-white"
+          >
+            <span className="border-b-2 border-white/30 group-hover:border-white pb-1">
+              Hablar con un asesor
+            </span>
+            <span className="text-xl transition-transform group-hover:translate-x-1">→</span>
+          </Link>
+        </div>
       </div>
     </div>
   );

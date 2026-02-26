@@ -25,20 +25,22 @@ export default async function ProductosPage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-gray-50 pt-20 md:pt-24">
+      {/* Agregamos pb-32 en móvil y pb-48 en desktop para separar del Footer */}
+      <main className="min-h-screen bg-gray-50 pt-20 md:pt-24 pb-32 md:pb-48">
+        
         {/* Simple Header */}
         <section className="bg-white border-b border-gray-200">
           <div className="container-custom py-8">
             {/* Breadcrumb */}
             <nav className="mb-6 text-sm">
-              <Link href="/" className="text-gray-700 hover:text-gray-900">
+              <Link href="/" className="text-gray-500 hover:text-[#003d7a] transition-colors">
                 Inicio
               </Link>
               <span className="mx-2 text-gray-400">/</span>
-              <span className="text-gray-900">Productos</span>
+              <span className="text-[#003d7a] font-medium">Productos</span>
             </nav>
 
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#003d7a] mb-2">
               Catálogo de Productos
             </h1>
             <p className="text-lg text-gray-600">
@@ -48,13 +50,14 @@ export default async function ProductosPage() {
         </section>
 
         {/* Products Section */}
-        <section className="section-padding">
+        <section className="mt-12 md:mt-16">
           <div className="container-custom">
-            <Suspense fallback={<div className="text-center py-12">Cargando productos...</div>}>
-              <div className="flex flex-col lg:flex-row gap-8">
+            <Suspense fallback={<div className="text-center py-12 text-[#003d7a] font-medium">Cargando catálogo...</div>}>
+              <div className="flex flex-col lg:flex-row gap-12">
+                
                 {/* Sidebar - Category Filter */}
-                <aside className="lg:w-72 flex-shrink-0">
-                  <div className="sticky top-24">
+                <aside className="lg:w-80 flex-shrink-0">
+                  <div className="sticky top-32">
                     <CategoryFilter categories={categories} />
                   </div>
                 </aside>

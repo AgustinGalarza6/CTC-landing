@@ -2,114 +2,63 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import type { PayloadProduct } from "@/lib/payload";
 import { formatPrice, hasDiscount, calculateDiscount } from "@/lib/utils";
 import { getMediaUrl } from "@/lib/media-utils";
 
-type Props = {
-  product: PayloadProduct;
-};
-
-export default function ProductCard({ product }: Props) {
-  const firstImage = product.images?.[0]?.image;
-  const imageUrl = getMediaUrl(firstImage);
+export default function ProductCard({ product }: { product: PayloadProduct }) {
+  const imageUrl = getMediaUrl(product.images?.[0]?.image);
   const showDiscount = hasDiscount(product.originalPrice, product.price);
   const discount = showDiscount ? calculateDiscount(product.originalPrice!, product.price) : 0;
 
-  const isLowStock = product.stock > 0 && product.stock <= (product.lowStockThreshold || 5);
-  const isOutOfStock = product.stock === 0;
-
   return (
-    <Link 
-      href={`/productos/${product.slug}`} 
-      className="group block bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow duration-200"
-    >
-      {/* Image Container */}
-      <div className="relative aspect-square bg-gray-50 overflow-hidden">
-        {imageUrl ? (
-          <Image
-            src={imageUrl}
-            alt={product.name}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gray-100">
-            <span className="text-gray-400 text-sm">Sin imagen</span>
-          </div>
-        )}
-
-        {/* Badges */}
-        <div className="absolute top-3 left-3 flex flex-col gap-2">
-          {product.isNew && (
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold text-white" style={{ backgroundColor: '#003d7a' }}>
-              Nuevo
-            </span>
+    <motion.div whileHover={{ y: -5 }} className="h-full">
+      <Link 
+        href={`/productos/${product.slug}`} 
+        className="group flex flex-col h-full bg-white rounded-[2.5rem] border border-gray-100 hover:shadow-xl transition-all duration-300 overflow-hidden"
+      >
+        <div className="relative aspect-square bg-[#FBFBFB] flex items-center justify-center p-10">
+          {imageUrl ? (
+            <Image src={imageUrl} alt={product.name} fill className="object-contain p-8 group-hover:scale-105 transition-transform duration-500" />
+          ) : (
+            <span className="text-gray-300 text-xs italic">Imagen no disponible</span>
           )}
           {showDiscount && (
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-red-600 text-white">
-              -{discount}%
-            </span>
-          )}
-          {isOutOfStock && (
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-900 text-white">
-              Sin Stock
-            </span>
-          )}
-          {isLowStock && !isOutOfStock && (
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-600 text-white">
-              Últimas unidades
-            </span>
+            <div className="absolute top-6 left-6 bg-red-600 text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm">
+              -{discount}% OFF
+            </div>
           )}
         </div>
-      </div>
 
-      {/* Content */}
-      <div className="p-4">
-        {/* Category */}
-        {typeof product.category === 'object' && product.category?.name && (
-          <span className="inline-block text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#003d7a' }}>
-            {product.category.name}
-          </span>
-        )}
-
-        {/* Title */}
-        <h3 className="font-semibold text-base text-gray-900 mb-2 line-clamp-2 transition-colors" onMouseEnter={(e) => e.currentTarget.style.color = '#003d7a'} onMouseLeave={(e) => e.currentTarget.style.color = '#111827'}>
-          {product.name}
-        </h3>
-
-        {/* Description */}
-        {product.shortDescription && (
-          <p className="text-sm text-gray-600 mb-3 line-clamp-2">
-            {product.shortDescription}
-          </p>
-        )}
-
-        {/* Brand/Marca */}
-        <div className="text-sm text-gray-600 mb-3">
-          <span className="font-medium">Marca:</span> {typeof product.category === 'object' && product.category?.name ? product.category.name : 'ZENITY'}
-        </div>
-        <div className="text-sm text-gray-600 mb-3">
-          <span className="font-medium">Modelo:</span> {product.sku || product.slug}
-        </div>
-
-        {/* Price */}
-        <div className="mb-4 flex items-baseline gap-2">
-          {showDiscount && product.originalPrice && (
-            <span className="text-sm text-gray-400 line-through">
-              {formatPrice(product.originalPrice)}
+        <div className="p-8 flex flex-col flex-grow text-left">
+          <div className="mb-4">
+            <span className="text-[12px] font-bold text-blue-600 uppercase tracking-widest">
+              {typeof product.category === 'object' ? product.category?.name : 'Hardware'}
             </span>
-          )}
-          <span className="text-xl font-bold text-gray-900">
-            {formatPrice(product.price)}
-          </span>
-        </div>
+          </div>
+          <h3 className="text-xl font-bold text-[#003d7a] mb-2 line-clamp-2 leading-tight">{product.name}</h3>
+          <div className="mb-4">
+            <span className="text-[11px] text-gray-400 font-bold uppercase tracking-wider">SKU: {product.sku || 'N/A'}</span>
+          </div>
+          <p className="text-[14px] text-gray-500 mb-8 line-clamp-2 font-light leading-relaxed">{product.shortDescription}</p>
 
-        {/* Ver ficha tecnica link */}
-        <div className="text-sm font-medium" style={{ color: '#003d7a' }} onMouseEnter={(e) => e.currentTarget.style.color = '#002a5c'} onMouseLeave={(e) => e.currentTarget.style.color = '#003d7a'}>
-          Ver ficha tecnica
+          <div className="mt-auto">
+            <div className="flex items-baseline gap-2 mb-8">
+              <span className="text-3xl font-bold text-[#003d7a]">{formatPrice(product.price)}</span>
+              <span className="text-[11px] text-gray-400 font-bold uppercase tracking-widest">Final</span>
+            </div>
+            
+            {/* BOTÓN CORREGIDO: En un solo nivel */}
+            <div className="w-full bg-gradient-to-r from-[#003d7a] to-[#1e40af] text-white py-3.5 px-4 rounded-full text-[13px] font-bold flex items-center justify-center gap-2 group-hover:brightness-110 transition-all duration-300 shadow-md whitespace-nowrap">
+              <span>Ver especificaciones</span>
+              <svg className="w-4 h-4 flex-shrink-0 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </motion.div>
   );
 }
