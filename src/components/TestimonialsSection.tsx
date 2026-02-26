@@ -28,7 +28,8 @@ export default async function TestimonialsSection() {
                   </svg>
                 ))}
               </div>
-              <p className="text-gray-600 mb-6 leading-relaxed italic">"{testimonial.content}"</p>
+              {/* CORRECCIÓN: Usamos &quot; para las comillas de los testimonios */}
+              <p className="text-gray-600 mb-6 leading-relaxed italic">&quot;{testimonial.content}&quot;</p>
               <div className="border-t border-gray-200 pt-4">
                 <div className="font-bold text-[#003d7a]">{testimonial.name}</div>
                 <div className="text-sm text-gray-500 mt-1">{testimonial.position}</div>
