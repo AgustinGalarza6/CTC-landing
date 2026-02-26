@@ -19,7 +19,6 @@ const services = [
     title: "Sistemas Informáticos",
     description: "Implementación y optimización de sistemas tecnológicos para mejorar la continuidad y eficiencia operativa de su negocio.",
     bullets: ["Integraciones entre plataformas", "Optimización operativa", "Migración y estandarización"],
-    // Se mantiene la tilde exacta de tu captura
     image: "/Images-Services/Sistemas Informáticos.jpg",
   },
   {
@@ -28,7 +27,7 @@ const services = [
     title: "ERP / Software de Gestión",
     description: "Soluciones de gestión orientadas a optimizar procesos críticos y centralizar información estratégica de manera eficiente.",
     bullets: ["Implementación y parametrización", "Integraciones y automatización", "Soporte y mantenimiento"],
-    // CORRECCIÓN: Se agregaron los DOS ESPACIOS exactos entre ERP y Software como muestra tu captura
+    // Se respetan los DOS ESPACIOS de tu captura de archivos
     image: "/Images-Services/ERP  Software de Gestión.jpg",
   },
   {
@@ -45,7 +44,6 @@ const services = [
     title: "Soporte Técnico",
     description: "Asistencia técnica profesional constante para garantizar la continuidad operativa total y una respuesta eficiente ante cualquier incidente.",
     bullets: ["Soporte remoto y on-site", "Mesa de ayuda técnica", "Mantenimiento preventivo"],
-    // Se mantiene la tilde exacta de tu captura
     image: "/Images-Services/Soporte Técnico.jpg",
   },
   {
@@ -54,7 +52,6 @@ const services = [
     title: "Servicios Tecnológicos",
     description: "Servicios integrales diseñados para acompañar decisiones tecnológicas estratégicas y proyectos de alta escalabilidad futura.",
     bullets: ["Consultoría IT", "Proyectos a medida", "Optimización de infraestructura"],
-    // CORRECCIÓN: Nombre exacto según tu captura
     image: "/Images-Services/Servicios Tecnológicos para Empresas.jpg",
   },
 ];
@@ -86,7 +83,8 @@ export default function ServicesSection() {
             >
               <div className="relative h-60 w-full rounded-[2rem] overflow-hidden mb-6 flex-shrink-0 bg-gray-100">
                 <Image 
-                  src={service.image} 
+                  // CORRECCIÓN CLAVE: encodeURI asegura que los espacios y tildes sean válidos en producción
+                  src={encodeURI(service.image)} 
                   alt={service.title} 
                   fill 
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
