@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 const clients = [
   { name: "Cliente 1", logo: "/clients/client-1.png" },
@@ -13,68 +13,56 @@ const clients = [
 ];
 
 export default function ClientsSlider() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    let scrollAmount = 0;
-    const scrollSpeed = 0.6;
-
-    const scroll = () => {
-      scrollAmount += scrollSpeed;
-      if (scrollContainer.scrollWidth && scrollAmount >= scrollContainer.scrollWidth / 2) {
-        scrollAmount = 0;
-      }
-      scrollContainer.scrollLeft = scrollAmount;
-    };
-
-    const intervalId = setInterval(scroll, 20);
-    return () => clearInterval(intervalId);
-  }, []);
-
-  const duplicatedClients = [...clients, ...clients, ...clients];
+  // Duplicamos la lista para crear el efecto de bucle infinito sin saltos
+  const duplicatedClients = [...clients, ...clients];
 
   return (
-    <section className="py-10 md:py-14 bg-[#003d7a]">
-      <div className="max-w-[1400px] mx-auto px-6">
-        {/* Usamos items-center para centrar el contenido verticalmente en el flex-col (móvil) */}
-        <div className="flex flex-col md:flex-row items-center md:items-center gap-8 md:gap-12">
+    <section className="py-10 md:py-16 bg-[#003d7a] overflow-hidden">
+      <div className="container-custom mx-auto px-6">
+        <div className="flex flex-col items-center gap-10 md:gap-14">
           
-          {/* w-full y text-center centran el texto en móvil; md:w-auto y md:text-left lo devuelven a su sitio en PC */}
-          <div className="flex-shrink-0 w-full md:w-auto text-center md:text-left">
+          {/* TÍTULO: Estilo Sagace y Centrado Absoluto */}
+          <div className="w-full text-center">
             <h3 className="text-2xl md:text-3xl font-normal text-white leading-tight">
-              Confían en<br className="hidden md:block" /> nosotros:
+              Confían en <span className="font-bold">nosotros:</span>
             </h3>
           </div>
 
-          <div className="w-full relative overflow-hidden">
-            {/* Gradiente fade lateral */}
-            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#003d7a] to-transparent z-10 pointer-events-none"></div>
+          {/* CONTENEDOR BOX: Aquí limitamos el ancho para que no se pase del formato */}
+          <div className="w-full max-w-[1200px] relative overflow-hidden">
+            {/* Gradientes laterales para suavizar el flujo de logos dentro del Box */}
+            <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-[#003d7a] to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-[#003d7a] to-transparent z-10 pointer-events-none"></div>
             
-            <div
-              ref={scrollRef}
-              className="flex gap-10 md:gap-16 overflow-x-hidden"
-              style={{ scrollBehavior: "auto" }}
+            {/* Contenedor Animado con Framer Motion */}
+            <motion.div
+              className="flex items-center gap-12 md:gap-24"
+              animate={{
+                x: ["0%", "-50%"], 
+              }}
+              transition={{
+                duration: 25, 
+                ease: "linear",
+                repeat: Infinity,
+              }}
             >
               {duplicatedClients.map((client, index) => (
                 <div
                   key={`${client.name}-${index}`}
-                  className="flex-shrink-0 flex items-center justify-center w-32 md:w-40 h-16 md:h-20"
+                  className="flex-shrink-0 flex items-center justify-center"
                 >
-                  <div className="relative w-28 h-12 md:w-36 md:h-16">
+                  <div className="relative w-32 h-12 md:w-40 md:h-16">
                     <Image
                       src={client.logo}
                       alt={client.name}
                       fill
-                      className="object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
-                      sizes="144px"
+                      className="object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity duration-300"
+                      sizes="(max-width: 768px) 128px, 160px"
                     />
                   </div>
                 </div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

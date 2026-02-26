@@ -1,29 +1,36 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function WhatsAppButton() {
   const [isVisible, setIsVisible] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsVisible(window.scrollY > 300);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5491138923268";
-  const message = encodeURIComponent("Hola! Me gustaría obtener más información sobre sus servicios.");
+  const whatsappNumber = "5491138923268";
+  
+  // Lógica de mensaje dinámico
+  let message = "Hola! Me gustaría obtener más información sobre sus servicios.";
+  if (pathname.includes("/servicios/")) {
+    const serviceName = pathname.split("/").pop()?.replace(/-/g, " ");
+    message = `Hola! Me interesa recibir asesoramiento sobre el servicio de ${serviceName}.`;
+  }
 
   return (
     <a
-      href={`https://wa.me/${whatsappNumber}?text=${message}`}
+      href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`}
       target="_blank"
       rel="noopener noreferrer"
-      className={`fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition-all duration-300 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
+      className={`fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full p-4 shadow-2xl transition-all duration-300 transform ${
+        isVisible ? "scale-100 translate-y-0" : "scale-0 translate-y-10 pointer-events-none"
       }`}
       aria-label="Contactar por WhatsApp"
     >
