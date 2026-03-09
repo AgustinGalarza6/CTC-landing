@@ -9,6 +9,7 @@ import sharp from "sharp";
 import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
 import { Categories } from "./collections/Categories";
+import { Brands } from "./collections/Brands";
 import { Products } from "./collections/Products";
 import { Orders } from "./collections/Orders";
 
@@ -44,7 +45,7 @@ export default buildConfig({
     },
   },
 
-  collections: [Users, Media, Categories, Products, Orders],
+  collections: [Users, Media, Categories, Brands, Products, Orders],
   globals: [
     HeroSection,
     Services,

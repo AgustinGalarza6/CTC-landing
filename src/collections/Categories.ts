@@ -76,6 +76,43 @@ export const Categories: CollectionConfig = {
       label: "Descripción",
     },
     {
+      name: "subcategories",
+      type: "array",
+      label: "Subcategorías",
+      admin: {
+        description: "Subcategorías de esta categoría (opcional)",
+      },
+      fields: [
+        {
+          name: "name",
+          type: "text",
+          required: true,
+          label: "Nombre de Subcategoría",
+        },
+        {
+          name: "slug",
+          type: "text",
+          required: true,
+          label: "Slug",
+          hooks: {
+            beforeValidate: [
+              ({ value, data }) => {
+                if (!value && data?.name) {
+                  return data.name
+                    .toLowerCase()
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .replace(/[^a-z0-9]+/g, "-")
+                    .replace(/(^-|-$)/g, "");
+                }
+                return value;
+              },
+            ],
+          },
+        },
+      ],
+    },
+    {
       name: "order",
       type: "number",
       label: "Orden de visualización",

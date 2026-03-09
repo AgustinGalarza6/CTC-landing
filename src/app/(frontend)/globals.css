@@ -78,3 +78,14 @@
     @apply w-1.5 h-1.5 rounded-full bg-[var(--ctc-navy)];
   }
 }
+
+/* Hero slider progress bar */
+@keyframes heroProgress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+.hero-progress-bar {
+  background: linear-gradient(to right, #7C3AED, #06B6D4);
+  animation: heroProgress var(--slide-duration, 5s) linear forwards;
+}

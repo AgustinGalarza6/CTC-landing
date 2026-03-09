@@ -7,6 +7,8 @@ import FeaturedProductsSection from "@/components/FeaturedProductsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+// Importación del nuevo configurador de desarrollo web
+import WebConfigurator from "@/components/WebConfigurator";
 import { getFeaturedProducts, getCategories } from "@/lib/payload";
 
 // Forzar renderizado dinámico hasta que se carguen productos en la DB
@@ -38,6 +40,11 @@ export default async function Home() {
 
         {/* Services Section */}
         <ServicesSection />
+
+        {/* Desarrollo Web Configurator (Nueva sección agregada) */}
+        <section id="desarrollo-web" className="py-10 bg-[#FDFDFD]">
+          <WebConfigurator />
+        </section>
 
         {/* Featured Products Section */}
         <FeaturedProductsSection products={products} categories={categories} />

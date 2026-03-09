@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ProductsGrid from "@/components/ecommerce/ProductsGrid";
 import CategoryFilter from "@/components/ecommerce/CategoryFilter";
-import { getProducts, getCategories } from "@/lib/payload";
+import { getProducts, getCategories, getBrands } from "@/lib/payload";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -16,9 +16,10 @@ export const metadata = {
 };
 
 export default async function ProductosPage() {
-  const [products, categories] = await Promise.all([
+  const [products, categories, brands] = await Promise.all([
     getProducts(),
     getCategories(),
+    getBrands(),
   ]);
 
   return (
@@ -58,7 +59,7 @@ export default async function ProductosPage() {
                 {/* Sidebar - Category Filter */}
                 <aside className="lg:w-80 flex-shrink-0">
                   <div className="sticky top-32">
-                    <CategoryFilter categories={categories} />
+                    <CategoryFilter categories={categories} brands={brands} />
                   </div>
                 </aside>
 

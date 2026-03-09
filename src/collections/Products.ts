@@ -135,6 +135,16 @@ export const Products: CollectionConfig = {
         position: "sidebar",
       },
     },
+    {
+      name: "brand",
+      type: "relationship",
+      relationTo: "brands",
+      label: "Marca",
+      admin: {
+        position: "sidebar",
+        description: "Marca del producto (ADATA, AMD, ASUS, etc.)",
+      },
+    },
 
     // Pricing
     {

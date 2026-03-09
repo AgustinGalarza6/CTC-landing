@@ -2,108 +2,94 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import type { PayloadCategory } from "@/lib/payload";
+import { useSearchParams, useRouter } from "next/navigation";
+import Image from "next/image";
+import { getMediaUrl } from "@/lib/media-utils";
 
-type Props = {
-  categories: PayloadCategory[];
-};
-
-export default function CategoryFilter({ categories }: Props) {
+export default function EnhancedSidebar({ categories, brands = [] }: { categories: any[], brands?: any[] }) {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const currentCategory = searchParams.get("categoria");
-  const [isOpen, setIsOpen] = useState(false); // Estado para el dropdown mobile
+  const currentBrand = searchParams.get("marca");
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Verifica si hay algún filtro activo para mostrar el botón
+  const hasFilters = currentCategory || currentBrand;
 
   return (
-    <div className="flex flex-col gap-6 md:gap-10 text-left">
-      {/* 1. Panel de Filtros */}
-      <div className="bg-white rounded-[2rem] md:rounded-[2.5rem] border border-gray-100 p-6 md:p-10 shadow-sm">
-        {/* BOTÓN DESPLEGABLE (Solo visible en Mobile) */}
-        <button 
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden w-full flex items-center justify-between text-[#003d7a] font-bold uppercase text-xs tracking-widest"
-        >
-          <span>{currentCategory ? `Categoría: ${currentCategory}` : "Explorar Catálogo"}</span>
-          <svg className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-
-        <h3 className="hidden md:block text-2xl font-normal text-[#003d7a] mb-10">
-          Explorar <span className="font-bold">Catálogo</span>
+    <div className="flex flex-col gap-6 text-left">
+      {/* 1. PANEL DE CATEGORÍAS (Card Principal) */}
+      <div className="bg-white rounded-[2rem] border border-gray-100 p-8 shadow-sm">
+        <h3 className="text-xl font-black text-[#003d7a] uppercase tracking-widest mb-8 border-b pb-4">
+          Categorías
         </h3>
 
-        {/* LISTADO: Oculto en mobile a menos que esté abierto, siempre visible en PC */}
-        <nav className={`${isOpen ? "flex" : "hidden"} md:flex flex-col gap-3 mt-6 md:mt-0`}>
-          <Link
-            href="/productos"
-            scroll={false}
-            onClick={() => setIsOpen(false)}
-            className={`flex items-center justify-between px-6 py-4 rounded-2xl text-sm transition-all duration-300 ${
-              !currentCategory 
-                ? "bg-blue-50 text-[#003d7a] font-bold shadow-sm" 
-                : "text-gray-500 hover:bg-gray-50 hover:text-[#003d7a]"
-            }`}
-          >
-            <span>Todo el catálogo</span>
-            {!currentCategory && <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />}
-          </Link>
-
-          {categories
-            .sort((a, b) => (a.order || 999) - (b.order || 999))
-            .map((category) => {
-              const isSelected = currentCategory === category.slug;
-              return (
+        <nav className="flex flex-col gap-2">
+          {categories.sort((a, b) => (a.order || 999) - (b.order || 999)).map((category) => {
+            const isSelected = currentCategory === category.slug;
+            return (
+              <div key={category.id} className="flex flex-col">
                 <Link
-                  key={category.id}
                   href={`/productos?categoria=${category.slug}`}
-                  scroll={false}
-                  onClick={() => setIsOpen(false)}
-                  className={`flex items-center justify-between px-6 py-4 rounded-2xl text-sm transition-all duration-300 ${
+                  className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm transition-all ${
                     isSelected 
-                      ? "bg-blue-50 text-[#003d7a] font-bold shadow-sm" 
+                      ? "bg-blue-50 text-[#003d7a] font-black shadow-sm" 
                       : "text-gray-500 hover:bg-gray-50 hover:text-[#003d7a]"
                   }`}
                 >
                   <span>{category.name}</span>
-                  {isSelected && <div className="w-2 h-2 rounded-full bg-blue-600" />}
                 </Link>
-              );
-            })}
+                
+                {/* SUB-CATEGORÍAS */}
+                {isSelected && category.subcategories && (
+                  <div className="ml-6 mt-1 flex flex-col gap-1 border-l-2 border-blue-100 pl-4 mb-3">
+                    {category.subcategories.map((sub: any) => (
+                      <Link 
+                        key={sub.id}
+                        href={`/productos?categoria=${category.slug}&sub=${sub.slug}`}
+                        className="py-1.5 text-xs font-bold text-gray-400 hover:text-[#003d7a]"
+                      >
+                        {sub.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </nav>
 
-        {currentCategory && (
-          <div className={`mt-8 pt-6 border-t border-gray-100 ${isOpen ? "flex" : "hidden"} md:flex justify-center`}>
-            <Link 
-              href="/productos" 
-              scroll={false}
-              onClick={() => setIsOpen(false)}
-              className="text-[11px] font-black text-[#003d7a] hover:text-blue-800 uppercase tracking-[0.2em] transition-all"
-            >
-              Limpiar selección
-            </Link>
-          </div>
+        {/* BOTÓN LIMPIAR FILTROS */}
+        {hasFilters && (
+          <button 
+            onClick={() => router.push('/productos')}
+            className="w-full mt-6 py-4 bg-gray-50 text-[#003d7a] rounded-2xl font-black uppercase tracking-[0.15em] text-xs hover:bg-gray-100 transition-all flex items-center justify-center gap-2"
+          >
+            Limpiar selección
+          </button>
         )}
       </div>
 
-      {/* 2. Banner Mayorista (Adaptado para mobile) */}
-      <div className="bg-gradient-to-br from-[#003d7a] to-[#005bb5] rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden shadow-xl">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 blur-2xl" />
-        <div className="relative z-10">
-          <p className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-blue-200 mb-4 md:mb-6">
-            Canal Exclusivo
-          </p>
-          <h4 className="text-xl md:text-2xl font-bold mb-4 md:mb-5 leading-tight text-white">
-            Venta <br />
-            <span className="text-blue-100">Catálogo Mayorista</span>
-          </h4>
-          <p className="text-xs md:text-sm text-white/70 font-light mb-8 md:mb-10 leading-relaxed">
-            Ofrecemos bonificaciones especiales y atención personalizada para compras de volumen empresarial.
-          </p>
-          <Link href="/#contacto" className="group inline-flex items-center gap-2 text-sm md:text-base font-bold transition-all text-white">
-            <span className="border-b-2 border-white/30 group-hover:border-white pb-1">Hablar con un asesor</span>
-            <span className="transition-transform group-hover:translate-x-1">→</span>
-          </Link>
+      {/* 3. FILTRO DE MARCAS (Card Secundaria) */}
+      <div className="bg-white rounded-[2rem] border border-gray-100 p-8 shadow-sm">
+        <h3 className="text-xl font-black text-[#003d7a] uppercase tracking-widest mb-8 border-b pb-4">Marcas</h3>
+        <div className="grid grid-cols-3 gap-2">
+          {brands?.map((brand) => (
+            <Link
+              key={brand.id}
+              href={`/productos?marca=${brand.slug}`}
+              className={`group relative aspect-square border-2 rounded-xl flex items-center justify-center p-3 transition-all ${
+                currentBrand === brand.slug ? "border-orange-500 bg-white shadow-sm" : "border-gray-200 bg-white hover:border-gray-300"
+              }`}
+            >
+              <Image 
+                src={getMediaUrl(brand.logo)} 
+                alt={brand.name} 
+                fill 
+                className="object-contain p-2" 
+              />
+            </Link>
+          ))}
         </div>
       </div>
     </div>

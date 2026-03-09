@@ -214,6 +214,32 @@ export async function getCategoryBySlug(slug: string) {
 }
 
 // ============================================
+// BRANDS
+// ============================================
+
+export async function getBrands() {
+  const payload = await getPayloadClient();
+  const { docs } = await payload.find({
+    collection: "brands",
+    sort: "order",
+    limit: 100,
+  });
+  return docs;
+}
+
+export async function getBrandBySlug(slug: string) {
+  const payload = await getPayloadClient();
+  const { docs } = await payload.find({
+    collection: "brands",
+    where: {
+      slug: { equals: slug },
+    },
+    limit: 1,
+  });
+  return docs[0] || null;
+}
+
+// ============================================
 // ORDERS
 // ============================================
 

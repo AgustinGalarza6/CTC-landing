@@ -1,4 +1,21 @@
+'use client';
+
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const SLIDE_DURATION = 8000; // ms
+
+const slides = [
+  {
+    src: "/background/7.png",
+    alt: "CTC Sistemas - La tecnología de tu empresa a otro nivel",
+  },
+  {
+    src: "/background/5.png",
+    alt: "CTC Sistemas - Soluciones tecnológicas profesionales",
+  },
+];
 
 export default function HeroSection() {
   const benefits = [
@@ -7,26 +24,77 @@ export default function HeroSection() {
     "Soluciones adaptadas a cada operación",
   ];
 
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [progressKey, setProgressKey] = useState(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      setProgressKey((prev) => prev + 1);
+    }, SLIDE_DURATION);
+    return () => clearTimeout(timer);
+  }, [currentSlide]);
+
+  const goToSlide = (idx: number) => {
+    if (idx === currentSlide) return;
+    setCurrentSlide(idx);
+    setProgressKey((prev) => prev + 1);
+  };
+
   return (
     <>
       {/* Hero Slider Section */}
-      <section 
-        id="hero" 
+      <section
+        id="hero"
         className="relative w-full pt-20 md:pt-24 overflow-hidden"
       >
-        {/* USAMOS aspect-video (16/9) en móvil para que la imagen NO se recorte.
-           'object-contain' asegura que se vea el 100% de tu diseño (marcos y texto).
-           Le ponemos el fondo azul exacto para que no queden bordes blancos si sobra espacio.
-        */}
-        <div className="relative w-full aspect-video md:aspect-[21/9] lg:aspect-[2.5/1] bg-[#003d7a]">
-          <Image
-            src="/background/Slide-ctc.png"
-            alt="CTC Sistemas - La tecnología de tu empresa a otro nivel"
-            fill
-            className="object-contain" // IMPORTANTE: Mantiene la imagen íntegra
-            priority
-            quality={100}
-          />
+        <div className="relative w-full aspect-video md:aspect-[21/9] lg:aspect-[2.5/1] overflow-hidden">
+
+          {/* Slides */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={slides[currentSlide].src}
+                alt={slides[currentSlide].alt}
+                fill
+                className="object-cover"
+                priority
+                quality={100}
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Barra de progreso con gradiente */}
+          <div className="absolute bottom-0 left-0 w-full h-[3px] bg-black/20 z-10">
+            <div
+              key={progressKey}
+              className="hero-progress-bar h-full"
+              style={{ "--slide-duration": `${SLIDE_DURATION}ms` } as React.CSSProperties}
+            />
+          </div>
+
+          {/* Indicadores de slide */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+            {slides.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => goToSlide(idx)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  idx === currentSlide
+                    ? "bg-white scale-125 shadow-md"
+                    : "bg-white/50 hover:bg-white/75"
+                }`}
+                aria-label={`Ir al slide ${idx + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
