@@ -161,7 +161,7 @@ Una vez recibidos estos datos, nuestro departamento de desarrollo comenzará a e
                                             <h3 className="text-lg font-bold text-gray-900 mb-2">{plan.name}</h3>
                                             <p className="text-xs font-semibold text-[#003d7a] leading-relaxed mb-2">{plan.copy}</p>
                                             <p className="text-[11px] text-gray-600 leading-relaxed mb-3">{plan.description}</p>
-                                            <p className="text-[11px] italic font-semibold text-gray-800 leading-relaxed">"{plan.hook}"</p>
+                                            <p className="text-[11px] italic font-semibold text-gray-800 leading-relaxed">&ldquo;{plan.hook}&rdquo;</p>
                                         </div>
                                         <div className="mb-3 pt-2 border-t border-gray-100">
                                             <div className="flex items-baseline gap-1">
