@@ -44,9 +44,21 @@ export default async function ProductosPage() {
             <h1 className="text-3xl md:text-4xl font-bold text-[#003d7a] mb-2">
               Catálogo de Productos
             </h1>
-            <p className="text-lg text-gray-600">
-              Explora nuestra selección completa de productos tecnológicos
-            </p>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <p className="text-lg text-gray-600">
+                Explora nuestra selección completa de productos tecnológicos
+              </p>
+              <a
+                href="/api/export-catalog"
+                download
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#003d7a] text-white text-sm font-semibold rounded-xl shadow hover:bg-[#002d5a] transition-colors whitespace-nowrap"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v13m0 0l-4-4m4 4l4-4M4 20h16" />
+                </svg>
+                Descargar catálogo (.xlsx)
+              </a>
+            </div>
           </div>
         </section>
 

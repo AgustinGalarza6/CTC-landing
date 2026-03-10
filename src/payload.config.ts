@@ -37,6 +37,9 @@ export default buildConfig({
     meta: {
       titleSuffix: " - CTC Admin",
     },
+    components: {
+      beforeDashboard: ['@/components/admin/ImportCatalogView'],
+    },
   },
 
   upload: {
