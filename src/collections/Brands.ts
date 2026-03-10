@@ -59,7 +59,7 @@ export const Brands: CollectionConfig = {
         name: "logo",
         type: "upload",
         relationTo: "media",
-        required: true,
+        required: false,
         label: "Logo de la Marca",
         admin: {
             description: "Logo oficial de la marca (formato cuadrado preferible)",

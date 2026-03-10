@@ -82,12 +82,16 @@ export default function EnhancedSidebar({ categories, brands = [] }: { categorie
                 currentBrand === brand.slug ? "border-orange-500 bg-white shadow-sm" : "border-gray-200 bg-white hover:border-gray-300"
               }`}
             >
-              <Image 
-                src={getMediaUrl(brand.logo)} 
-                alt={brand.name} 
-                fill 
-                className="object-contain p-2" 
-              />
+              {getMediaUrl(brand.logo) ? (
+                <Image 
+                  src={getMediaUrl(brand.logo)} 
+                  alt={brand.name} 
+                  fill 
+                  className="object-contain p-2" 
+                />
+              ) : (
+                <span className="text-xs font-bold text-gray-500 text-center leading-tight">{brand.name}</span>
+              )}
             </Link>
           ))}
         </div>
