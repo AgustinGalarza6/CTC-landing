@@ -25,7 +25,7 @@ export default function ProductCard({ product, viewMode = "grid" }: { product: a
         <div className="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="max-w-md">
             <span className="text-[10px] font-black text-blue-600 uppercase tracking-widest block mb-1">
-              {product.brand?.name || 'Hardware'}
+              {product.brand?.name || (typeof product.category === 'object' ? (product.category as any)?.name : null) || 'Producto'}
             </span>
             <h3 className="text-sm md:text-lg font-bold text-[#003d7a] uppercase leading-tight line-clamp-1">{product.name}</h3>
             <p className="hidden md:block text-xs text-gray-400 mt-1 line-clamp-1">{product.shortDescription}</p>
@@ -65,7 +65,7 @@ export default function ProductCard({ product, viewMode = "grid" }: { product: a
         <div className="p-8 flex flex-col flex-grow text-left">
           <div className="mb-4">
             <span className="text-[12px] font-bold text-blue-600 uppercase tracking-widest">
-              {product.brand?.name || 'Hardware'}
+              {product.brand?.name || (typeof product.category === 'object' ? (product.category as any)?.name : null) || 'Producto'}
             </span>
           </div>
           <h3 className="text-lg md:text-xl font-bold text-[#003d7a] mb-2 line-clamp-2 leading-tight">{product.name}</h3>

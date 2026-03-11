@@ -22,6 +22,15 @@ export default async function ProductosPage() {
     getBrands(),
   ]);
 
+  // Solo mostrar categorías que tienen al menos un producto
+  const categoriesWithProducts = categories.filter(cat =>
+    products.some(p =>
+      typeof p.category === 'object'
+        ? (p.category as any)?.id === cat.id
+        : p.category === cat.id
+    )
+  );
+
   return (
     <>
       <Navbar />
@@ -71,7 +80,7 @@ export default async function ProductosPage() {
                 {/* Sidebar - Category Filter */}
                 <aside className="lg:w-80 flex-shrink-0">
                   <div className="sticky top-32">
-                    <CategoryFilter categories={categories} brands={brands} />
+                    <CategoryFilter categories={categoriesWithProducts} brands={brands} />
                   </div>
                 </aside>
 
