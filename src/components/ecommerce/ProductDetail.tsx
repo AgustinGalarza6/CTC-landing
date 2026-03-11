@@ -8,6 +8,60 @@ import { formatPrice, hasDiscount, calculateDiscount } from "@/lib/utils";
 import { getMediaUrl } from "@/lib/media-utils";
 import AddToCartButton from "./AddToCartButton";
 
+// ── Lexical rich text renderer ─────────────────────────────────────────────────
+
+type LexicalNode = {
+  type: string;
+  text?: string;
+  format?: number;
+  children?: LexicalNode[];
+  tag?: string;
+  listType?: string;
+  url?: string;
+};
+
+function renderNode(node: LexicalNode, key: number): React.ReactNode {
+  if (node.type === 'text') {
+    let el: React.ReactNode = node.text;
+    // format bitmask: 1=bold, 2=italic, 4=strikethrough, 8=underline, 16=code, 32=subscript, 64=superscript
+    if (node.format && node.format & 16) el = <code key={key} className="bg-gray-100 px-1 rounded text-sm font-mono">{el}</code>;
+    if (node.format && node.format & 4)  el = <s key={key}>{el}</s>;
+    if (node.format && node.format & 8)  el = <u key={key}>{el}</u>;
+    if (node.format && node.format & 2)  el = <em key={key}>{el}</em>;
+    if (node.format && node.format & 1)  el = <strong key={key}>{el}</strong>;
+    return el;
+  }
+  const children = node.children?.map((c, i) => renderNode(c, i));
+  switch (node.type) {
+    case 'root': return <div key={key}>{children}</div>;
+    case 'paragraph': return <p key={key} className="text-gray-700 leading-relaxed text-base mb-4">{children}</p>;
+    case 'heading': return node.tag === 'h1' ? <h1 key={key} className="text-2xl font-bold mb-3">{children}</h1>
+                        : node.tag === 'h2' ? <h2 key={key} className="text-xl font-bold mb-3">{children}</h2>
+                        : node.tag === 'h3' ? <h3 key={key} className="text-lg font-semibold mb-2">{children}</h3>
+                        : <h4 key={key} className="font-semibold mb-2">{children}</h4>;
+    case 'list': return node.listType === 'bullet'
+      ? <ul key={key} className="list-disc list-inside mb-4 space-y-1 text-gray-700">{children}</ul>
+      : <ol key={key} className="list-decimal list-inside mb-4 space-y-1 text-gray-700">{children}</ol>;
+    case 'listitem': return <li key={key}>{children}</li>;
+    case 'link': return <a key={key} href={node.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline hover:text-blue-800">{children}</a>;
+    case 'linebreak': return <br key={key} />;
+    default: return <span key={key}>{children}</span>;
+  }
+}
+
+function LexicalContent({ content, fallback }: { content: unknown; fallback?: string | null }) {
+  if (!content || typeof content !== 'object') {
+    return <p className="text-gray-700 leading-relaxed text-base">{fallback}</p>;
+  }
+  const root = (content as { root?: LexicalNode }).root;
+  if (!root) {
+    return <p className="text-gray-700 leading-relaxed text-base">{fallback}</p>;
+  }
+  return <div>{root.children?.map((node, i) => renderNode(node, i))}</div>;
+}
+
+// ── Component ──────────────────────────────────────────────────────────────────
+
 type Props = {
   product: PayloadProduct;
 };
@@ -177,12 +231,8 @@ export default function ProductDetail({ product }: Props) {
 
           <div className="max-w-4xl mx-auto px-4 md:px-0">
             {activeTab === "descripcion" && (
-              <div className="text-center">
-                <p className="text-gray-700 leading-loose text-base md:text-lg font-light">
-                  {product.description && typeof product.description === 'string' 
-                    ? product.description 
-                    : product.shortDescription}
-                </p>
+              <div>
+                <LexicalContent content={product.description} fallback={product.shortDescription} />
               </div>
             )}
 
@@ -224,8 +274,10 @@ export default function ProductDetail({ product }: Props) {
                         </div>
                       </div>
                       <a
-                        href={typeof download.file === 'string' ? download.file : getMediaUrl(download.file)}
-                        download
+                        href={download.externalUrl || (typeof download.file === 'string' ? download.file : getMediaUrl(download.file))}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        download={!download.externalUrl}
                         className="w-full md:w-auto text-center bg-[#003d7a] text-white px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-800 transition-colors shadow-sm"
                       >
                         Descargar

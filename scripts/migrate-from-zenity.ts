@@ -83,6 +83,17 @@ interface ZenityProductImage {
   image_id: number;
 }
 
+interface ZenityDownload {
+  _order: number;
+  _parent_id: number;
+  id: string;
+  name: string;
+  type: string;
+  external_url: string | null;
+  extension: string | null;
+  size: string | null;
+}
+
 // ── Utilidades ─────────────────────────────────────────────────────────────────
 
 /** Genera slug limpio */
@@ -160,6 +171,7 @@ async function migrate() {
   const zenityTags = zenity.prepare('SELECT * FROM products_tags ORDER BY _parent_id, _order').all() as ZenityTag[];
   const zenityMedia = zenity.prepare('SELECT * FROM media').all() as ZenityMedia[];
   const zenityProductImages = zenity.prepare('SELECT * FROM products_images ORDER BY _parent_id, _order').all() as ZenityProductImage[];
+  const zenityDownloads = zenity.prepare('SELECT * FROM products_downloads ORDER BY _parent_id, _order').all() as ZenityDownload[];
   zenity.close();
 
   console.log(`📦 Encontrados: ${zenityCategories.length} categorías, ${zenityProducts.length} productos, ${zenityMedia.length} archivos media`);
@@ -176,6 +188,9 @@ async function migrate() {
   }, {});
   const imagesByProduct = zenityProductImages.reduce<Record<number, ZenityProductImage[]>>((acc, i) => {
     (acc[i._parent_id] ??= []).push(i); return acc;
+  }, {});
+  const downloadsByProduct = zenityDownloads.reduce<Record<number, ZenityDownload[]>>((acc, d) => {
+    (acc[d._parent_id] ??= []).push(d); return acc;
   }, {});
 
   // Inicializar Payload
@@ -288,6 +303,14 @@ async function migrate() {
       .map(i => mediaIdMap[i.image_id])
       .filter(Boolean)
       .map(id => ({ image: id }));
+    const downloads = (downloadsByProduct[prod.id] || [])
+      .filter(d => d.name && (d.external_url))
+      .map(d => ({
+        name: d.name,
+        type: d.type as 'datasheet' | 'manual' | 'driver' | 'other',
+        externalUrl: d.external_url || undefined,
+        size: d.size || undefined,
+      }));
 
     // Verificar si ya existe
     const existing = await payload.find({
@@ -311,6 +334,7 @@ async function migrate() {
       features: features.length > 0 ? features : undefined,
       tags: tags.length > 0 ? tags : undefined,
       images: images.length > 0 ? images : undefined,
+      downloads: downloads.length > 0 ? downloads : undefined,
       status: 'published' as const,
     };
 

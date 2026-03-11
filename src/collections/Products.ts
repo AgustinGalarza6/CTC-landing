@@ -284,8 +284,16 @@ export const Products: CollectionConfig = {
           name: "file",
           type: "upload",
           relationTo: "media",
-          required: true,
-          label: "Archivo",
+          required: false,
+          label: "Archivo (subido)",
+        },
+        {
+          name: "externalUrl",
+          type: "text",
+          label: "URL Externa (alternativa a archivo subido)",
+          admin: {
+            description: "Usar si el archivo es un enlace externo en lugar de subirlo",
+          },
         },
         {
           name: "size",

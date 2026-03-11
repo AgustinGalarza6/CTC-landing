@@ -21,7 +21,7 @@ export type PayloadProduct = {
   images?: { image: PayloadMedia | string }[];
   features?: { feature: string }[];
   specs?: { label: string; value: string }[];
-  downloads?: { name: string; type: string; file: PayloadMedia | string; size?: string }[];
+  downloads?: { name: string; type: string; file?: PayloadMedia | string; size?: string; externalUrl?: string }[];
   isFeatured?: boolean;
   isNew?: boolean;
   tags?: { tag: string }[];
