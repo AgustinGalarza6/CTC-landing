@@ -532,22 +532,17 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.run(sql`CREATE INDEX IF NOT EXISTS \`site_settings_og_image_idx\` ON \`site_settings\` (\`og_image_id\`);`)
 
   // ── New FK columns in payload_locked_documents_rels ──────────────────────
-  try {
-    await db.run(sql`ALTER TABLE \`payload_locked_documents_rels\` ADD COLUMN \`categories_id\` integer REFERENCES \`categories\`(\`id\`) ON DELETE cascade`)
-    await db.run(sql`CREATE INDEX IF NOT EXISTS \`payload_locked_documents_rels_categories_id_idx\` ON \`payload_locked_documents_rels\` (\`categories_id\`)`)
-  } catch (_) {}
-  try {
-    await db.run(sql`ALTER TABLE \`payload_locked_documents_rels\` ADD COLUMN \`brands_id\` integer REFERENCES \`brands\`(\`id\`) ON DELETE cascade`)
-    await db.run(sql`CREATE INDEX IF NOT EXISTS \`payload_locked_documents_rels_brands_id_idx\` ON \`payload_locked_documents_rels\` (\`brands_id\`)`)
-  } catch (_) {}
-  try {
-    await db.run(sql`ALTER TABLE \`payload_locked_documents_rels\` ADD COLUMN \`products_id\` integer REFERENCES \`products\`(\`id\`) ON DELETE cascade`)
-    await db.run(sql`CREATE INDEX IF NOT EXISTS \`payload_locked_documents_rels_products_id_idx\` ON \`payload_locked_documents_rels\` (\`products_id\`)`)
-  } catch (_) {}
-  try {
-    await db.run(sql`ALTER TABLE \`payload_locked_documents_rels\` ADD COLUMN \`orders_id\` integer REFERENCES \`orders\`(\`id\`) ON DELETE cascade`)
-    await db.run(sql`CREATE INDEX IF NOT EXISTS \`payload_locked_documents_rels_orders_id_idx\` ON \`payload_locked_documents_rels\` (\`orders_id\`)`)
-  } catch (_) {}
+  try { await db.run(sql`ALTER TABLE \`payload_locked_documents_rels\` ADD COLUMN \`categories_id\` integer`) } catch (_) {}
+  try { await db.run(sql`CREATE INDEX IF NOT EXISTS \`payload_locked_documents_rels_categories_id_idx\` ON \`payload_locked_documents_rels\` (\`categories_id\`)`) } catch (_) {}
+
+  try { await db.run(sql`ALTER TABLE \`payload_locked_documents_rels\` ADD COLUMN \`brands_id\` integer`) } catch (_) {}
+  try { await db.run(sql`CREATE INDEX IF NOT EXISTS \`payload_locked_documents_rels_brands_id_idx\` ON \`payload_locked_documents_rels\` (\`brands_id\`)`) } catch (_) {}
+
+  try { await db.run(sql`ALTER TABLE \`payload_locked_documents_rels\` ADD COLUMN \`products_id\` integer`) } catch (_) {}
+  try { await db.run(sql`CREATE INDEX IF NOT EXISTS \`payload_locked_documents_rels_products_id_idx\` ON \`payload_locked_documents_rels\` (\`products_id\`)`) } catch (_) {}
+
+  try { await db.run(sql`ALTER TABLE \`payload_locked_documents_rels\` ADD COLUMN \`orders_id\` integer`) } catch (_) {}
+  try { await db.run(sql`CREATE INDEX IF NOT EXISTS \`payload_locked_documents_rels_orders_id_idx\` ON \`payload_locked_documents_rels\` (\`orders_id\`)`) } catch (_) {}
 }
 
 export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
