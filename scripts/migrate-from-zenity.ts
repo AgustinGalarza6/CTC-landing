@@ -155,7 +155,7 @@ async function migrate() {
 
   // ── 1. Categorías ──────────────────────────────────────────────────────────
   console.log('\n📁 Migrando categorías...');
-  const categoryIdMap: Record<number, string> = {}; // zenity_id → ctc_id
+  const categoryIdMap: Record<number, number> = {}; // zenity_id → ctc_id
 
   for (const cat of zenityCategories) {
     const existing = await payload.find({
@@ -165,7 +165,7 @@ async function migrate() {
     });
 
     if (existing.docs.length > 0) {
-      categoryIdMap[cat.id] = String(existing.docs[0].id);
+      categoryIdMap[cat.id] = existing.docs[0].id as number;
       console.log(`  ⏭  Categoría ya existe: "${cat.name}"`);
     } else {
       const created = await payload.create({
@@ -177,7 +177,7 @@ async function migrate() {
           description: cat.description || '',
         },
       });
-      categoryIdMap[cat.id] = String(created.id);
+      categoryIdMap[cat.id] = created.id as number;
       console.log(`  ✓ Categoría creada: "${cat.name}" (id: ${created.id})`);
     }
   }
