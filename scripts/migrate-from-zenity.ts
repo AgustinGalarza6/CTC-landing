@@ -8,7 +8,7 @@
  * e inserta los registros en CTC usando la API local de Payload.
  */
 
-import { DatabaseSync } from 'node:sqlite';
+import Database from 'better-sqlite3';
 import { getPayload } from 'payload';
 import config from '../src/payload.config.js';
 
@@ -123,7 +123,7 @@ function parseDescription(raw: string | null): object {
 
 async function migrate() {
   console.log(`\n🔗 Conectando a Zenity DB: ${ZENITY_DB_PATH}`);
-  const zenity = new DatabaseSync(ZENITY_DB_PATH!, { open: true });
+  const zenity = new Database(ZENITY_DB_PATH!, { readonly: true });
 
   // Leer datos de Zenity
   const zenityCategories = zenity.prepare('SELECT * FROM categories ORDER BY "order"').all() as ZenityCategory[];
