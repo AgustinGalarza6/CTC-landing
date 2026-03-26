@@ -7,19 +7,27 @@ import FloatingCartButton from "./FloatingCartButton";
 
 export default function ProductsGrid({ products }: { products: any[] }) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid"); // Nueva funcionalidad
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const searchParams = useSearchParams();
-  const currentCategory = searchParams.get("categoria");
-  const currentBrand = searchParams.get("marca");
+
+  const filters = {
+    category: searchParams.get("categoria"),
+    brand: searchParams.get("marca"),
+  };
+
+  function filterProducts(items: any[], { category, brand }: { category: string | null; brand: string | null }) {
+    return items.filter((p) => {
+      const catMatch = !category || (typeof p.category === "object" ? p.category?.slug === category : p.category === category);
+      const brandMatch = !brand || p.brand?.slug === brand;
+      return catMatch && brandMatch;
+    });
+  }
 
   const filteredProducts = useMemo(() => {
-    return products.filter((p) => {
-      const catMatch = !currentCategory || (typeof p.category === 'object' ? p.category.slug === currentCategory : p.category === currentCategory);
-      const brandMatch = !currentBrand || (p.brand?.slug === currentBrand);
-      const searchMatch = p.name.toLowerCase().includes(searchQuery.toLowerCase());
-      return catMatch && brandMatch && searchMatch;
-    });
-  }, [products, searchQuery, currentCategory, currentBrand]);
+    const byFilters = filterProducts(products, filters);
+    if (!searchQuery) return byFilters;
+    return byFilters.filter((p) => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
+  }, [products, searchQuery, filters.category, filters.brand]);
 
   return (
     <div className="relative w-full max-w-[1400px] mx-auto">

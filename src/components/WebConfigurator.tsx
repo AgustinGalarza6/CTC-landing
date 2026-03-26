@@ -1,18 +1,51 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
+import { Check, Globe, Server, ShieldCheck, ArrowRight } from "lucide-react";
 import { WEB_PLANS, ADD_ONS, CURRENCY } from "@/constants/web-plans";
 
 const WHATSAPP_NUMBER = "5491138923268";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
-
 const FALLBACK_EXCHANGE_RATE = 1000;
+
+const PLAN_TIER: Record<string, string> = {
+    silver: "Plan Base",
+    gold: "Crecimiento",
+    platinum: "Empresarial",
+};
+
+const ADDON_ICON: Record<string, React.ReactNode> = {
+    domain: <Globe className="w-4 h-4" />,
+    hosting: <Server className="w-4 h-4" />,
+    ssl: <ShieldCheck className="w-4 h-4" />,
+};
+
+function ToggleSwitch({ checked, onChange }: { checked: boolean; onChange: () => void }) {
+    return (
+        <button
+            type="button"
+            role="switch"
+            aria-checked={checked}
+            onClick={onChange}
+            className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 focus:outline-none ${
+                checked ? "bg-[#003d7a]" : "bg-gray-200"
+            }`}
+        >
+            <span
+                className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow transition duration-200 ${
+                    checked ? "translate-x-5" : "translate-x-0"
+                }`}
+            />
+        </button>
+    );
+}
 
 interface BnaRateResponse {
     buy: number;
     sell: number;
     updateTime: string | null;
 }
+
 
 export default function WebConfigurator() {
     const [selectedPlan, setSelectedPlan] = useState<string>("silver");
@@ -28,7 +61,7 @@ export default function WebConfigurator() {
                     const data = (await response.json()) as BnaRateResponse;
                     if (data.sell) setExchangeRate(data.sell);
                 }
-            } catch (error) {
+            } catch {
                 console.log("No se pudo obtener el tipo de cambio BNA actual");
             } finally {
                 setLoadingExchange(false);
@@ -39,41 +72,36 @@ export default function WebConfigurator() {
         return () => window.clearInterval(intervalId);
     }, []);
 
-    const basePlanPrice = useMemo(() => {
-        const plan = WEB_PLANS.find((p) => p.id === selectedPlan);
-        return plan?.price || 0;
-    }, [selectedPlan]);
+    const basePlanPrice = useMemo(
+        () => WEB_PLANS.find((p) => p.id === selectedPlan)?.price ?? 0,
+        [selectedPlan]
+    );
 
-    const addOnsTotal = useMemo(() => {
-        return selectedAddOns.reduce((total, addOnId) => {
-            const addOn = ADD_ONS.find((a) => a.id === addOnId);
-            return total + (addOn?.price || 0);
-        }, 0);
-    }, [selectedAddOns]);
+    const addOnsTotal = useMemo(
+        () => selectedAddOns.reduce((acc, id) => acc + (ADD_ONS.find((a) => a.id === id)?.price ?? 0), 0),
+        [selectedAddOns]
+    );
 
     const totalPrice = basePlanPrice + addOnsTotal;
 
-    const toggleAddOn = (addOnId: string) => {
-        setSelectedAddOns((prev) =>
-            prev.includes(addOnId) ? prev.filter((id) => id !== addOnId) : [...prev, addOnId]
-        );
-    };
+    const toggleAddOn = (id: string) =>
+        setSelectedAddOns((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
 
     const currentPlan = WEB_PLANS.find((p) => p.id === selectedPlan);
 
     const handleFinishOrder = () => {
-        const planName = currentPlan?.name || "Plan no seleccionado";
+        const planName = currentPlan?.name ?? "Plan no seleccionado";
+        const addOnsDetail = selectedAddOns
+            .map((id) => {
+                const a = ADD_ONS.find((x) => x.id === id);
+                return `   • ${a?.name}: +${CURRENCY}${a?.price.toLocaleString("en-US")}`;
+            })
+            .join("\n");
         const addOnsNames = selectedAddOns
             .map((id) => ADD_ONS.find((a) => a.id === id)?.name)
             .filter(Boolean)
             .join(", ");
 
-        const addOnsDetail = selectedAddOns.map((id) => {
-            const addon = ADD_ONS.find((a) => a.id === id);
-            return `   • ${addon?.name}: +${CURRENCY}${addon?.price.toLocaleString("en-US")}`;
-        }).join("\n");
-
-        // NUEVO MENSAJE PROFESIONAL (Sin mención a IA)
         const message = `*SOLICITUD DE DESARROLLO WEB - CTC SISTEMAS*
 
 ═══════════════════════════════════════════
@@ -127,152 +155,198 @@ Por favor, completá los siguientes campos para que nuestro equipo comience con 
 
 Una vez recibidos estos datos, nuestro departamento de desarrollo comenzará a estructurar tu sitio web a medida.`;
 
-        const encodedMessage = encodeURIComponent(message);
-        window.open(`${WHATSAPP_URL}?text=${encodedMessage}`, "_blank");
+        window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(message)}`, "_blank");
     };
 
     return (
-        <div className="py-16 px-4">
+        <div
+            id="desarrollo-web"
+            className="py-24 px-4 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: "url('/background/cold, smooth & tasty..png')" }}
+        >
             <div className="max-w-7xl mx-auto">
-                <div className="mb-12 text-center">
-                    <h2 className="text-3xl md:text-5xl font-normal leading-tight mb-6" style={{ color: '#003d7a' }}>
-                        ¿Tu web anda lenta o su diseño quedó en el tiempo? <br />
-                        <span className="font-bold">Tenemos la solución para vos</span>
+
+                {/* Header */}
+                <div className="mb-16 max-w-2xl">
+                    <h2 className="text-4xl md:text-5xl font-normal leading-tight" style={{ color: "#003d7a" }}>
+                        ¿Tu web anda lenta o su diseño quedó en el tiempo?<br />
+                        <span className="font-extrabold">Tenemos la solución para vos</span>
                     </h2>
-                    <p className="text-gray-700 max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
-                        En CTC Sistemas transformamos tu presencia digital con infraestructura de alto rendimiento y diseño de vanguardia. Personalizá tu plan a medida y recibí un presupuesto técnico al instante para llevar tu empresa al siguiente nivel.
-                    </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div className="lg:col-span-2 space-y-8">
-                        <div>
-                            <h2 className="text-2xl font-bold text-gray-900 mb-8">Selecciona tu Plan Base</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                {WEB_PLANS.map((plan) => (
+                <div className="flex flex-col lg:flex-row gap-12 items-start">
+
+                    {/* Columna izquierda */}
+                    <div className="lg:w-2/3 space-y-8">
+
+                        {/* Plan cards — blancas por defecto, oscuras al seleccionar */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {WEB_PLANS.map((plan) => {
+                                const isSelected = selectedPlan === plan.id;
+                                const isPopular = plan.id === "gold";
+                                return (
                                     <button
                                         key={plan.id}
                                         onClick={() => setSelectedPlan(plan.id)}
-                                        className={`p-6 rounded-[2.5rem] transition-all duration-300 text-left border-2 flex flex-col ${
-                                            selectedPlan === plan.id ? "border-[#003d7a] bg-white shadow-xl scale-105" : "border-gray-200 bg-white hover:border-[#003d7a] hover:shadow-lg"
+                                        className={`relative flex flex-col text-left rounded-[2rem] p-8 transition-all duration-200 border-2 ${
+                                            isSelected
+                                                ? "border-transparent shadow-2xl scale-[1.03] z-10"
+                                                : "bg-white border-transparent hover:border-[#003d7a]/10 shadow-sm"
                                         }`}
+                                        style={isSelected ? { background: "#003d7a", boxShadow: "0 20px 60px rgba(0,61,122,0.25)" } : {}}
                                     >
-                                        <div className="mb-4">
-                                            <h3 className="text-lg font-bold text-gray-900 mb-2">{plan.name}</h3>
-                                            <p className="text-xs font-semibold text-[#003d7a] leading-relaxed mb-2">{plan.copy}</p>
-                                            <p className="text-[11px] text-gray-600 leading-relaxed mb-3">{plan.description}</p>
-                                            <p className="text-[11px] italic font-semibold text-gray-800 leading-relaxed">&ldquo;{plan.hook}&rdquo;</p>
+                                        {isPopular && (
+                                            <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest whitespace-nowrap shadow-lg">
+                                                MÁS POPULAR
+                                            </span>
+                                        )}
+
+                                        <p
+                                            className="text-[10px] font-extrabold uppercase tracking-[0.2em] mb-3"
+                                            style={{ color: isSelected ? "rgba(255,255,255,0.6)" : "#4b7ab5" }}
+                                        >
+                                            {PLAN_TIER[plan.id]}
+                                        </p>
+
+                                        <h3
+                                            className="text-2xl font-black mb-3 leading-none"
+                                            style={{ color: isSelected ? "#ffffff" : "#003d7a" }}
+                                        >
+                                            {plan.name.replace("WEB PLAN ", "").replace(" + PIL CLOUD", "")}
+                                        </h3>
+
+                                        <div className="flex items-baseline gap-1 mt-8 mb-8">
+                                            <span
+                                                className="text-4xl font-bold leading-none"
+                                                style={{ color: isSelected ? "#ffffff" : "#003d7a" }}
+                                            >
+                                                ${plan.price}
+                                            </span>
+                                            <span
+                                                className="text-lg ml-1"
+                                                style={{ color: isSelected ? "rgba(255,255,255,0.55)" : "rgba(0,61,122,0.5)" }}
+                                            >
+                                                USD
+                                            </span>
                                         </div>
-                                        <div className="mb-3 pt-2 border-t border-gray-100">
-                                            <div className="flex items-baseline gap-1">
-                                                <span className="text-2xl font-bold text-[#003d7a]">{CURRENCY}</span>
-                                                <span className="text-2xl font-bold text-[#003d7a]">{plan.price.toLocaleString("es-AR")}</span>
-                                            </div>
-                                        </div>
-                                        <ul className="space-y-2">
-                                            {plan.features.map((feature, idx) => (
-                                                <li key={idx} className="text-xs text-gray-700 flex items-start">
-                                                    <span className="mr-2 text-[#003d7a] font-bold flex-shrink-0">✓</span>
-                                                    <span>{feature}</span>
+
+                                        <ul className="space-y-3 mt-auto">
+                                            {plan.features.slice(0, 3).map((f, i) => (
+                                                <li
+                                                    key={i}
+                                                    className="flex items-center gap-2 text-xs"
+                                                    style={{ color: isSelected ? "rgba(255,255,255,0.75)" : "#5a7a9c" }}
+                                                >
+                                                    <Check className="w-3.5 h-3.5 flex-shrink-0" style={{ color: isSelected ? "rgba(255,255,255,0.8)" : "#003d7a" }} />
+                                                    {f}
                                                 </li>
                                             ))}
                                         </ul>
                                     </button>
-                                ))}
-                            </div>
+                                );
+                            })}
                         </div>
 
-                        <div>
-                            <h2 className="text-2xl font-bold text-gray-900 mb-8">Servicios Adicionales</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                {ADD_ONS.map((addon) => (
-                                    <label
-                                        key={addon.id}
-                                        className="flex flex-col p-5 rounded-2xl border-2 border-gray-200 hover:border-[#003d7a] cursor-pointer transition-all bg-white hover:bg-blue-50 group"
-                                    >
-                                        <div className="flex items-start gap-3 mb-3">
-                                            <input
-                                                type="checkbox"
-                                                checked={selectedAddOns.includes(addon.id)}
-                                                onChange={() => toggleAddOn(addon.id)}
-                                                className="w-5 h-5 text-[#003d7a] rounded focus:ring-2 focus:ring-[#003d7a] accent-[#003d7a] flex-shrink-0 mt-1"
-                                            />
-                                            <div className="flex-1">
-                                                <h3 className="font-bold text-gray-900 text-sm">{addon.name}</h3>
-                                                <p className="text-xs text-gray-600 mt-1">{addon.salesCopy}</p>
+                        {/* Add-ons */}
+                        <div className="bg-white rounded-[2rem] p-10 shadow-sm border border-gray-100">
+                            <h3 className="text-xl font-bold mb-8" style={{ color: "#003d7a" }}>
+                                Servicios Adicionales
+                            </h3>
+                            <div className="space-y-1">
+                                {ADD_ONS.map((addon) => {
+                                    const isOn = selectedAddOns.includes(addon.id);
+                                    return (
+                                        <div
+                                            key={addon.id}
+                                            className="flex items-center justify-between py-6 border-b border-gray-100 last:border-0"
+                                        >
+                                            <div className="flex items-center gap-4">
+                                                <div
+                                                    className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
+                                                    style={{ background: "#f0f5fb" }}
+                                                >
+                                                    <span style={{ color: "#003d7a" }}>{ADDON_ICON[addon.id]}</span>
+                                                </div>
+                                                <div>
+                                                    <p className="font-semibold text-sm" style={{ color: "#003d7a" }}>{addon.name}</p>
+                                                    <p className="text-xs mt-0.5" style={{ color: "#8fafc8" }}>{addon.description}</p>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center gap-6">
+                                                <span className="font-bold text-sm whitespace-nowrap" style={{ color: "#003d7a" }}>
+                                                    ${addon.price.toLocaleString("en-US")} USD
+                                                </span>
+                                                <ToggleSwitch checked={isOn} onChange={() => toggleAddOn(addon.id)} />
                                             </div>
                                         </div>
-                                        <div className="text-base font-bold text-[#003d7a] text-right mt-2">
-                                            +{CURRENCY}{addon.price.toLocaleString("es-AR")}
-                                        </div>
-                                    </label>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
                     </div>
 
-                    <div className="lg:col-span-1">
-                        <div className="sticky top-8 text-white rounded-3xl p-8 shadow-2xl border border-white/10" style={{background: "linear-gradient(145deg, rgba(0,61,122,0.92) 0%, rgba(0,30,70,0.97) 60%, rgba(0,15,40,1) 100%)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)"}}>
-                            <h3 className="text-xl font-bold mb-8 text-center uppercase tracking-widest text-white">Resumen</h3>
-                            <div className="mb-6 pb-6 border-b border-blue-400/30">
-                                <div className="flex justify-between items-center mb-3">
-                                    <span className="text-blue-100 text-xs font-semibold uppercase tracking-wider">Plan Base:</span>
-                                    <span className="font-bold text-sm">{currentPlan?.name || "Selecciona un plan"}</span>
+                    {/* Sidebar — gradiente azul oscuro */}
+                    <div className="lg:w-1/3 lg:sticky lg:top-8">
+                        <div
+                            className="rounded-[2.5rem] p-10 shadow-2xl"
+                            style={{ background: "linear-gradient(135deg, #003d7a 0%, #0f2d54 100%)" }}
+                        >
+                            <h3 className="text-2xl font-bold mb-8" style={{ color: "#ffffff" }}>
+                                Resumen del Pedido
+                            </h3>
+
+                            <div className="space-y-5 mb-10 pb-10 border-b border-white/10">
+                                {/* Plan row */}
+                                <div className="flex justify-between items-center">
+                                    <span className="text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>
+                                        Plan {currentPlan?.name.replace("WEB PLAN ", "").split(" ")[0]}
+                                    </span>
+                                    <span className="text-sm font-bold" style={{ color: "#ffffff" }}>
+                                        ${basePlanPrice.toLocaleString("en-US")} USD
+                                    </span>
                                 </div>
-                                <div className="flex justify-end text-lg font-bold text-blue-200">
-                                    <span>{CURRENCY}</span>
-                                    <span className="ml-1">{basePlanPrice.toLocaleString("en-US")}</span>
-                                </div>
+
+                                {/* Addon rows */}
+                                {selectedAddOns.map((aid) => {
+                                    const a = ADD_ONS.find((x) => x.id === aid);
+                                    return (
+                                        <div key={aid} className="flex justify-between items-center">
+                                            <span className="text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>
+                                                {a?.name.split(" (")[0]}
+                                            </span>
+                                            <span className="text-sm font-bold" style={{ color: "#ffffff" }}>
+                                                +${a?.price.toLocaleString("en-US")} USD
+                                            </span>
+                                        </div>
+                                    );
+                                })}
                             </div>
 
-                            {selectedAddOns.length > 0 && (
-                                <div className="mb-8 pb-6 border-b border-blue-400/30">
-                                    <h4 className="text-xs font-semibold text-blue-100 mb-4 uppercase tracking-wider">Servicios Adicionales</h4>
-                                    <div className="space-y-3">
-                                        {selectedAddOns.map((addOnId) => {
-                                            const addon = ADD_ONS.find((a) => a.id === addOnId);
-                                            return (
-                                                <div key={addOnId} className="flex justify-between items-center text-sm">
-                                                    <span className="text-blue-100">{addon?.name}</span>
-                                                    <span className="font-semibold text-blue-200">+{CURRENCY}{addon?.price.toLocaleString("en-US")}</span>
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
+                            {/* Total */}
+                            <div className="space-y-2 mb-10">
+                                <div className="flex justify-between items-end">
+                                    <span className="text-lg" style={{ color: "rgba(255,255,255,0.85)" }}>Total estimado</span>
+                                    <span className="text-4xl font-black" style={{ color: "#ffffff" }}>
+                                        ${totalPrice.toLocaleString("en-US")} USD
+                                    </span>
                                 </div>
-                            )}
-
-                            <div className="mb-8">
-                                <div className="pt-6">
-                                    <p className="text-xs text-blue-100 font-semibold uppercase tracking-wider mb-4">Total a Invertir</p>
-                                    <div className="mb-4">
-                                        <div className="flex items-baseline gap-2 mb-1">
-                                            <span className="text-2xl font-black text-white">{CURRENCY}</span>
-                                            <span className="text-3xl font-black text-white">{totalPrice.toLocaleString("en-US")}</span>
-                                        </div>
-                                    </div>
-                                    <div className="bg-blue-500/20 rounded-xl p-3 border border-blue-400/30">
-                                        <p className="text-xs text-blue-100 font-medium mb-2">Equivalente en ARS</p>
-                                        <div className="flex items-baseline gap-2">
-                                            <span className="text-sm font-bold text-blue-200">$</span>
-                                            <span className="text-2xl font-black text-white">{(totalPrice * exchangeRate).toLocaleString("es-AR", { maximumFractionDigits: 0 })}</span>
-                                        </div>
-                                        <p className="text-xs text-blue-200 mt-2 font-medium">
-                                            {loadingExchange ? "Cargando..." : `Cotización BNA: USD $1 = $${exchangeRate.toLocaleString("es-AR", { maximumFractionDigits: 2 })}`}
-                                        </p>
-                                    </div>
-                                </div>
+                                <p className="text-xs text-right" style={{ color: "rgba(255,255,255,0.45)" }}>
+                                    ≈ ${(totalPrice * exchangeRate).toLocaleString("es-AR", { maximumFractionDigits: 0 })} ARS
+                                    {!loadingExchange && " (T.C. referencial)"}
+                                </p>
                             </div>
 
                             <button
                                 onClick={handleFinishOrder}
-                                className="w-full bg-white text-[#003d7a] font-black py-4 rounded-[2.5rem] hover:bg-blue-50 transition-all duration-300 shadow-lg tracking-widest uppercase text-sm hover:shadow-xl hover:scale-105"
+                                className="w-full flex items-center justify-center gap-2 font-black text-lg py-5 rounded-full transition-all duration-200 hover:shadow-xl active:scale-95"
+                                style={{ background: "#ffffff", color: "#003d7a" }}
                             >
                                 Finalizar Pedido
+                                <ArrowRight className="w-5 h-5" />
                             </button>
-                            <p className="text-xs text-blue-200 mt-5 text-center font-medium">Precios en dólares estadounidenses.</p>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

@@ -7,6 +7,7 @@ import Image from "next/image";
 
 const navLinks = [
   { href: "/#servicios", label: "Servicios" },
+  { href: "/#desarrollo-web", label: "Desarrollo web" },
   { href: "/#productos", label: "Productos" },
   { href: "/#nosotros", label: "Nosotros" },
   { href: "/#testimonios", label: "Testimonios" },
@@ -36,7 +37,7 @@ export default function Navbar() {
         isScrolled ? "bg-white shadow-lg" : "bg-white/95 backdrop-blur-sm"
       }`}
     >
-      <div className="container-custom">
+      <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-20 2xl:px-80">
         <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center group">
@@ -53,12 +54,12 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+          <div className="hidden xl:flex items-center gap-5 2xl:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-normal text-sm xl:text-base transition-colors duration-200 relative group"
+                className="font-normal text-sm transition-colors duration-200 relative group"
                 style={{ color: '#003d7a' }}
               >
                 {link.label}
@@ -68,10 +69,10 @@ export default function Navbar() {
           </div>
 
           {/* CTA Button Desktop - CORREGIDO CON btn-primary */}
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <Link
               href="/#contacto"
-              className="btn-primary !py-2.5 !px-6 xl:!px-8 xl:!py-3 text-sm xl:text-base"
+              className="btn-primary !py-2.5 !px-7 text-sm"
             >
               Hablar con un asesor
             </Link>
@@ -80,7 +81,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 focus:outline-none rounded-lg"
+            className="xl:hidden p-2 focus:outline-none rounded-lg"
             style={{ color: '#003d7a' }}
           >
             <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">

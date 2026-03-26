@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { Mail, Phone, Clock, MapPin, type LucideIcon } from "lucide-react";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -29,11 +30,11 @@ export default function ContactSection() {
     }, 1500);
   };
 
-  const channels = [
-    { label: "Email", value: "info@ctcsistemas.com.ar", icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" },
-    { label: "Teléfono", value: "+54 9 11 3892-3268", icon: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" },
-    { label: "Horario", value: "Lunes a viernes · 9 a 18 hs", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
-    { label: "Ubicación", value: "Av. Regimientos de Patricios 176", icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" },
+  const channels: { label: string; value: string; icon: LucideIcon }[] = [
+    { label: "Email", value: "info@ctcsistemas.com.ar", icon: Mail },
+    { label: "Teléfono", value: "+54 9 11 3892-3268", icon: Phone },
+    { label: "Horario", value: "Lunes a viernes · 9 a 18 hs", icon: Clock },
+    { label: "Ubicación", value: "Av. Regimientos de Patricios 176", icon: MapPin },
   ];
 
   return (
@@ -52,17 +53,20 @@ export default function ContactSection() {
           <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 items-start">
             <div className="space-y-5">
               <h3 className="text-2xl font-bold mb-6" style={{ color: '#003d7a' }}>Canales de atención</h3>
-              {channels.map((item, idx) => (
+              {channels.map((item, idx) => {
+                const IconComponent = item.icon;
+                return (
                 <div key={idx} className="flex items-center gap-5 p-5 bg-white rounded-2xl border border-gray-100 group hover:bg-[#003d7a] transition-all duration-300 shadow-sm">
                   <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-blue-50 text-[#003d7a] group-hover:bg-white/20 group-hover:text-white transition-colors">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path d={item.icon} /></svg>
+                    <IconComponent className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-gray-400 group-hover:text-blue-100 transition-colors">{item.label}</p>
                     <p className="text-base font-bold text-[#003d7a] group-hover:text-white transition-colors">{item.value}</p>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
 
             <form onSubmit={handleSubmit} className="bg-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl border border-gray-100 space-y-5">

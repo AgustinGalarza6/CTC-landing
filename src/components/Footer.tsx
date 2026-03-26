@@ -1,11 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Mail, Phone, Clock } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="text-white relative overflow-hidden bg-[var(--ctc-navy)]">
+    <footer className="text-white relative overflow-hidden bg-[var(--ctc-navy)] rounded-t-[2.5rem]">
       {/* Fondo con Gradiente y Esferas de Luz (Basado en Foto 2) */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#003d7a] via-[#002a54] to-[#001a33]">
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[120px]"></div>
@@ -79,19 +80,19 @@ export default function Footer() {
             <ul className="space-y-4 text-sm">
               <li className="flex items-center gap-3 group">
                 <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-[#003d7a] transition-all">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  <Mail className="w-4 h-4" aria-hidden="true" />
                 </div>
                 <a href="mailto:info@ctcsistemas.com.ar" className="text-white/70 hover:text-white transition-colors">info@ctcsistemas.com.ar</a>
               </li>
               <li className="flex items-center gap-3 group">
                 <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-[#003d7a] transition-all">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  <Phone className="w-4 h-4" aria-hidden="true" />
                 </div>
                 <span className="text-white/70">+54 9 11 3892-3268</span>
               </li>
               <li className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white/40">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  <Clock className="w-4 h-4" aria-hidden="true" />
                 </div>
                 <span className="text-white/70">Lun a Vie: 9 a 18 hs</span>
               </li>

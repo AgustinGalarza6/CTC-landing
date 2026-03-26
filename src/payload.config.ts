@@ -72,6 +72,7 @@ export default buildConfig({
     client: {
       url: process.env.DATABASE_URI || "file:./database.db",
     },
+    push: false,
   }),
   sharp,
 });

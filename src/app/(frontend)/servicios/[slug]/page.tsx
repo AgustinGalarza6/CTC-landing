@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import MidasERPSection from "@/components/MidasERPSection";
 import { getServiceData, getAllServiceSlugs } from "@/data/servicesData";
 
 type Props = {
@@ -147,7 +148,10 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      {/* 4️⃣ METODOLOGÍA */}
+      {/* 4️⃣ MIDAS ERP (solo para slug erp) */}
+      {slug === "erp" && <MidasERPSection />}
+
+      {/* 5️⃣ METODOLOGÍA */}
       <section className="py-24 bg-white relative overflow-hidden">
         <div className="container-custom max-w-5xl relative z-10">
           <div className="text-center mb-16">

@@ -271,7 +271,7 @@ export interface Brand {
   /**
    * Logo oficial de la marca (formato cuadrado preferible)
    */
-  logo: number | Media;
+  logo?: (number | null) | Media;
   /**
    * Información breve sobre la marca (opcional)
    */
@@ -379,7 +379,11 @@ export interface Product {
     | {
         name: string;
         type: 'datasheet' | 'manual' | 'driver' | 'other';
-        file: number | Media;
+        file?: (number | null) | Media;
+        /**
+         * Usar si el archivo es un enlace externo en lugar de subirlo
+         */
+        externalUrl?: string | null;
         /**
          * Se calcula automáticamente
          */
@@ -708,6 +712,7 @@ export interface ProductsSelect<T extends boolean = true> {
         name?: T;
         type?: T;
         file?: T;
+        externalUrl?: T;
         size?: T;
         id?: T;
       };

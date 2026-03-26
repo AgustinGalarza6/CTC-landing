@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 export function FAQAccordion({ faqs }: { faqs: any[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -15,7 +16,7 @@ export function FAQAccordion({ faqs }: { faqs: any[] }) {
           >
             <span className="font-semibold text-[#003d7a]">{faq.question}</span>
             <motion.span animate={{ rotate: openIndex === index ? 180 : 0 }}>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <ChevronDown className="w-5 h-5" aria-hidden="true" />
             </motion.span>
           </button>
           <AnimatePresence>
