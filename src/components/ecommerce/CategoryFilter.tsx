@@ -83,6 +83,32 @@ export default function EnhancedSidebar({ categories, brands = [] }: { categorie
 
   return (
     <div className="flex flex-col gap-6 text-left">
+      {/* ── FILTRO DE MARCAS ────────────────────────────────── */}
+      {brands && brands.length > 0 && (
+      <div className="bg-white rounded-[2rem] border border-gray-100 p-8 shadow-sm">
+        <h3 className="text-xl font-black text-[#003d7a] uppercase tracking-widest mb-8 border-b pb-4">Marcas</h3>
+        <div className="grid grid-cols-3 gap-2">
+          {brands.map((brand) => (
+            <Link
+              key={brand.id}
+              href={buildFilterUrl({ categoria: currentCategory, marca: brand.slug })}
+              className={`group relative aspect-square border-2 rounded-xl flex items-center justify-center p-3 transition-all ${
+                currentBrand?.toLowerCase() === brand.slug?.toLowerCase()
+                  ? "border-orange-500 bg-white shadow-sm"
+                  : "border-gray-200 bg-white hover:border-gray-300"
+              }`}
+            >
+              {getMediaUrl(brand.logo) ? (
+                <Image src={getMediaUrl(brand.logo)} alt={brand.name} fill className="object-contain p-2" />
+              ) : (
+                <span className="text-xs font-bold text-gray-500 text-center leading-tight">{brand.name}</span>
+              )}
+            </Link>
+          ))}
+        </div>
+      </div>
+      )}
+
       {/* ── PANEL DE CATEGORÍAS ─────────────────────────────── */}
       <div className="bg-white rounded-[2rem] border border-gray-100 p-8 shadow-sm">
         <h3 className="text-xl font-black text-[#003d7a] uppercase tracking-widest mb-8 border-b pb-4">
@@ -175,29 +201,6 @@ export default function EnhancedSidebar({ categories, brands = [] }: { categorie
         )}
       </div>
 
-      {/* ── FILTRO DE MARCAS ────────────────────────────────── */}
-      <div className="bg-white rounded-[2rem] border border-gray-100 p-8 shadow-sm">
-        <h3 className="text-xl font-black text-[#003d7a] uppercase tracking-widest mb-8 border-b pb-4">Marcas</h3>
-        <div className="grid grid-cols-3 gap-2">
-          {brands?.map((brand) => (
-            <Link
-              key={brand.id}
-              href={buildFilterUrl({ categoria: currentCategory, marca: brand.slug })}
-              className={`group relative aspect-square border-2 rounded-xl flex items-center justify-center p-3 transition-all ${
-                currentBrand === brand.slug
-                  ? "border-orange-500 bg-white shadow-sm"
-                  : "border-gray-200 bg-white hover:border-gray-300"
-              }`}
-            >
-              {getMediaUrl(brand.logo) ? (
-                <Image src={getMediaUrl(brand.logo)} alt={brand.name} fill className="object-contain p-2" />
-              ) : (
-                <span className="text-xs font-bold text-gray-500 text-center leading-tight">{brand.name}</span>
-              )}
-            </Link>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }
