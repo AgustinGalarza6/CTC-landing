@@ -10,24 +10,18 @@ export default function ProductsGrid({ products }: { products: any[] }) {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const searchParams = useSearchParams();
 
-  const filters = {
-    category: searchParams.get("categoria"),
-    brand: searchParams.get("marca"),
-  };
-
-  function filterProducts(items: any[], { category, brand }: { category: string | null; brand: string | null }) {
-    return items.filter((p) => {
-      const catMatch = !category || (typeof p.category === "object" ? p.category?.slug === category : p.category === category);
-      const brandMatch = !brand || p.brand?.slug === brand;
-      return catMatch && brandMatch;
-    });
-  }
+  const category = searchParams.get("categoria");
+  const brand = searchParams.get("marca");
 
   const filteredProducts = useMemo(() => {
-    const byFilters = filterProducts(products, filters);
-    if (!searchQuery) return byFilters;
-    return byFilters.filter((p) => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
-  }, [products, searchQuery, filters.category, filters.brand]);
+    let result = products.filter((p) => {
+      const catMatch = !category || (typeof p.category === "object" ? p.category?.slug === category : p.category === category);
+      const brandMatch = !brand || (typeof p.brand === "object" ? p.brand?.slug === brand : false);
+      return catMatch && brandMatch;
+    });
+    if (!searchQuery) return result;
+    return result.filter((p) => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
+  }, [products, searchQuery, category, brand]);
 
   return (
     <div className="relative w-full max-w-[1400px] mx-auto">

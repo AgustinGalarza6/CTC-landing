@@ -6,7 +6,7 @@ export default async function TestimonialsSection() {
   if (!(data as any)?.testimonials || (data as any).testimonials.length === 0) return null;
 
   return (
-    <section id="testimonios" className="py-24 bg-white">
+    <section id="testimonios" className="py-24 bg-white border-t border-gray-200">
       <div className="container-custom">
         <div className="text-center mb-16 max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-normal leading-tight mb-6" style={{ color: '#003d7a' }}>

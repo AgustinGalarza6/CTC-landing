@@ -48,7 +48,7 @@ interface BnaRateResponse {
 
 
 export default function WebConfigurator() {
-    const [selectedPlan, setSelectedPlan] = useState<string>("silver");
+    const [selectedPlan, setSelectedPlan] = useState<string>("gold");
     const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
     const [exchangeRate, setExchangeRate] = useState<number>(FALLBACK_EXCHANGE_RATE);
     const [loadingExchange, setLoadingExchange] = useState<boolean>(true);
@@ -161,8 +161,7 @@ Una vez recibidos estos datos, nuestro departamento de desarrollo comenzará a e
     return (
         <div
             id="desarrollo-web"
-            className="py-24 px-4 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/background/cold, smooth & tasty..png')" }}
+            className="py-24 px-4"
         >
             <div className="max-w-7xl mx-auto">
 

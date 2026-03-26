@@ -56,7 +56,7 @@ export default function HeroSection() {
         ref={vantaRef}
         className="relative w-full pt-20 md:pt-24 min-h-[560px] md:min-h-[680px] lg:min-h-[780px] flex items-center justify-center overflow-hidden"
       >
-        <div className="absolute inset-0 bg-black/40 z-[1]" />
+        <div className="absolute inset-0 bg-black/20 z-[1]" />
         <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center max-w-4xl mx-auto py-32">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight drop-shadow-lg">
             Potenciamos su infraestructura con{" "}

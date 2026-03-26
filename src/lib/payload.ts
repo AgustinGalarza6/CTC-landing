@@ -14,6 +14,7 @@ export type PayloadProduct = {
   shortDescription: string;
   description: unknown;
   category: PayloadCategory | string;
+  brand?: { id: number | string; name: string; slug: string; logo?: PayloadMedia | string } | string;
   price: number;
   originalPrice?: number | null;
   stock: number;

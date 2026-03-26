@@ -5,8 +5,8 @@ export const metadata: Metadata = {
   title: "CTC Sistemas | Soluciones Tecnológicas Empresariales",
   description: "Soporte IT, implementación de ERP, infraestructura y servicios tecnológicos profesionales para empresas.",
   icons: {
-    icon: "/fonts/logo/ctc-logo.jpg", // Asegúrate que este archivo exista en /public
-    apple: "/fonts/logo/ctc-logo.jpg",
+    icon: "/fonts/logo/logo-metadata.png",
+    apple: "/fonts/logo/logo-metadata.png",
   },
 };
 

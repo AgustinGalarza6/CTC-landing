@@ -38,7 +38,7 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contacto" className="py-24 bg-gray-50">
+    <section id="contacto" className="py-24 bg-gray-100 border-t border-gray-200">
       <div className="container-custom">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">

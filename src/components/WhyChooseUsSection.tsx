@@ -38,7 +38,7 @@ const reasons = [
 
 export default function WhyChooseUsSection() {
   return (
-    <section id="nosotros" className="py-24 bg-white relative overflow-hidden">
+    <section id="nosotros" className="py-24 bg-gray-100 border-t border-gray-200 relative overflow-hidden">
       {/* Elementos decorativos de fondo */}
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-50 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-blue-50 rounded-full blur-3xl opacity-50 translate-y-1/2 -translate-x-1/2" />

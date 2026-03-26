@@ -42,7 +42,7 @@ export default async function Home() {
         <ServicesSection />
 
         {/* Desarrollo Web Configurator (Nueva sección agregada) */}
-        <section id="desarrollo-web" className="py-10 bg-[#FDFDFD]">
+        <section id="desarrollo-web" className="py-10 bg-gray-100 border-t border-gray-200">
           <WebConfigurator />
         </section>
 
