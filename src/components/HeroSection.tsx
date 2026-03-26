@@ -1,107 +1,83 @@
 'use client';
 
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
-const SLIDE_DURATION = 8000; // ms
-
-const slides = [
-  {
-    src: "/background/7.png",
-    alt: "CTC Sistemas - La tecnología de tu empresa a otro nivel",
-  },
-  {
-    src: "/background/5.png",
-    alt: "CTC Sistemas - Soluciones tecnológicas profesionales",
-  },
-];
+import { useEffect, useRef } from "react";
 
 export default function HeroSection() {
+  const vantaRef = useRef<HTMLDivElement>(null);
+  const vantaEffect = useRef<{ destroy: () => void } | null>(null);
+
   const benefits = [
-    "Atención profesional para empresas",
-    "Equipo técnico especializado",
-    "Soluciones adaptadas a cada operación",
+    "Atencion profesional para empresas",
+    "Equipo tecnico especializado",
+    "Soluciones adaptadas a cada operacion",
   ];
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [progressKey, setProgressKey] = useState(0);
-
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-      setProgressKey((prev) => prev + 1);
-    }, SLIDE_DURATION);
-    return () => clearTimeout(timer);
-  }, [currentSlide]);
+    let destroyed = false;
 
-  const goToSlide = (idx: number) => {
-    if (idx === currentSlide) return;
-    setCurrentSlide(idx);
-    setProgressKey((prev) => prev + 1);
-  };
+    const initVanta = async () => {
+      const THREE = await import("three");
+      const VANTA = (await import("vanta/dist/vanta.net.min")).default;
+
+      if (destroyed || !vantaRef.current) return;
+
+      vantaEffect.current = VANTA({
+        el: vantaRef.current,
+        THREE,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200,
+        minWidth: 200,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        color: 0xffffff,
+        backgroundColor: 0x003d7a,
+        points: 12,
+        spacing: 13,
+      });
+    };
+
+    initVanta();
+
+    return () => {
+      destroyed = true;
+      if (vantaEffect.current) {
+        vantaEffect.current.destroy();
+        vantaEffect.current = null;
+      }
+    };
+  }, []);
 
   return (
     <>
-      {/* Hero Slider Section */}
       <section
         id="hero"
-        className="relative w-full pt-20 md:pt-24 overflow-hidden"
+        ref={vantaRef}
+        className="relative w-full pt-20 md:pt-24 min-h-[560px] md:min-h-[680px] lg:min-h-[780px] flex items-center justify-center overflow-hidden"
       >
-        <div className="relative w-full aspect-video md:aspect-[21/9] lg:aspect-[2.5/1] overflow-hidden">
-
-          {/* Slides */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSlide}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className="absolute inset-0"
+        <div className="absolute inset-0 bg-black/40 z-[1]" />
+        <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center max-w-4xl mx-auto py-32">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight drop-shadow-lg">
+            Potenciamos su infraestructura con{" "}
+            <span className="text-white">soluciones IT premium</span>
+          </h1>
+          <p className="mt-6 text-base md:text-xl text-white/80 max-w-2xl">
+            Soporte tecnico, infraestructura de red, ciberseguridad y mas para que su empresa opere sin interrupciones.
+          </p>
+          <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <a
+              href="#servicios"
+              className="px-8 py-3 rounded-lg border-2 border-white/60 hover:border-white hover:bg-white/10 text-white font-semibold text-base transition-colors backdrop-blur-sm"
             >
-              <Image
-                src={slides[currentSlide].src}
-                alt={slides[currentSlide].alt}
-                fill
-                className="object-cover"
-                priority
-                quality={100}
-              />
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Barra de progreso con gradiente */}
-          <div className="absolute bottom-0 left-0 w-full h-[3px] bg-black/20 z-10">
-            <div
-              key={progressKey}
-              className="hero-progress-bar h-full"
-              style={{ "--slide-duration": `${SLIDE_DURATION}ms` } as React.CSSProperties}
-            />
-          </div>
-
-          {/* Indicadores de slide */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-            {slides.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => goToSlide(idx)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  idx === currentSlide
-                    ? "bg-white scale-125 shadow-md"
-                    : "bg-white/50 hover:bg-white/75"
-                }`}
-                aria-label={`Ir al slide ${idx + 1}`}
-              />
-            ))}
+              Ver servicios
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Trust badges section */}
       <section className="bg-white py-10 md:py-14 border-b border-gray-200">
         <div className="max-w-[1400px] mx-auto px-6">
-          {/* Centrado para móvil, fila para desktop */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 lg:gap-16">
             {benefits.map((benefit, index) => (
               <div key={index} className="flex flex-col items-center md:flex-row gap-3 text-center md:text-left">
