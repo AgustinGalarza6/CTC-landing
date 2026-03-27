@@ -59,16 +59,20 @@ export default function EnhancedSidebar({ categories, brands = [] }: { categorie
       .sort((a, b) => group.slugs.indexOf(a.slug) - group.slugs.indexOf(b.slug)),
   })).filter((group) => group.categories.length > 0);
 
-  // Categorías que no encajan en ningún grupo (fallback)
+  // Grupo dinámico "Zenity" con todas las categorías que no encajan en ningún grupo estático
   const groupedSlugs = CATEGORY_GROUPS.flatMap((g) => g.slugs);
-  const ungroupedCategories = categories.filter((cat) => !groupedSlugs.includes(cat.slug));
+  const ungroupedCategories = categories
+    .filter((cat) => !groupedSlugs.includes(cat.slug))
+    .sort((a, b) => (a.order || 999) - (b.order || 999));
+
+  const zenityGroupActive = ungroupedCategories.some((c) => c.slug === currentCategory);
 
   // Grupo que contiene la categoría actualmente seleccionada (expandido por defecto)
   const activeGroupLabel =
     populatedGroups.find((g) => g.categories.some((c) => c.slug === currentCategory))?.label ?? null;
 
   const [openGroups, setOpenGroups] = useState<Set<string>>(
-    () => new Set(activeGroupLabel ? [activeGroupLabel] : [])
+    () => new Set(activeGroupLabel ? [activeGroupLabel] : zenityGroupActive ? ["Zenity"] : [])
   );
 
   const toggleGroup = (label: string) => {
@@ -83,32 +87,6 @@ export default function EnhancedSidebar({ categories, brands = [] }: { categorie
 
   return (
     <div className="flex flex-col gap-6 text-left">
-      {/* ── FILTRO DE MARCAS ────────────────────────────────── */}
-      {brands && brands.length > 0 && (
-      <div className="bg-white rounded-[2rem] border border-gray-100 p-8 shadow-sm">
-        <h3 className="text-xl font-black text-[#003d7a] uppercase tracking-widest mb-8 border-b pb-4">Marcas</h3>
-        <div className="grid grid-cols-3 gap-2">
-          {brands.map((brand) => (
-            <Link
-              key={brand.id}
-              href={buildFilterUrl({ categoria: currentCategory, marca: brand.slug })}
-              className={`group relative aspect-square border-2 rounded-xl flex items-center justify-center p-3 transition-all ${
-                currentBrand?.toLowerCase() === brand.slug?.toLowerCase()
-                  ? "border-orange-500 bg-white shadow-sm"
-                  : "border-gray-200 bg-white hover:border-gray-300"
-              }`}
-            >
-              {getMediaUrl(brand.logo) ? (
-                <Image src={getMediaUrl(brand.logo)} alt={brand.name} fill className="object-contain p-2" />
-              ) : (
-                <span className="text-xs font-bold text-gray-500 text-center leading-tight">{brand.name}</span>
-              )}
-            </Link>
-          ))}
-        </div>
-      </div>
-      )}
-
       {/* ── PANEL DE CATEGORÍAS ─────────────────────────────── */}
       <div className="bg-white rounded-[2rem] border border-gray-100 p-8 shadow-sm">
         <h3 className="text-xl font-black text-[#003d7a] uppercase tracking-widest mb-8 border-b pb-4">
@@ -169,25 +147,52 @@ export default function EnhancedSidebar({ categories, brands = [] }: { categorie
             );
           })}
 
-          {/* Categorías sin grupo (fallback) */}
-          {ungroupedCategories
-            .sort((a, b) => (a.order || 999) - (b.order || 999))
-            .map((category) => {
-              const isSelected = currentCategory === category.slug;
-              return (
-                <Link
-                  key={category.id}
-                  href={buildFilterUrl({ categoria: category.slug, marca: currentBrand })}
-                  className={`flex items-center px-4 py-3 rounded-xl text-sm transition-all ${
-                    isSelected
-                      ? "bg-blue-50 text-[#003d7a] font-black shadow-sm"
-                      : "text-gray-500 hover:bg-gray-50 hover:text-[#003d7a]"
-                  }`}
+          {/* Grupo dinámico "Zenity" con categorías no clasificadas */}
+          {ungroupedCategories.length > 0 && (
+            <div>
+              <button
+                onClick={() => toggleGroup("Zenity")}
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-bold transition-all ${
+                  zenityGroupActive
+                    ? "text-[#003d7a]"
+                    : "text-gray-600 hover:text-[#003d7a] hover:bg-gray-50"
+                }`}
+              >
+                <span>Zenity</span>
+                <svg
+                  className={`w-4 h-4 flex-shrink-0 transition-transform duration-200 ${openGroups.has("Zenity") ? "rotate-180" : ""}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
                 >
-                  {category.name}
-                </Link>
-              );
-            })}
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {openGroups.has("Zenity") && (
+                <div className="ml-4 mb-2 flex flex-col gap-0.5 border-l-2 border-blue-100 pl-4">
+                  {ungroupedCategories.map((category) => {
+                    const isSelected = currentCategory === category.slug;
+                    return (
+                      <Link
+                        key={category.id}
+                        href={buildFilterUrl({ categoria: category.slug, marca: currentBrand })}
+                        className={`flex items-center px-3 py-2.5 rounded-xl text-sm transition-all ${
+                          isSelected
+                            ? "bg-blue-50 text-[#003d7a] font-black shadow-sm"
+                            : "text-gray-500 hover:bg-gray-50 hover:text-[#003d7a]"
+                        }`}
+                      >
+                        {category.name}
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          )}
+
         </nav>
 
         {/* Botón limpiar ambos filtros */}
@@ -200,6 +205,32 @@ export default function EnhancedSidebar({ categories, brands = [] }: { categorie
           </button>
         )}
       </div>
+
+      {/* ── FILTRO DE MARCAS ────────────────────────────────── */}
+      {brands && brands.length > 0 && (
+        <div className="bg-white rounded-[2rem] border border-gray-100 p-8 shadow-sm">
+          <h3 className="text-xl font-black text-[#003d7a] uppercase tracking-widest mb-8 border-b pb-4">Marcas</h3>
+          <div className="grid grid-cols-3 gap-2">
+            {brands.map((brand) => (
+              <Link
+                key={brand.id}
+                href={buildFilterUrl({ categoria: currentCategory, marca: brand.slug })}
+                className={`group relative aspect-square border-2 rounded-xl flex items-center justify-center p-3 transition-all ${
+                  currentBrand?.toLowerCase() === brand.slug?.toLowerCase()
+                    ? "border-orange-500 bg-white shadow-sm"
+                    : "border-gray-200 bg-white hover:border-gray-300"
+                }`}
+              >
+                {getMediaUrl(brand.logo) ? (
+                  <Image src={getMediaUrl(brand.logo)} alt={brand.name} fill className="object-contain p-2" />
+                ) : (
+                  <span className="text-xs font-bold text-gray-500 text-center leading-tight">{brand.name}</span>
+                )}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
     </div>
   );
