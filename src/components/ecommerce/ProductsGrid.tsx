@@ -15,9 +15,20 @@ export default function ProductsGrid({ products }: { products: any[] }) {
 
   const filteredProducts = useMemo(() => {
     let result = products.filter((p) => {
-      const catMatch = !category || (typeof p.category === "object" ? p.category?.slug === category : p.category === category);
-      const brandSlug = typeof p.brand === "object" ? p.brand?.slug : null;
-      const brandMatch = !brand || (brandSlug != null && brandSlug.toLowerCase() === brand.toLowerCase());
+      // Extraer slug de category solo si es objeto (no null, no ID numérico)
+      const catSlug =
+        p.category !== null && p.category !== undefined && typeof p.category === "object"
+          ? (p.category as any).slug as string | undefined
+          : undefined;
+      const catMatch = !category || catSlug?.toLowerCase() === category.toLowerCase();
+
+      // Extraer slug de brand solo si es objeto (no null, no ID numérico)
+      const brandSlug =
+        p.brand !== null && p.brand !== undefined && typeof p.brand === "object"
+          ? (p.brand as any).slug as string | undefined
+          : undefined;
+      const brandMatch = !brand || (!!brandSlug && brandSlug.toLowerCase() === brand.toLowerCase());
+
       return catMatch && brandMatch;
     });
     if (!searchQuery) return result;

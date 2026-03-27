@@ -13,6 +13,20 @@ const nextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days cache
   },
   trailingSlash: true,
+  async headers() {
+    return [
+      {
+        // HTML pages: never cache so Server Action IDs always stay in sync after deploys
+        source: "/((?!_next/static|_next/image|favicon|fonts|background|icons).*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-cache, no-store, must-revalidate",
+          },
+        ],
+      },
+    ];
+  },
   webpack: (config, { isServer }) => {
     if (!isServer) {
       // Don't resolve server-only modules on the client
